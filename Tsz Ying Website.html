@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 🚨 請在此修改：網站分頁標題 (顯示在瀏覽器標籤頁上的名稱) 🚨 -->
+    <title>Tsz Ying @Urban.Wilder</title>
+    
+    <!-- 引入 Font Awesome 用於社交媒體小圖標與箭頭 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ─── 網站整體顏色與字體設定 ─── */
+        :root {
+            /* High-class Ocean & Forest Palette (質感海洋與森林色系) */
+            --primary: #173b3c;      /* 主色：深青色/松綠色，用於標題、頁首與重點背景 */
+            --accent: #5e8b8c;       /* 點綴色：灰藍色，用於按鈕、強調文字與連結 */
+            --bg: #f2f7f8;           /* 網站背景色：淡藍色/冰水色 */
+            --card-bg: #ffffff;      /* 卡片背景色：純白色 */
+            --text: #2c3e3e;         /* 主要文字顏色：深藍灰色 */
+            --text-light: #7a8f8f;   /* 次要文字/輔助文字顏色：柔和的海草灰 */
+        }
+        body {
+            font-family: 'Georgia', Cambria, "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ─── 語言切換設定 (Language Toggle CSS) ─── */
+        body.lang-en .lang-zh { display: none !important; }
+        body.lang-zh .en { display: none !important; }
+        
+        #lang-toggle-btn {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 5px 15px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        #lang-toggle-btn:hover {
+            background-color: var(--accent);
+            color: white !important; 
+        }
+        
+        /* ─── 頁首 (Header) 設定 ─── */
+        header {
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            letter-spacing: 1.5px;
+        }
+        header p {
+            margin: 0;
+            font-style: italic;
+            opacity: 0.85;
+            font-size: 1.1rem;
+            color: #d1e2e3;
+        }
+        
+        /* ─── 導覽列與懸浮選單設計 (Navigation) ─── */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+        nav button {
+            background: none;
+            border: none;
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary);
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+        nav > button:hover, nav > button.active,
+        nav .nav-item > button:hover, nav .nav-item > button.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+        nav button#lang-toggle-btn:hover, nav button#lang-toggle-btn.active {
+            border-bottom: 2px solid var(--accent);
+        }
+
+        #floating-menu-btn {
+            display: none; 
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-size: 15px;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(23, 59, 60, 0.2);
+            transition: background 0.3s, transform 0.2s;
+        }
+        #floating-menu-btn:hover {
+            background: #4a7273;
+            transform: scale(1.05);
+        }
+
+        /* 高質感下拉選單與點擊箭頭設計 (Dropdown Menu & Caret) */
+        .nav-item {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .caret-toggle {
+            margin-left: 6px;
+            font-size: 13px;
+            opacity: 0.7;
+            transition: transform 0.3s ease, color 0.3s ease;
+            padding: 10px; 
+            margin-top: -10px;
+            margin-bottom: -10px;
+            cursor: pointer;
+        }
+        .caret-toggle:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 修正：改成白色背景，跟選單按鈕拉開後一樣 */
+            background-color: #fff; 
+            min-width: 180px;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 5px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        @media (min-width: 769px) {
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+            .nav-item:hover .caret-toggle {
+                transform: rotate(180deg);
+            }
+        }
+
+        .dropdown-menu button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 20px;
+            /* 修正：配合白底改成深色字 */
+            color: var(--text) !important; 
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: transparent;
+        }
+        .dropdown-menu button:last-child {
+            border-bottom: none;
+        }
+        .dropdown-menu button:hover {
+            color: var(--accent) !important;
+            /* 修正：配合白底改成淡灰藍色背景 */
+            background-color: var(--bg) !important; 
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* 手機版下拉選單模式 */
+        #main-nav.dropdown-mode {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            flex-direction: column;
+            background-color: #fff; 
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            padding: 10px 0;
+            gap: 0;
+            width: 220px;
+            display: none; 
+            border: none;
+        }
+        #main-nav.dropdown-mode > button,
+        #main-nav.dropdown-mode .nav-item > button {
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            color: var(--primary) !important; 
+            border: none;
+            border-radius: 0;
+            border-left: 3px solid transparent;
+        }
+        #main-nav.dropdown-mode .nav-item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        #main-nav.dropdown-mode > button:hover, 
+        #main-nav.dropdown-mode > button.active,
+        #main-nav.dropdown-mode .nav-item > button:hover, 
+        #main-nav.dropdown-mode .nav-item > button.active {
+            background-color: var(--bg) !important; 
+            color: var(--accent) !important;
+            border-bottom: none;
+            border-left: 3px solid var(--accent); 
+        }
+        
+        #main-nav.dropdown-mode .dropdown-menu {
+            position: static;
+            transform: none;
+            box-shadow: none;
+            background-color: transparent; 
+            border: none;
+            padding: 0;
+            margin: 0;
+            border-radius: 0;
+            display: none; 
+        }
+        
+        .nav-item.expanded .dropdown-menu {
+            display: block !important;
+        }
+        .nav-item.expanded .caret-toggle {
+            transform: rotate(180deg);
+        }
+
+        #main-nav.dropdown-mode .dropdown-menu button {
+            padding: 10px 20px 10px 40px; 
+            border-bottom: none;
+            border-left: 3px solid transparent;
+            font-size: 14px;
+            color: var(--text-light) !important; 
+            font-weight: normal;
+        }
+        #main-nav.dropdown-mode .dropdown-menu button:hover {
+            color: var(--accent) !important;
+            background-color: transparent !important;
+            border-left: 3px solid var(--accent) !important;
+        }
+        
+        #main-nav.dropdown-mode #lang-toggle-btn {
+            margin: 15px 20px;
+            width: calc(100% - 40px);
+            text-align: center;
+            border: 2px solid var(--accent);
+            color: var(--accent) !important;
+            background: transparent;
+            border-radius: 20px;
+            padding: 8px 15px;
+        }
+        #main-nav.dropdown-mode #lang-toggle-btn:hover {
+            background-color: var(--accent) !important;
+            color: #fff !important;
+        }
+
+        /* ─── 網頁主要內容容器與分頁動畫 ─── */
+        .container {
+            max-width: 1050px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .page-section {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ─── 首頁：個人簡介區塊設定 ─── */
+        .profile-container {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 15px rgba(23, 59, 60, 0.15);
+            margin-bottom: 20px;
+            background: #ddd;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(23, 59, 60, 0.2);
+        }
+
+        /* ─── 一般卡片與內容元件設計 ─── */
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 35px;
+            border-radius: 6px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(23, 59, 60, 0.05);
+        }
+        .card h2, .card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 10px 22px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            margin-top: 15px;
+            margin-right: 10px;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #4a7273;
+        }
+        
+        /* CV (履歷) 項目設計 */
+        .cv-item {
+            margin-bottom: 25px;
+            border-left: 2px solid var(--accent);
+            padding-left: 20px;
+        }
+        .cv-date {
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+        .cv-title {
+            font-size: 19px;
+            font-weight: bold;
+            margin: 5px 0;
+            color: var(--primary);
+        }
+
+        /* ─── 內部子分頁切換按鈕 (Sub Tabs) ─── */
+        .sub-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .sub-tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        /* ─── 參考文章版面 (Instagram Feed Style for Cameras) ─── */
+        .feed-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .feed-card {
+            display: flex;
+            flex-direction: row;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.12);
+            text-decoration: none;
+            color: var(--text);
+            transition: box-shadow 0.3s;
+            min-height: 280px;
+        }
+        .feed-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .feed-photo {
+            flex: 0 0 35%;
+            position: relative;
+            background: #eaeaea;
+            border-right: 1px solid rgba(0,0,0,0.08);
+        }
+        .feed-photo img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .feed-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 30px;
+        }
+        .feed-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .feed-header h3 {
+            margin: 0;
+            font-size: 20px;
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 6px;
+            text-decoration-color: rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+        }
+        .feed-desc {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text);
+        }
+        .feed-footer {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: var(--text-light);
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            font-family: sans-serif;
+            text-transform: uppercase;
+        }
+        .feed-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+        }
+
+        /* ─── 手機版響應式設定 (Mobile Responsive fixes) ─── */
+        @media (max-width: 768px) {
+            .card {
+                padding: 25px 15px !important;
+            }
+
+            .feed-card {
+                flex-direction: column;
+            }
+            .feed-photo {
+                flex: none;
+                height: 240px;
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.08);
+            }
+            .feed-photo img {
+                position: relative;
+            }
+            .feed-content {
+                padding: 20px;
+            }
+            .feed-avatar {
+                position: static;
+                margin-right: 10px;
+            }
+            .feed-footer {
+                justify-content: flex-start;
+            }
+
+            /* 修正：突破 padding 讓照片變大 */
+            #gallery-tab-film {
+                margin-left: -15px !important;
+                margin-right: -15px !important;
+                width: calc(100% + 30px) !important;
+            }
+
+            /* Film Photo 相片牆強制 3 格排列 */
+            #gallery-tab-film .crt-feed-window {
+                width: 100% !important;
+                height: auto !important;
+            }
+            #gallery-tab-film .crt-feed {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 1px !important; /* 修正：將間隙改小，讓圖片最大化 */
+                height: auto !important; 
+            }
+            #gallery-tab-film .crt-post {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                transform: none !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            #gallery-tab-film .crt-post-c {
+                width: 100% !important;
+                height: 100% !important;
+                aspect-ratio: 1 / 1 !important;
+            }
+            #gallery-tab-film .crt-image,
+            #gallery-tab-film .crt-post-image {
+                width: 100% !important;
+                height: 100% !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+            }
+            #gallery-tab-film .crt-image img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                margin: 0 !important;
+            }
+            #gallery-tab-film .crt-post-content {
+                display: none !important; 
+            }
+        }
+        
+        /* ─── 頁尾 (Footer) ─── */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 20px;
+            color: var(--text-light);
+            font-size: 14px;
+            border-top: 1px solid rgba(23, 59, 60, 0.1);
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body class="lang-en">
+
+    <!-- 頁首區域 -->
+    <header>
+        <!-- 🚨 請在此修改：網站主標題與副標題 🚨 -->
+        <h1>
+            <span class="en">Welcome to Tsz Ying Profile</span>
+            <span class="lang-zh">歡迎來到 Tsz Ying 的個人網站</span>
+        </h1>
+        <p>
+            <span class="en">Focusing on Academics, Photography and Urban Wildlife</span>
+            <span class="lang-zh">專注於學術研究、攝影與城市野生動物</span>
+        </p>
+    </header>
+
+    <!-- 手機版懸浮 Menu 按鈕 -->
+    <button id="floating-menu-btn" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i> Menu
+    </button>
+
+    <!-- 導覽列 -->
+    <nav id="main-nav" data-active-page="home">
+        
+        <!-- 首頁 -->
+        <button id="btn-nav-home" class="active" onclick="showPage('home')">
+            <span class="en">Home</span><span class="lang-zh">首頁</span>
+        </button>
+        
+        <button id="btn-nav-academic" onclick="showPage('academic')" style="display: none;">
+            <span class="en">Research</span><span class="lang-zh">學術研究</span>
+        </button>
+        
+        <button id="btn-nav-cv" onclick="showPage('cv')" style="display: none;">
+            <span class="en">CV</span><span class="lang-zh">個人履歷</span>
+        </button>
+        
+        <!-- Articles -->
+        <div class="nav-item blog-nav">
+            <button id="btn-nav-blog" onclick="showPage('blog')">
+                <span class="en">Articles</span><span class="lang-zh">文章</span>
+                <i class="fa-solid fa-caret-down caret-toggle" onclick="toggleSub(event)"></i>
+            </button>
+            <div class="dropdown-menu">
+                <button onclick="showPage('blog'); showBlogTab('travel');">
+                    <span class="en">Travel</span><span class="lang-zh">旅遊</span>
+                </button>
+                <button onclick="showPage('blog'); showBlogTab('project');">
+                    <span class="en">Project</span><span class="lang-zh">小小企劃</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Photography -->
+        <div class="nav-item photo-nav">
+            <button id="btn-nav-photography" onclick="showPage('photography')">
+                <span class="en">My Camera & Gallery</span><span class="lang-zh">我的相機和相片集</span>
+                <i class="fa-solid fa-caret-down caret-toggle" onclick="toggleSub(event)"></i>
+            </button>
+            <div class="dropdown-menu">
+                <button onclick="showPage('photography'); showPhotoTab('gallery');">
+                    <span class="en">My Gallery</span><span class="lang-zh">我的相片集</span>
+                </button>
+                <button onclick="showPage('photography'); showPhotoTab('cameras');">
+                    <span class="en">My Cameras and Films</span><span class="lang-zh">我的相機和菲林簡介</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 語言切換 -->
+        <button id="lang-toggle-btn" onclick="toggleLanguage()">
+            <i class="fa-solid fa-globe"></i> 
+            <span class="en">中文</span><span class="lang-zh">EN</span>
+        </button>
+    </nav>
+
+    <!-- 網頁內容容器 -->
+    <div class="container">
+        
+        <!-- ============================================== -->
+        <!-- 第 1 頁：首頁 (Home)                           -->
+        <!-- ============================================== -->
+        <div id="home" class="page-section active">
+            <div class="profile-container">
+                <!-- 🚨 請在此修改：您的個人頭像照片 (替換 src 裡面的網址) 🚨 -->
+                <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" class="profile-avatar" alt="Profile Avatar">
+                
+                <!-- 🚨 請在此修改：您的姓名 🚨 -->
+                <h2>
+                    <span class="en">Hello, I'm Chan Tsz Ying</span>
+                    <span class="lang-zh">你好，我是 Chan Tsz Ying</span>
+                </h2>
+                
+                <!-- 🚨 請在此修改：您的中英文自我介紹文字 🚨 -->
+                <p style="max-width: 600px; margin: 10px auto; color: var(--text-light);">
+                    <span class="en">
+                       Hello, welcome to my website! ՞⸝⸝ᵒ̴̶̷ 𓈞 ᵒ̴̶̷⸝⸝՞<br><br>
+Here, I will share my film and digital photography, travel culture, and encounters with urban wildlife, cats, and dogs.<br>
+My passion for nature and environmental issues was sparked by a memorable freshwater amphibian eco-tour. This experience left a lasting impression on me, leading me to pursue a Bachelor's and Master’s degree in Environmental Management, and eventually begin my MPhil studies.
+                    </span>
+                    <span class="lang-zh">
+                        歡迎來到我的網站～ ՞⸝⸝ᵒ̴̶̷ 𓈞 ᵒ̴̶̷⸝⸝՞<br><br>
+我會在這裡分享我的菲林/數碼攝影、旅遊文化、以及在這城市與動物的相遇。<br>
+我對生態、環境議題充滿興趣和熱誠，源自於一次難忘的淡水兩棲動物生態導賞。那次經驗令我印象深刻，並啟發我先後完成了環境管理學士和碩士學位，最終展開我的哲學碩士研究旅程。
+                    </span>
+                </p>
+                
+                <!-- 🚨 請在此修改：您的社群連結 (替換 href 內的 # 或現有網址) 🚨 -->
+                <div class="social-icons">
+                    <a href="https://scholar.google.com/" target="_blank" class="social-icon" title="Google Scholar">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </a>
+                    <a href="https://www.instagram.com/urban.wilder/" target="_blank" class="social-icon" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.lomography.hk/homes/urbanwilder" target="_blank" class="social-icon" title="Lomography">
+                        <i class="fa-solid fa-camera-retro"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card" style="display: none;">
+                <!-- 🚨 請在此修改：您的學術經歷簡介 🚨 -->
+                <h3>
+                    <span class="en">My Academic Path</span>
+                    <span class="lang-zh">我的學術旅程</span>
+                </h3>
+                <p>
+                    <span class="en">I am an MPhil student at Lingnan University in Hong Kong. Currently, my research focuses on urban bee and wasp communities in Hong Kong, using a functional trait-based approach to assess how floral resources and microclimate affect community assembly across the urban gradient. To see a full list of my published papers and current research projects, please visit my academic portfolio.</span>
+                    <span class="lang-zh">我目前是香港嶺南大學的哲學碩士生。我的研究主要關注香港城市的蜜蜂與黃蜂群落，利用基於功能性狀的方法，評估花卉資源與微氣候如何影響城市化梯度中的群落組成。如欲查看我發表的論文與當前研究項目的完整清單，請瀏覽我的學術頁面。</span>
+                </p>
+                <button class="btn" onclick="showPage('academic')">
+                    <span class="en">View Academic Profile</span><span class="lang-zh">查看學術背景</span>
+                </button>
+                <button class="btn" style="background-color: var(--primary);" onclick="showPage('cv')">
+                    <span class="en">View Full CV</span><span class="lang-zh">查看完整履歷</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 第 2 頁：學術研究 (Academic)                   -->
+        <!-- ============================================== -->
+        <div id="academic" class="page-section">
+            <h2>
+                <span class="en">Academic Publications</span><span class="lang-zh">學術出版物</span>
+            </h2>
+            <p style="color:var(--text-light)">
+                <i>
+                    <span class="en">Note: You can manually list your papers below to mimic your Google Scholar profile, or link directly to it.</span>
+                    <span class="lang-zh">註：您可以手動在此列出您的論文，以呈現類似 Google Scholar 的版面，或直接連結至您的主頁。</span>
+                </i>
+            </p>
+            
+            <!-- 🚨 請在此修改：論文卡片資訊 (標題、作者、期刊名稱、閱讀連結 href) 🚨 -->
+            <div class="card">
+                <h3>
+                    <span class="en">Impact of Urban Ecosystems on Feline Behavior</span>
+                    <span class="lang-zh">城市生態系統對貓科動物行為的影響</span>
+                </h3>
+                <p>
+                    <strong><span class="en">Authors:</span><span class="lang-zh">作者：</span></strong> Your Name, Co-Author A<br>
+                    <strong><span class="en">Journal:</span><span class="lang-zh">期刊：</span></strong> Journal of Urban Ecology (2025)
+                </p>
+                <a href="#" class="btn" target="_blank"><span class="en">Read Paper</span><span class="lang-zh">閱讀論文</span></a>
+            </div>
+            <div class="card">
+                <h3>
+                    <span class="en">Another Great Research Paper Title</span>
+                    <span class="lang-zh">另一篇優秀的研究論文標題</span>
+                </h3>
+                <p>
+                    <strong><span class="en">Authors:</span><span class="lang-zh">作者：</span></strong> Your Name, Co-Author B<br>
+                    <strong><span class="en">Journal:</span><span class="lang-zh">期刊：</span></strong> Nature Studies (2023)
+                </p>
+                <a href="#" class="btn" target="_blank"><span class="en">Read Paper</span><span class="lang-zh">閱讀論文</span></a>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 第 3 頁：個人履歷 (CV)                         -->
+        <!-- ============================================== -->
+        <div id="cv" class="page-section">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2>
+                    <span class="en">Curriculum Vitae</span><span class="lang-zh">個人履歷</span>
+                </h2>
+                <p style="color:var(--text-light)">
+                    <span class="en">A detailed overview of my professional and academic background.</span>
+                    <span class="lang-zh">專業與學術背景的詳細總覽。</span>
+                </p>
+                <!-- 🚨 請在此修改：履歷 PDF 下載連結 (替換 href 內的網址) 🚨 -->
+                <a href="#" class="btn" target="_blank"><span class="en">Download PDF Version</span><span class="lang-zh">下載 PDF 版本</span></a>
+            </div>
+            
+            <!-- 🚨 請在此修改：教育背景 (時間、學位、學校與介紹) 🚨 -->
+            <div class="card">
+                <h2><span class="en">Education</span><span class="lang-zh">教育背景</span></h2>
+                <div class="cv-item">
+                    <div class="cv-date">2020 - 2024</div>
+                    <div class="cv-title"><span class="en">Ph.D. in Urban Ecology</span><span class="lang-zh">城市生態學博士</span></div>
+                    <div><span class="en">University of Nature, City, State</span><span class="lang-zh">大自然大學, 城市, 州</span></div>
+                    <p style="font-style: italic; color:var(--text-light)">
+                        <span class="en">"Adaptation of Feline Predators in High-Density Urban Environments."</span>
+                        <span class="lang-zh">「高密度城市環境中貓科掠食者的適應性。」</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 🚨 請在此修改：工作與研究經歷 (時間、職位、機構與工作內容清單) 🚨 -->
+            <div class="card">
+                <h2><span class="en">Research & Experience</span><span class="lang-zh">研究與工作經歷</span></h2>
+                <div class="cv-item">
+                    <div class="cv-date"><span class="en">2024 - Present</span><span class="lang-zh">2024 - 至今</span></div>
+                    <div class="cv-title"><span class="en">Postdoctoral Researcher</span><span class="lang-zh">博士後研究員</span></div>
+                    <div><span class="en">Wildlife Institute, City, State</span><span class="lang-zh">野生動物研究所, 城市, 州</span></div>
+                    <ul style="padding-left: 20px;">
+                        <li>
+                            <span class="en">Lead field research tracking urban wildlife populations using GPS collars.</span>
+                            <span class="lang-zh">領導野外調查，使用 GPS 項圈追蹤城市野生動物族群。</span>
+                        </li>
+                        <li>
+                            <span class="en">Analyze large spatial datasets using R and GIS.</span>
+                            <span class="lang-zh">使用 R 語言與 GIS 分析大型空間數據集。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 第 4 頁：部落格 / 社交媒體動態 (Blog)          -->
+        <!-- ============================================== -->
+        <div id="blog" class="page-section">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2>
+                    <span class="en">The Urban Wilder Blog</span><span class="lang-zh">Urban Wilder網誌</span>
+                </h2>
+                <p>
+                    <span class="en">Thanks for reading my articles! I will share my travel journals and some personal projects/ideas here. Feel free to contact me if you have any questions or collaboration ideas. ✨✨</span>
+                    <span class="lang-zh">謝謝你來到這裡看我的文章～ 這裡主要是旅遊日誌，以及分享我所製作的小小企劃！如果有興趣、有任何問題，或者有合作的想法，都歡迎聯絡我✨✨</span>
+                </p>
+            </div>
+            
+            <div class="card" style="text-align: center; padding: 40px;">
+                <div class="sub-tabs">
+                    <button id="btn-blog-travel" class="btn" onclick="showBlogTab('travel')" style="background-color: var(--accent);">
+                        <span class="en">Travel</span><span class="lang-zh">旅遊</span>
+                    </button>
+                    <button id="btn-blog-project" class="btn" onclick="showBlogTab('project')" style="background-color: var(--primary);">
+                        <span class="en">Project</span><span class="lang-zh">企劃</span>
+                    </button>
+                </div>
+
+                <!-- Travel 內容 -->
+                <div id="blog-tab-travel" class="sub-tab-content" style="display: block;">
+                    <!-- 🚨 若需更改 Travel Curator 嵌入碼，請在這裡修改 🚨 -->
+                    <div id="curator-feed-urban-wilder-travel"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+                </div>
+
+                <!-- Project 內容 -->
+                <div id="blog-tab-project" class="sub-tab-content" style="display: none; margin-top: 20px;">
+                    <!-- 🚨 請在此處刪除下方的段落標籤，並貼上您的「專案內容」或 Curator 嵌入碼 🚨 -->
+                    <p style="color:var(--text-light); padding: 40px 0;">
+                        <span class="en">Project details coming soon...</span>
+                        <span class="lang-zh">專案項目即將推出... (請在此處加入您的內容)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 第 5 頁：攝影作品集 (Photography)              -->
+        <!-- ============================================== -->
+        <div id="photography" class="page-section">
+            
+            <div class="sub-tabs">
+                <button id="btn-photo-gallery" class="btn" onclick="showPhotoTab('gallery')" style="background-color: var(--accent);">
+                    <span class="en">My Gallery</span><span class="lang-zh">我的相片集</span>
+                </button>
+                <button id="btn-photo-cameras" class="btn" onclick="showPhotoTab('cameras')" style="background-color: var(--primary);">
+                    <span class="en">My Cameras and Films</span><span class="lang-zh">我的相機和菲林簡介</span>
+                </button>
+            </div>
+
+            <!-- 攝影區塊 A: My Gallery (相片集) -->
+            <div id="photo-tab-gallery" class="sub-tab-content" style="display: block;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2>
+                        <span class="en">My Gallery</span><span class="lang-zh">我的相片集</span>
+                    </h2>
+                </div>
+
+                <div class="card" style="text-align: center; padding: 40px;">
+                    <div class="sub-tabs">
+                        <!-- 修正：將 Film Photo 移到左邊，Digital 移到右邊 -->
+                        <button id="btn-gallery-film" class="btn" onclick="showGalleryTab('film')" style="background-color: var(--accent);">
+                            <span class="en">Film Photo</span><span class="lang-zh">底片攝影</span>
+                        </button>
+                        <button id="btn-gallery-digital" class="btn" onclick="showGalleryTab('digital')" style="background-color: var(--primary);">
+                            <span class="en">Digital Camera Photo</span><span class="lang-zh">數碼相機相片</span>
+                        </button>
+                    </div>
+
+                    <!-- 底片相片內容 -->
+                    <div id="gallery-tab-film" class="sub-tab-content" style="display: block; margin-top: 20px;">
+                        <!-- 🚨 若需更改 Film Photo Curator 嵌入碼，請在這裡修改 🚨 -->
+                        <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+                    </div>
+
+                    <!-- 數碼相片內容 -->
+                    <div id="gallery-tab-digital" class="sub-tab-content" style="display: none; margin-top: 20px;">
+                        <!-- 🚨 請在此處刪除下方的段落標籤，並貼上您的「數碼相機」Curator 嵌入碼或 IG 連結 🚨 -->
+                        <p style="color:var(--text-light); padding: 40px 0;">
+                            <span class="en">Digital camera photos coming soon...</span>
+                            <span class="lang-zh">數碼相機相片即將推出... (您可以將您的相片嵌入碼放在這裡)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 攝影區塊 B: My Cameras (我的相機與裝備) -->
+            <div id="photo-tab-cameras" class="sub-tab-content" style="display: none;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2>
+                        <span class="en">My Cameras & Film Stocks</span><span class="lang-zh">相機介紹與底片庫</span>
+                    </h2>
+                    <p style="color:var(--text-light)">
+                        <span class="en">Below is an introduction to the different cameras and films I use, along with their sample shots~ If you are interested, please feel free to click in and take a look ᴗ͈ˬᴗ͈ෆ</span>
+                        <span class="lang-zh">以下是不同相機和菲林的介紹，以及拍攝出來的效果～ 如果有興趣可以點進去看看 ᴗ͈ˬᴗ͈ෆ
+</span>
+                    </p>
+                </div>
+
+                <div class="feed-list">
+                    
+                    <!-- 🚨 請在此修改：第一張相機卡片 (連結、圖片 src、標題、介紹文) 🚨 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3335638/photos" target="_blank" class="feed-card">
+                        <div class="feed-photo">
+                            <img src="https://cdn.assets.lomography.com/ae/6fa6749ddbc6734a20826bfef017b74ad76836/1216x806x2.jpg?auth=8aa35fe9bbefea36ca5ea7ce41fa332433b562e6610e1823a8444dab565ca4d8" alt="Ricoh 500 Cover">
+                        </div>
+                        <div class="feed-content">
+                            <div class="feed-header">
+                                <h3>Ricoh 500</h3>
+                            </div>
+                            <div class="feed-desc">
+                                <p style="margin: 0;">
+                                    <span class="en">
+                                        This is a mechanical rangefinder camera equipped with a 40mm f/2.8 lens. It is very lightweight and features both shutter-priority and metering functions (which require a battery). Unfortunately, the light meter on the copy I bought is broken, so I don't take it out very often.<br><br>
+                                        The photos taken with this camera are a bit less sharp compared to the Canon Ex Auto, and they tend to have a bit of halation. If you love something lightweight and portable and don't mind a slightly lower sharpness, this camera is actually great for casual everyday carry and shooting!
+                                    </span>
+                                    <span class="lang-zh">
+                                        這是一部機械旁軸相機，搭載 40mm f/2.8 鏡頭。它非常輕巧，同時具備快門先決與測光功能（需要電池）。可惜我買到這部的測光已經壞了，所以比較少帶它出門。<br><br>
+                                        這部相機拍出來的相片，銳利度比起 Canon Ex Auto 稍微低一些，而且帶有一點光暈。如果你喜歡輕便好攜帶，又不在意銳利度稍微偏低的話，這部相機其實非常適合隨身攜帶拍攝！
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="feed-footer">
+                                <!-- 🚨 如果有更新個人頭像，卡片底部的這個頭像也記得要同步更新 🚨 -->
+                                <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" alt="Avatar" class="feed-avatar">
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 🚨 請在此修改：第二張相機卡片 (連結、圖片 src、標題、介紹文) 🚨 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3334881/photos" target="_blank" class="feed-card">
+                        <div class="feed-photo">
+                            <img src="https://cdn.assets.lomography.com/05/0d6f27466b3fcf5649b7d07f91a8d07d14bb7d/1216x806x2.jpg?auth=1f54047f214d52c86fa1eb5a440b0d329d5dee65be776d5b48fa53f68c9ca079" alt="Canon Ex Auto Cover">
+                        </div>
+                        <div class="feed-content">
+                            <div class="feed-header">
+                                <h3>Canon Ex Auto</h3>
+                            </div>
+                            <div class="feed-desc">
+                                <p style="margin: 0;">
+                                    <span class="en">
+                                        This is a camera I bought during my trip to Japan &lt;3<br><br>
+                                        It's a mechanical rangefinder camera paired with a 35mm lens that can operate completely without a battery. After taking it out for a spin, I've found the image results to be truly outstanding! It also features a shutter-priority auto-exposure mode (which does require a battery), allowing me to rely directly on the built-in light meter while shooting—super convenient.<br><br>
+                                        The only minor drawback is that it has a bit of weight to it, so carrying it around on long trips can get a bit heavy on the shoulders~
+                                    </span>
+                                    <span class="lang-zh">
+                                        這是我從日本旅行時買回來的相機 &lt;3<br><br>
+                                        它是機械旁軸相機並配搭 35mm 鏡頭，即使沒有電池也能正常運作。實際拍攝下來，我覺得它的成像效果非常出色！它同時具備「快門先決」的自動曝光功能（需要電池），讓我在拍攝時可以直接依賴內建測光，非常方便。<br><br>
+                                        唯一的小缺點就是稍微有些份量，長途旅行背著-它肩膀確實會比較辛苦～
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="feed-footer">
+                                <!-- 🚨 底端小頭像 🚨 -->
+                                <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" alt="Avatar" class="feed-avatar">
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 🚨 請在此修改：Nikon AF600 卡片 (務必把 href=# 與 img src 假圖片網址換掉) 🚨 -->
+                    <a href="#" target="_blank" class="feed-card">
+                        <div class="feed-photo">
+                            <img src="https://placehold.co/800x800/eaeaea/a3a3a3?text=Nikon+AF600" alt="Nikon AF600 Cover">
+                        </div>
+                        <div class="feed-content">
+                            <div class="feed-header">
+                                <h3>Nikon AF600</h3>
+                            </div>
+                            <div class="feed-desc">
+                                <p style="margin: 0;">
+                                    <span class="en">I'm still trying the camera, will share to you guys after using the camera!</span>
+                                    <span class="lang-zh">還在試用中~ 用了一段時間後再和大家分享！</span>
+                                </p>
+                            </div>
+                            <div class="feed-footer">
+                                <!-- 🚨 底端小頭像 🚨 -->
+                                <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" alt="Avatar" class="feed-avatar">
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 🚨 請在此修改：底片作品集列表 (若有新增底片品牌可直接在 li 中加入) 🚨 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/films" target="_blank" class="feed-card">
+                        <div class="feed-photo">
+                            <img src="https://cdn.assets.lomography.com/de/61f3acf570677a3628165a80c12d991b6d13ea/1216x806x1.jpg?auth=5fc7b7d7cf230b26b5934b9c27ac3bdfa2d4cc0df87b0662d156f3e77ce49876" alt="Film Stocks Cover">
+                        </div>
+                        <div class="feed-content">
+                            <div class="feed-header">
+                                <h3>Film Stocks</h3>
+                            </div>
+                            <div class="feed-desc">
+                                <div>
+                                    <p style="margin: 0 0 10px 0;">
+                                        <span class="en">Here are some of the film brands I have used before!<br>
+Each film produces different colors and grain sizes. Feel free to click in to see the unique effects produced by different films!</span>
+                                        <span class="lang-zh">這些是我使用過的菲林～<br>
+每種菲林拍攝出來的顏色、顆粒粗幼都不一樣，可以點進去看看不同菲林所呈現出來的效果！</span>
+                                    </p>
+                                    <ul style="text-align: left; margin: 0 auto; display: inline-block; line-height: 1.8;">
+                                        <li>Candido 800</li>
+                                        <li>Fujifilm Color 200</li>
+                                        <li>Fujifilm Color 400</li>
+                                        <li>Kodak ColorPlus 200</li>
+                                        <li>Kodak Ultramax 400</li>
+                                        <li>Retocolor Prism 400</li>
+                                        <li>VIBE 400 b&w</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="feed-footer">
+                                <!-- 🚨 底端小頭像 🚨 -->
+                                <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" alt="Avatar" class="feed-avatar">
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div> <!-- .feed-list end -->
+
+                <!-- 🚨 請在此修改：相機電池 Tips 區塊 (內容或圖片) 🚨 -->
+                <div class="card" style="margin-top: 40px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-wrench" style="color: var(--accent);"></i>
+                        <span class="en">Camera Battery Tips</span>
+                        <span class="lang-zh">相機電池Tips</span>
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 15px;">
+                        <div style="flex: 1 1 300px;">
+                            <p style="margin: 0; line-height: 1.7;">
+                                <span class="en">As for power, this camera originally used PX625 mercury batteries, which are pretty hard to come by nowadays. If you run into this issue, you can simply use a battery adapter paired with a LR44 battery to solve it!</span>
+                                <span class="lang-zh">關於電力方面，這種相機過去通常使用 PX625 水銀電池，現在比較難買到。如果遇到這個問題，可以購買電池轉接器搭配 LR44 電池來使用，就能解決了！</span>
+                            </p>
+                        </div>
+                        <div style="flex: 0 1 250px;">
+                            <img src="https://preview.redd.it/mr9-adapter-with-sr44-do-i-need-to-compensate-v0-s4p8728h6phd1.jpeg?width=640&crop=smart&auto=webp&s=56d24cd0a21a3839c298732987247fbc560398db" alt="PX625 Battery Adapter" style="max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾 (Footer) -->
+    <footer style="text-align: center; padding: 40px 20px; margin-top: 20px; color: var(--text-light); font-size: 14px; border-top: 1px solid rgba(23, 59, 60, 0.1);">
+        <div style="margin-bottom: 10px;">
+            <!-- 🚨 請在此修改：聯絡網址或顯示文字 🚨 -->
+            <span class="en">Contact with us on:</span><span class="lang-zh">聯絡我們：</span>
+            <a href="https://www.instagram.com/urban.wilder/" target="_blank" style="margin-left: 5px;">
+                <i class="fa-brands fa-instagram"></i> Urban.Wilder
+            </a>
+        </div>
+        <div>
+            <!-- 🚨 請在此修改：版權年份與姓名 🚨 -->
+            &copy; 2026 Chan Tsz Ying. All rights reserved. Powered by Urban.Wilder.
+        </div>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- 網站互動程式碼 (JavaScript)                     -->
+    <!-- ============================================== -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            if (nav.style.display === 'flex' || nav.style.display === '') {
+                nav.style.display = 'none'; 
+            } else {
+                nav.style.display = 'flex'; 
+            }
+        }
+
+        function toggleSub(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const clickedNavItem = event.target.closest('.nav-item');
+            
+            // 🚨 修正：在展開新的選單前，先把其他「已展開」的選單全部關閉
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item !== clickedNavItem) {
+                    item.classList.remove('expanded');
+                }
+            });
+
+            // 切換當前點擊的選單狀態
+            if (clickedNavItem) {
+                clickedNavItem.classList.toggle('expanded');
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('#main-nav button, #main-nav .nav-item > button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const activeBtn = document.getElementById(`btn-nav-${pageId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+            
+            // 🚨 修正：切換主頁面時，強制移除所有下拉選單的展開狀態 (避免選單卡在畫面上)
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('expanded');
+            });
+
+            const nav = document.getElementById('main-nav');
+            const menuBtn = document.getElementById('floating-menu-btn');
+
+            nav.setAttribute('data-active-page', pageId);
+
+            if (pageId === 'home') {
+                nav.classList.remove('dropdown-mode');
+                nav.style.display = 'flex';
+                menuBtn.style.display = 'none';
+            } else {
+                nav.classList.add('dropdown-mode');
+                if (window.innerWidth <= 768) {
+                    nav.style.display = 'none'; 
+                }
+                menuBtn.style.display = 'flex';
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.dispatchEvent(new Event('resize'));
+        }
+        
+        function showBlogTab(tabId) {
+            document.getElementById('blog-tab-travel').style.display = 'none';
+            document.getElementById('blog-tab-project').style.display = 'none';
+            
+            document.getElementById('btn-blog-travel').style.backgroundColor = 'var(--primary)';
+            document.getElementById('btn-blog-project').style.backgroundColor = 'var(--primary)';
+
+            document.getElementById('blog-tab-' + tabId).style.display = 'block';
+            document.getElementById('btn-blog-' + tabId).style.backgroundColor = 'var(--accent)';
+            
+            // 🚨 修正：點擊子選項後，自動關閉下拉選單
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
+            closeMobileNav();
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        function showPhotoTab(tabId) {
+            document.getElementById('photo-tab-gallery').style.display = 'none';
+            document.getElementById('photo-tab-cameras').style.display = 'none';
+            
+            document.getElementById('btn-photo-gallery').style.backgroundColor = 'var(--primary)';
+            document.getElementById('btn-photo-cameras').style.backgroundColor = 'var(--primary)';
+
+            document.getElementById('photo-tab-' + tabId).style.display = 'block';
+            document.getElementById('btn-photo-' + tabId).style.backgroundColor = 'var(--accent)';
+            
+            // 🚨 修正：點擊子選項後，自動關閉下拉選單
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
+            closeMobileNav();
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        function showGalleryTab(tabId) {
+            document.getElementById('gallery-tab-digital').style.display = 'none';
+            document.getElementById('gallery-tab-film').style.display = 'none';
+            
+            document.getElementById('btn-gallery-digital').style.backgroundColor = 'var(--primary)';
+            document.getElementById('btn-gallery-film').style.backgroundColor = 'var(--primary)';
+
+            document.getElementById('gallery-tab-' + tabId).style.display = 'block';
+            document.getElementById('btn-gallery-' + tabId).style.backgroundColor = 'var(--accent)';
+            
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        function closeMobileNav() {
+            const nav = document.getElementById('main-nav');
+            if (nav.classList.contains('dropdown-mode') && nav.style.display === 'flex' && window.innerWidth <= 768) {
+                nav.style.display = 'none';
+            }
+        }
+
+        let currentLang = 'en';
+        function toggleLanguage() {
+            const body = document.body;
+            if (currentLang === 'en') {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-zh');
+                currentLang = 'zh';
+            } else {
+                body.classList.remove('lang-zh');
+                body.classList.add('lang-en');
+                currentLang = 'en';
+            }
+        }
+
+        // 🚨 點擊網頁其他空白處，自動縮回所有選單
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('main-nav');
+            const menuBtn = document.getElementById('floating-menu-btn');
+            
+            if (nav.classList.contains('dropdown-mode') && nav.style.display === 'flex') {
+                if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+                    nav.style.display = 'none';
+                }
+            }
+
+            document.querySelectorAll('.nav-item.expanded').forEach(item => {
+                if (!item.contains(event.target)) {
+                    item.classList.remove('expanded');
+                }
+            });
+        });
+    </script>
+
+    <!-- 🚨 Curator.io Scripts 🚨 -->
+    <script type="text/javascript">
+    /* curator-feed-urban-wilder-travel */
+    (function(){
+    var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+    i.src="https://cdn.curator.io/published/2dcc672e-f6e6-45ed-906a-a681a03f912b.js";
+    e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+    })();
+    </script>
+    
+    <script type="text/javascript">
+    /* curator-feed-default-feed-layout */
+    (function(){
+    var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+    i.src="https://cdn.curator.io/published/df55c5b3-fd8c-498c-952e-3391a58c6bee.js";
+    e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+    })();
+    </script>
+</body>
+</html>
