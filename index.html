@@ -153,7 +153,6 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            /* 修正：改成白色背景，跟選單按鈕拉開後一樣 */
             background-color: #fff; 
             min-width: 180px;
             border-radius: 8px;
@@ -178,7 +177,6 @@
             width: 100%;
             text-align: left;
             padding: 10px 20px;
-            /* 修正：配合白底改成深色字 */
             color: var(--text) !important; 
             font-size: 14px;
             font-weight: 500;
@@ -191,7 +189,6 @@
         }
         .dropdown-menu button:hover {
             color: var(--accent) !important;
-            /* 修正：配合白底改成淡灰藍色背景 */
             background-color: var(--bg) !important; 
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
@@ -378,7 +375,7 @@
         .btn:hover {
             background: #4a7273;
         }
-        
+
         /* CV (履歷) 項目設計 */
         .cv-item {
             margin-bottom: 25px;
@@ -411,6 +408,37 @@
             animation: fadeIn 0.4s ease-in-out;
         }
 
+        /* ─── 內容下拉選單 (用於替換原本複雜的按鈕) ─── */
+        .content-dropdown-wrapper {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .content-select {
+            padding: 10px 35px 10px 15px;
+            font-size: 16px;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            /* 顏色改為深灰/主色，背景改為透明無色 */
+            color: var(--text);
+            background-color: transparent;
+            /* 邊框改為極淡的灰色 */
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 8px;
+            appearance: none;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            /* 自訂下拉箭頭圖標 (顏色也配合文字改為深灰色) */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c3e3e%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 12px top 50%;
+            background-size: 12px auto;
+        }
+        .content-select:hover {
+            border-color: rgba(0,0,0,0.3);
+            background-color: rgba(0,0,0,0.02); /* 滑鼠游標移過去時，非常細微的底色回饋 */
+        }
+
         /* ─── 參考文章版面 (Instagram Feed Style for Cameras) ─── */
         .feed-list {
             display: flex;
@@ -427,6 +455,9 @@
             color: var(--text);
             transition: box-shadow 0.3s;
             min-height: 280px;
+            
+            /* 🚨 設定滾動邊距，避免錨點滑動定位時，卡片被上方的選單列遮住 🚨 */
+            scroll-margin-top: 100px;
         }
         .feed-card:hover {
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
@@ -499,6 +530,11 @@
 
         /* ─── 手機版響應式設定 (Mobile Responsive fixes) ─── */
         @media (max-width: 768px) {
+            .content-select {
+                width: 100%;
+                max-width: 280px;
+            }
+
             .card {
                 padding: 25px 15px !important;
             }
@@ -526,14 +562,12 @@
                 justify-content: flex-start;
             }
 
-            /* 修正：突破 padding 讓照片變大 */
             #gallery-tab-film {
                 margin-left: -15px !important;
                 margin-right: -15px !important;
                 width: calc(100% + 30px) !important;
             }
 
-            /* Film Photo 相片牆強制 3 格排列 */
             #gallery-tab-film .crt-feed-window {
                 width: 100% !important;
                 height: auto !important;
@@ -541,7 +575,7 @@
             #gallery-tab-film .crt-feed {
                 display: grid !important;
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 1px !important; /* 修正：將間隙改小，讓圖片最大化 */
+                gap: 1px !important; 
                 height: auto !important; 
             }
             #gallery-tab-film .crt-post {
@@ -894,14 +928,13 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                 </div>
 
                 <div class="card" style="text-align: center; padding: 40px;">
-                    <div class="sub-tabs">
-                        <!-- 修正：將 Film Photo 移到左邊，Digital 移到右邊 -->
-                        <button id="btn-gallery-film" class="btn" onclick="showGalleryTab('film')" style="background-color: var(--accent);">
-                            <span class="en">Film Photo</span><span class="lang-zh">底片攝影</span>
-                        </button>
-                        <button id="btn-gallery-digital" class="btn" onclick="showGalleryTab('digital')" style="background-color: var(--primary);">
-                            <span class="en">Digital Camera Photo</span><span class="lang-zh">數碼相機相片</span>
-                        </button>
+                    
+                    <div class="content-dropdown-wrapper">
+                        <!-- 🚨 請在此修改：相片集的下拉選單選項。若有新增分頁，需在下方增加對應的 div 區塊 🚨 -->
+                        <select id="gallery-select" class="content-select" onchange="showGalleryTab(this.value)">
+                            <option value="film">Film Photo / 底片攝影</option>
+                            <option value="digital">Digital Camera Photo / 數碼相機相片</option>
+                        </select>
                     </div>
 
                     <!-- 底片相片內容 -->
@@ -929,15 +962,25 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                     </h2>
                     <p style="color:var(--text-light)">
                         <span class="en">Below is an introduction to the different cameras and films I use, along with their sample shots~ If you are interested, please feel free to click in and take a look ᴗ͈ˬᴗ͈ෆ</span>
-                        <span class="lang-zh">以下是不同相機和菲林的介紹，以及拍攝出來的效果～ 如果有興趣可以點進去看看 ᴗ͈ˬᴗ͈ෆ
-</span>
+                        <span class="lang-zh">以下是不同相機和菲林的介紹，以及拍攝出來的效果～ 如果有興趣可以點進去看看 ᴗ͈ˬᴗ͈ෆ</span>
                     </p>
+                </div>
+                
+                <div class="content-dropdown-wrapper">
+                    <!-- 🚨 請在此修改：若有新增相機，請在這裡加入 <option> 標籤，並設定對應的 value 🚨 -->
+                    <select id="camera-select" class="content-select" onchange="showCameraItem(this.value)">
+                        <option value="all">All Cameras & Films / 全部顯示</option>
+                        <option value="ricoh">Ricoh 500</option>
+                        <option value="canon">Canon Ex Auto</option>
+                        <option value="nikon">Nikon AF600</option>
+                        <option value="films">Film Stocks / 菲林介紹</option>
+                    </select>
                 </div>
 
                 <div class="feed-list">
                     
-                    <!-- 🚨 請在此修改：第一張相機卡片 (連結、圖片 src、標題、介紹文) 🚨 -->
-                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3335638/photos" target="_blank" class="feed-card">
+                    <!-- 🚨 請在此修改：第一張相機卡片。注意 `data-camera="ricoh"` 必須與上方選單的 value 一致 🚨 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3335638/photos" target="_blank" class="feed-card" data-camera="ricoh">
                         <div class="feed-photo">
                             <img src="https://cdn.assets.lomography.com/ae/6fa6749ddbc6734a20826bfef017b74ad76836/1216x806x2.jpg?auth=8aa35fe9bbefea36ca5ea7ce41fa332433b562e6610e1823a8444dab565ca4d8" alt="Ricoh 500 Cover">
                         </div>
@@ -965,8 +1008,8 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                         </div>
                     </a>
 
-                    <!-- 🚨 請在此修改：第二張相機卡片 (連結、圖片 src、標題、介紹文) 🚨 -->
-                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3334881/photos" target="_blank" class="feed-card">
+                    <!-- 🚨 請在此修改：第二張相機卡片。注意 `data-camera="canon"` 必須與上方選單的 value 一致 🚨 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3334881/photos" target="_blank" class="feed-card" data-camera="canon">
                         <div class="feed-photo">
                             <img src="https://cdn.assets.lomography.com/05/0d6f27466b3fcf5649b7d07f91a8d07d14bb7d/1216x806x2.jpg?auth=1f54047f214d52c86fa1eb5a440b0d329d5dee65be776d5b48fa53f68c9ca079" alt="Canon Ex Auto Cover">
                         </div>
@@ -989,15 +1032,14 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                                 </p>
                             </div>
                             <div class="feed-footer">
-                                <!-- 🚨 底端小頭像 🚨 -->
                                 <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" alt="Avatar" class="feed-avatar">
                                 <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
                             </div>
                         </div>
                     </a>
 
-                    <!-- 🚨 請在此修改：Nikon AF600 卡片 (務必把 href=# 與 img src 假圖片網址換掉) 🚨 -->
-                    <a href="#" target="_blank" class="feed-card">
+                    <!-- 🚨 請在此修改：Nikon AF600 卡片。注意 `data-camera="nikon"` 必須與上方選單的 value 一致 🚨 -->
+                    <a href="#" target="_blank" class="feed-card" data-camera="nikon">
                         <div class="feed-photo">
                             <img src="https://placehold.co/800x800/eaeaea/a3a3a3?text=Nikon+AF600" alt="Nikon AF600 Cover">
                         </div>
@@ -1012,15 +1054,14 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                                 </p>
                             </div>
                             <div class="feed-footer">
-                                <!-- 🚨 底端小頭像 🚨 -->
                                 <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" alt="Avatar" class="feed-avatar">
                                 <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
                             </div>
                         </div>
                     </a>
 
-                    <!-- 🚨 請在此修改：底片作品集列表 (若有新增底片品牌可直接在 li 中加入) 🚨 -->
-                    <a href="https://www.lomography.hk/homes/urbanwilder/films" target="_blank" class="feed-card">
+                    <!-- 🚨 請在此修改：底片清單介紹卡片。注意 `data-camera="films"` 必須與上方選單的 value 一致 🚨 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/films" target="_blank" class="feed-card" data-camera="films">
                         <div class="feed-photo">
                             <img src="https://cdn.assets.lomography.com/de/61f3acf570677a3628165a80c12d991b6d13ea/1216x806x1.jpg?auth=5fc7b7d7cf230b26b5934b9c27ac3bdfa2d4cc0df87b0662d156f3e77ce49876" alt="Film Stocks Cover">
                         </div>
@@ -1048,7 +1089,6 @@ Each film produces different colors and grain sizes. Feel free to click in to se
                                 </div>
                             </div>
                             <div class="feed-footer">
-                                <!-- 🚨 底端小頭像 🚨 -->
                                 <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" alt="Avatar" class="feed-avatar">
                                 <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
                             </div>
@@ -1114,14 +1154,12 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             event.stopPropagation();
             const clickedNavItem = event.target.closest('.nav-item');
             
-            // 🚨 修正：在展開新的選單前，先把其他「已展開」的選單全部關閉
             document.querySelectorAll('.nav-item').forEach(item => {
                 if (item !== clickedNavItem) {
                     item.classList.remove('expanded');
                 }
             });
 
-            // 切換當前點擊的選單狀態
             if (clickedNavItem) {
                 clickedNavItem.classList.toggle('expanded');
             }
@@ -1140,7 +1178,6 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             const activeBtn = document.getElementById(`btn-nav-${pageId}`);
             if (activeBtn) activeBtn.classList.add('active');
             
-            // 🚨 修正：切換主頁面時，強制移除所有下拉選單的展開狀態 (避免選單卡在畫面上)
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('expanded');
             });
@@ -1176,7 +1213,6 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             document.getElementById('blog-tab-' + tabId).style.display = 'block';
             document.getElementById('btn-blog-' + tabId).style.backgroundColor = 'var(--accent)';
             
-            // 🚨 修正：點擊子選項後，自動關閉下拉選單
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
             closeMobileNav();
             window.dispatchEvent(new Event('resize'));
@@ -1192,7 +1228,6 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             document.getElementById('photo-tab-' + tabId).style.display = 'block';
             document.getElementById('btn-photo-' + tabId).style.backgroundColor = 'var(--accent)';
             
-            // 🚨 修正：點擊子選項後，自動關閉下拉選單
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
             closeMobileNav();
             window.dispatchEvent(new Event('resize'));
@@ -1201,14 +1236,26 @@ Each film produces different colors and grain sizes. Feel free to click in to se
         function showGalleryTab(tabId) {
             document.getElementById('gallery-tab-digital').style.display = 'none';
             document.getElementById('gallery-tab-film').style.display = 'none';
-            
-            document.getElementById('btn-gallery-digital').style.backgroundColor = 'var(--primary)';
-            document.getElementById('btn-gallery-film').style.backgroundColor = 'var(--primary)';
 
             document.getElementById('gallery-tab-' + tabId).style.display = 'block';
-            document.getElementById('btn-gallery-' + tabId).style.backgroundColor = 'var(--accent)';
+            
+            const selectElem = document.getElementById('gallery-select');
+            if (selectElem && selectElem.value !== tabId) {
+                selectElem.value = tabId;
+            }
             
             window.dispatchEvent(new Event('resize'));
+        }
+
+        function showCameraItem(cameraId) {
+            if (cameraId === 'all') {
+                document.getElementById('camera-select').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            const targetCard = document.querySelector(`#photo-tab-cameras .feed-card[data-camera="${cameraId}"]`);
+            if (targetCard) {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function closeMobileNav() {
@@ -1232,7 +1279,6 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             }
         }
 
-        // 🚨 點擊網頁其他空白處，自動縮回所有選單
         document.addEventListener('click', function(event) {
             const nav = document.getElementById('main-nav');
             const menuBtn = document.getElementById('floating-menu-btn');
