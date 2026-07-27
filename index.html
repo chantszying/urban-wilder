@@ -562,10 +562,16 @@
                 justify-content: flex-start;
             }
 
+            /* 修正手機版 Film 區塊偏左與空隙問題 */
             #gallery-tab-film {
-                margin-left: -15px !important;
-                margin-right: -15px !important;
-                width: calc(100% + 30px) !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                display: flex;
+                justify-content: center;
+            }
+            #gallery-tab-film .github-curator-wrapper {
+                width: 100% !important;
             }
 
             #gallery-tab-film .crt-feed-window {
@@ -575,8 +581,9 @@
             #gallery-tab-film .crt-feed {
                 display: grid !important;
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 1px !important; 
+                gap: 2px !important; /* 控制照片之間的空隙，若要完全無縫可改為 0px */
                 height: auto !important; 
+                width: 100% !important;
             }
             #gallery-tab-film .crt-post {
                 position: relative !important;
@@ -592,6 +599,9 @@
                 width: 100% !important;
                 height: 100% !important;
                 aspect-ratio: 1 / 1 !important;
+                padding: 0 !important; /* 清除內邊距 */
+                margin: 0 !important; /* 清除外邊距 */
+                overflow: hidden !important; 
             }
             #gallery-tab-film .crt-image,
             #gallery-tab-film .crt-post-image {
@@ -618,7 +628,6 @@
         /* ─── 頁尾 (Footer) ─── */
         footer {
             text-align: center;
-            /* 👇 這裡加大了底部的空白 (150px) 讓網頁有足夠空間往下滾 👇 */
             padding: 40px 20px 150px 20px;
             margin-top: 20px;
             color: var(--text-light);
@@ -940,13 +949,15 @@ My passion for nature and environmental issues was sparked by a memorable freshw
 
                     <!-- 底片相片內容 -->
                     <div id="gallery-tab-film" class="sub-tab-content" style="display: block; margin-top: 20px;">
-    <!-- 🚨 若需更改 Film Photo Curator 嵌入碼，請在這裡修改 🚨 -->
-    
-    <!-- 1. 在外面包上這層強力的自訂外框 -->
-    <div class="github-curator-wrapper">
-        <div id="curator-feed-default-feed-layout">
-            <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a>
-        </div>
+                        <!-- 🚨 若需更改 Film Photo Curator 嵌入碼，請在這裡修改 🚨 -->
+                        
+                        <!-- 1. 在外面包上這層強力的自訂外框 -->
+                        <div class="github-curator-wrapper">
+                            <div id="curator-feed-default-feed-layout">
+                                <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a>
+                            </div>
+                        </div> <!-- 💡 補回了這個重要的結束標籤 -->
+                    </div> <!-- 💡 補回了這個重要的結束標籤 -->
 
                     <!-- 數碼相片內容 -->
                     <div id="gallery-tab-digital" class="sub-tab-content" style="display: none; margin-top: 20px;">
