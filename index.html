@@ -1099,22 +1099,22 @@ Each film produces different colors and grain sizes. Feel free to click in to se
                 </div> <!-- .feed-list end -->
 
                 <!-- 🚨 請在此修改：相機電池 Tips 區塊 (內容或圖片) 🚨 -->
-<div class="card" data-camera="tips" style="margin-top: 40px; text-align: left;">
-    <h3 style="display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-wrench" style="color: var(--accent);"></i>
-        <span class="en">Camera Battery Tips</span>
-        <span class="lang-zh">相機電池Tips</span>
-    </h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 15px;">
-        <div style="flex: 1 1 300px;">
-            <p style="margin: 0; line-height: 1.7;">
-                <span class="en">As for power, this camera originally used PX625 mercury batteries, which are pretty hard to come by nowadays. If you run into this issue, you can simply use a battery adapter paired with a LR44 battery to solve it!</span>
-                <span class="lang-zh">關於電力方面，這種相機過去通常使用 PX625 水銀電池，現在比較難買到。如果遇到這個問題，可以購買電池轉接器搭配 LR44 電池來使用，就能解決了！</span>
-            </p>
-        </div>
-        <div style="flex: 0 1 250px;">
-            <!-- 如果未來你想把這張 Reddit 的圖片也換成你自己上傳到 GitHub 的照片，只要把 src 裡面的網址改成 "Image/你的檔名.jpg" 就可以了 -->
-            <img src="https://preview.redd.it/mr9-adapter-with-sr44-do-i-need-to-compensate-v0-s4p8728h6phd1.jpeg?width=640&crop=smart&auto=webp&s=56d24cd0a21a3839c298732987247fbc560398db" alt="PX625 Battery Adapter" style="max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <div class="card" data-camera="tips" style="margin-top: 40px; text-align: left; scroll-margin-top: 100px;">
+                    <h3 style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-wrench" style="color: var(--accent);"></i>
+                        <span class="en">Camera Battery Tips</span>
+                        <span class="lang-zh">相機電池Tips</span>
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 15px;">
+                        <div style="flex: 1 1 300px;">
+                            <p style="margin: 0; line-height: 1.7;">
+                                <span class="en">As for power, this camera originally used PX625 mercury batteries, which are pretty hard to come by nowadays. If you run into this issue, you can simply use a battery adapter paired with a LR44 battery to solve it!</span>
+                                <span class="lang-zh">關於電力方面，這種相機過去通常使用 PX625 水銀電池，現在比較難買到。如果遇到這個問題，可以購買電池轉接器搭配 LR44 電池來使用，就能解決了！</span>
+                            </p>
+                        </div>
+                        <div style="flex: 0 1 250px;">
+                            <!-- 如果未來你想把這張 Reddit 的圖片也換成你自己上傳到 GitHub 的照片，只要把 src 裡面的網址改成 "Image/你的檔名.jpg" 就可以了 -->
+                            <img src="https://preview.redd.it/mr9-adapter-with-sr44-do-i-need-to-compensate-v0-s4p8728h6phd1.jpeg?width=640&crop=smart&auto=webp&s=56d24cd0a21a3839c298732987247fbc560398db" alt="PX625 Battery Adapter" style="max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
                         </div>
                     </div>
                 </div>
@@ -1254,7 +1254,7 @@ Each film produces different colors and grain sizes. Feel free to click in to se
                 document.getElementById('camera-select').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
-            const targetCard = document.querySelector(`#photo-tab-cameras .feed-card[data-camera="${cameraId}"]`);
+            const targetCard = document.querySelector(`#photo-tab-cameras [data-camera="${cameraId}"]`);
             if (targetCard) {
                 targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
