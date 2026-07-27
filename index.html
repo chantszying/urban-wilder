@@ -618,7 +618,8 @@
         /* ─── 頁尾 (Footer) ─── */
         footer {
             text-align: center;
-            padding: 40px 20px;
+            /* 👇 這裡加大了底部的空白 (150px) 讓網頁有足夠空間往下滾 👇 */
+            padding: 40px 20px 150px 20px;
             margin-top: 20px;
             color: var(--text-light);
             font-size: 14px;
@@ -1124,7 +1125,7 @@ Each film produces different colors and grain sizes. Feel free to click in to se
     </div>
 
     <!-- 頁尾 (Footer) -->
-    <footer style="text-align: center; padding: 40px 20px; margin-top: 20px; color: var(--text-light); font-size: 14px; border-top: 1px solid rgba(23, 59, 60, 0.1);">
+    <footer style="text-align: center; /* 👇 這裡加大了底部的空白 (150px) 讓網頁有足夠空間往下滾 👇 */ padding: 40px 20px 150px 20px; margin-top: 20px; color: var(--text-light); font-size: 14px; border-top: 1px solid rgba(23, 59, 60, 0.1);">
         <div style="margin-bottom: 10px;">
             <!-- 🚨 請在此修改：聯絡網址或顯示文字 🚨 -->
             <span class="en">Contact with us on:</span><span class="lang-zh">聯絡我們：</span>
@@ -1250,13 +1251,17 @@ Each film produces different colors and grain sizes. Feel free to click in to se
         }
 
         function showCameraItem(cameraId) {
+            // 👇 這裡升級了 JS 的滾動寫法，讓它能強制準確地捲動並避開頂部選單 👇
             if (cameraId === 'all') {
-                document.getElementById('camera-select').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const selectElement = document.getElementById('camera-select');
+                const offsetPosition = selectElement.getBoundingClientRect().top + window.scrollY - 120;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                 return;
             }
             const targetCard = document.querySelector(`#photo-tab-cameras [data-camera="${cameraId}"]`);
             if (targetCard) {
-                targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const offsetPosition = targetCard.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         }
 
