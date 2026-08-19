@@ -80,19 +80,20 @@ def update_html():
             if not image_urls and post.get('media_url'):
                 image_urls.append(post.get('media_url'))
 
-            # 動態產生每張照片的 HTML 區塊
-            photos_html_block = ""
+            # 🌟 製作水平滑動的相片輪播容器 (Carousel)
+            photos_html_block = '<div class="feed-photo-carousel">'
             for img_url in image_urls:
                 photos_html_block += f"""
-                        <div class="feed-photo" style="position: relative; width: 100%; min-height: 280px; margin-bottom: 10px;">
+                        <div class="feed-photo-item">
                             <img src="{img_url}" alt="Post Photo">
                         </div>
                 """
+            photos_html_block += '</div>'
 
-            # 抓取 "📍 | 後面的文字" 作為地標
+            # 抓取 "📍 | 後面的文字" 作為地標 (排除 Hashtags 以免文字過長)
             location_match = re.search(r'📍\s*\|\s*([^\n\r]+)', caption)
             if location_match:
-                location_name = location_match.group(1).strip()
+                location_name = location_match.group(1).split('#')[0].strip()
                 unique_locations.add(location_name)
                 loc_attr = f'data-location="{location_name}"'
                 location_html = f'''
@@ -106,12 +107,10 @@ def update_html():
 
             formatted_caption = caption.replace('\n', '<br>')
 
-            # 🌟 組合卡片 HTML (加入 feed-desc-text 與 Show more 按鈕)
+            # 🌟 組合卡片 HTML (加入多圖輪播、動態地點標籤與 Show more 按鈕)
             post_html = f"""
                     <div class="feed-card" {loc_attr} style="flex-direction: column; align-items: stretch;">
-                        <div style="display: flex; flex-direction: column; width: 100%;">
-                            {photos_html_block}
-                        </div>
+                        {photos_html_block}
                         <div class="feed-content" style="width: 100%; box-sizing: border-box;">
                             <div class="feed-header">
                                 <h3><span class="en">{safe_title}...</span><span class="lang-zh">{safe_title}...</span></h3>
@@ -139,18 +138,17 @@ def update_html():
             cards_html.append(post_html)
             post_count += 1
 
-        # 如果是旅遊分頁，自動生成地區分類下拉選單
+        # 如果是旅遊分頁，自動生成「地區分類」下拉選單
         dropdown_html = ""
         if hashtag == "#urbanwildertravel" and unique_locations:
             options = '<option value="all">All Locations / 全部地區</option>\n'
             for loc in sorted(unique_locations):
-                options += f'<option value="{loc}">{loc}</option>\n'
+                options += f'                    <option value="{loc}">{loc}</option>\n'
             
             dropdown_html = f"""
             <div class="content-dropdown-wrapper" style="margin-bottom: 25px;">
                 <select class="content-select" onchange="filterTravelLocation(this.value)">
-                    {options}
-                </select>
+{options}                </select>
             </div>
             """
 
@@ -159,7 +157,7 @@ def update_html():
 
         pattern = rf"({re.escape(start_tag)})(.*?)({re.escape(end_tag)})"
         if re.search(pattern, file_data, flags=re.DOTALL):
-            file_data = re.sub(pattern, rf"\1{generated_html}\3", file_data, flags=re.DOTALL)
+            file_data = re.sub(pattern, rf"\1\n{generated_html}\n\3", file_data, flags=re.DOTALL)
         else:
             print(f"❌ 錯誤：找不到 {start_tag}")
 
