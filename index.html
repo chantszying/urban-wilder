@@ -469,14 +469,14 @@
             border-right: 1px solid rgba(0,0,0,0.08);
         }
         .feed-photo img {
-             position: absolute;
-             top: 0;
-             left: 0;
-             width: 100%;
-             height: 100%;
-             object-fit: contain; /* 確保照片完整呈現，不被裁切 */
-             background-color: #f9f9f9; /* 留白處顯示乾淨背景 */
-        }
+   			 position: absolute;
+   			 top: 0;
+   			 left: 0;
+   			 width: 100%;
+   			 height: 100%;
+   			 object-fit: contain; /* 確保照片完整呈現，不被裁切 */
+   			 background-color: #f9f9f9; /* 留白處顯示乾淨背景 */
+		}
         .feed-content {
             flex: 1;
             display: flex;
@@ -633,36 +633,6 @@
         }
         footer a:hover {
             color: var(--primary);
-        }
-
-        /* ────────────────────────────────────────────────
-           🌟 以下為新增的 IG 貼文內文折疊與展開樣式
-           ──────────────────────────────────────────────── */
-        .feed-desc-text {
-            max-height: 420px; /* 限制約 20 行的高度，你可依需求微調數字 */
-            overflow: hidden;
-            position: relative;
-            transition: max-height 0.4s ease;
-        }
-
-        .feed-desc-text.expanded {
-            max-height: none; /* 展開時解除高度限制 */
-        }
-
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: var(--accent);
-            cursor: pointer;
-            padding: 8px 0 0 0;
-            font-weight: bold;
-            font-size: 14px;
-            display: inline-block;
-            margin-top: 5px;
-        }
-
-        .read-more-btn:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -865,7 +835,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                 <h2><span class="en">Education</span><span class="lang-zh">教育背景</span></h2>
                 
                 <!-- 第一個學歷 -->
-        <div class="cv-item">
+		<div class="cv-item">
                     <div class="cv-date">2024 - Present</div>
                     <div class="cv-title"><span class="en">MPhil in Environmental Science</span><span class="lang-zh">環境科學哲學碩士</span></div>
                     <div><span class="en">Lingnan University of Hong Kong</span><span class="lang-zh">嶺南大學</span></div>
@@ -875,7 +845,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                     </p>
                 </div> <!-- 結束第一個學歷的包覆 -->
                 
-                <!-- 第二個學歷  --> 
+                <!-- 第二個學歷  --!> 
                 <div class="cv-item">
                     <div class="cv-date">2021 - 2023</div>
                     <div class="cv-title"><span class="en">Bachelor of Social Sciences (Honours) in Environment and Resources Management (First Hon)</span><span class="lang-zh">環境及資源管理社會科學學士（榮譽）學位 - 一級榮譽</span></div>
@@ -885,7 +855,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                         <span class="lang-zh">「高密度城市環境中貓科掠食者的適應性。」</span>                    </p>
                 </div> <!-- 結束第二個學歷的包覆 -->
 
-                <!-- 第三個學歷  --> 
+                <!-- 第三個學歷  --!> 
                 <div class="cv-item">
                     <div class="cv-date">2019 - 2021</div>
                     <div class="cv-title"><span class="en">Higher Diploma in Pet Care and Animal Assisted Therapy (FHDPETC)</span><span class="lang-zh">寵物護養及動物輔助治療高級文憑(FHDPETC)</span></div>
@@ -1712,19 +1682,6 @@ Each film produces different colors and grain sizes. Feel free to click in to se
                 }
             });
         });
-
-        // ────────────────────────────────────────────────
-        // 🌟 新增：點擊展開/收合 IG 貼文內文
-        // ────────────────────────────────────────────────
-        function toggleReadMore(btn) {
-            const descText = btn.previousElementSibling;
-            descText.classList.toggle('expanded');
-            if (descText.classList.contains('expanded')) {
-                btn.innerHTML = '<span class="en">Show less</span><span class="lang-zh">收起內容</span>';
-            } else {
-                btn.innerHTML = '<span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>';
-            }
-        }
     </script>
     
     <script type="text/javascript">
