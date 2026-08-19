@@ -42,11 +42,12 @@ def fetch_ig_posts():
         
     print(f"歷史貼文抓取完畢，總共取得 {len(all_posts)} 篇貼文。")
     if all_posts:
-        print("💡 第一篇貼文測試:", all_posts[0].get('caption', '')[:50])
+        print("💡 第一篇貼文測試:", str(all_posts[0].get('caption', ''))[:50])
     else:
         print("❌ 警告：抓到的貼文數量是 0！")
         
     return all_posts
+
 def update_html():
     posts = fetch_ig_posts()
     
@@ -63,7 +64,7 @@ def update_html():
         post_count = 0
 
         for post in posts:
-            caption = post.get('caption', '')
+            caption = post.get('caption') or ''
             if hashtag not in caption:
                 continue
 
