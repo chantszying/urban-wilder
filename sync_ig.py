@@ -23,7 +23,6 @@ CONFIGS = [
 def fetch_ig_posts():
     print("開始抓取 Instagram 所有歷史貼文（含多張照片與自動翻頁）...")
     all_posts = []
-    # 透過 children{media_url} 抓取多張輪播照片，並用 while url 自動翻頁
     url = f"https://graph.facebook.com/v18.0/{IG_USER_ID}/media?fields=id,caption,media_url,permalink,timestamp,media_type,children{{media_url}}&access_token={ACCESS_TOKEN}&limit=100"
     
     while url:
@@ -41,11 +40,6 @@ def fetch_ig_posts():
         url = paging.get('next')
         
     print(f"歷史貼文抓取完畢，總共取得 {len(all_posts)} 篇貼文。")
-    if all_posts:
-        print("💡 第一篇貼文測試:", str(all_posts[0].get('caption', ''))[:50])
-    else:
-        print("❌ 警告：抓到的貼文數量是 0！")
-        
     return all_posts
 
 def update_html():
@@ -60,7 +54,7 @@ def update_html():
         end_tag = config["end_tag"]
         
         cards_html = []
-        unique_locations = set() # 收集所有出現過的地點
+        unique_locations = set()
         post_count = 0
 
         for post in posts:
@@ -71,7 +65,6 @@ def update_html():
             permalink = post.get('permalink', '')
             safe_title = caption.replace('\n', ' ')[:20]
             
-            # 收集這篇貼文的所有圖片（支援單張或多張 Carousel 輪播照片）
             image_urls = []
             media_type = post.get('media_type', '')
             
@@ -85,17 +78,17 @@ def update_html():
             if not image_urls and post.get('media_url'):
                 image_urls.append(post.get('media_url'))
 
-            # 🌟 製作水平滑動的相片輪播容器 (Carousel)
-            photos_html_block = '<div class="feed-photo-carousel" style="height: 100%; border: none;">'
+            # 製作相片區塊 (Carousel)
+            photos_html_block = '<div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">'
             for img_url in image_urls:
                 photos_html_block += f"""
-                        <div class="feed-photo-item" style="height: 100%; min-height: 100%;">
-                            <img src="{img_url}" alt="Post Photo">
+                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
+                            <img src="{img_url}" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                         </div>
                 """
             photos_html_block += '</div>'
 
-            # 抓取 "📍 | 後面的文字" 作為地標 (排除 Hashtags 以免文字過長)
+            # 抓取地標
             location_match = re.search(r'📍\s*\|\s*([^\n\r]+)', caption)
             if location_match:
                 location_name = location_match.group(1).split('#')[0].strip()
@@ -112,23 +105,25 @@ def update_html():
 
             formatted_caption = caption.replace('\n', '<br>')
 
-            # 🌟 組合卡片 HTML (恢復電腦版左右排版)
+            # 🌟 絕對強制的左右排版 HTML
+            # 利用 feed-card 的 flex-direction: row 確保照片在左，文字在右
             post_html = f"""
                     <div class="feed-card" {loc_attr}>
+                        <!-- 照片區塊 (強制在左邊) -->
                         <div class="feed-photo">
                             {photos_html_block}
                         </div>
+                        
+                        <!-- 文字區塊 (強制在右邊) -->
                         <div class="feed-content">
                             <div class="feed-header">
                                 <h3><span class="en">{safe_title}...</span><span class="lang-zh">{safe_title}...</span></h3>
                             </div>
                             <div class="feed-desc">
                                 {location_html}
-                                <!-- 內文折疊區塊 -->
                                 <div class="feed-desc-text">
                                     <p style="margin: 0; text-align: left; font-size: 14px;">{formatted_caption}</p>
                                 </div>
-                                <!-- 展開/收起 按鈕 -->
                                 <button class="read-more-btn" onclick="toggleReadMore(this)">
                                     <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
                                 </button>
@@ -145,7 +140,6 @@ def update_html():
             cards_html.append(post_html)
             post_count += 1
 
-        # 如果是旅遊分頁，自動生成「地區分類」下拉選單
         dropdown_html = ""
         if hashtag == "#urbanwildertravel" and unique_locations:
             options = '<option value="all">All Locations / 全部地區</option>\n'
