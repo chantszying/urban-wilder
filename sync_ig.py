@@ -86,10 +86,10 @@ def update_html():
                 image_urls.append(post.get('media_url'))
 
             # 🌟 製作水平滑動的相片輪播容器 (Carousel)
-            photos_html_block = '<div class="feed-photo-carousel">'
+            photos_html_block = '<div class="feed-photo-carousel" style="height: 100%; border: none;">'
             for img_url in image_urls:
                 photos_html_block += f"""
-                        <div class="feed-photo-item">
+                        <div class="feed-photo-item" style="height: 100%; min-height: 100%;">
                             <img src="{img_url}" alt="Post Photo">
                         </div>
                 """
@@ -112,11 +112,13 @@ def update_html():
 
             formatted_caption = caption.replace('\n', '<br>')
 
-            # 🌟 組合卡片 HTML (加入多圖輪播、動態地點標籤與 Show more 按鈕)
+            # 🌟 組合卡片 HTML (恢復電腦版左右排版)
             post_html = f"""
-                    <div class="feed-card" {loc_attr} style="flex-direction: column; align-items: stretch;">
-                        {photos_html_block}
-                        <div class="feed-content" style="width: 100%; box-sizing: border-box;">
+                    <div class="feed-card" {loc_attr}>
+                        <div class="feed-photo">
+                            {photos_html_block}
+                        </div>
+                        <div class="feed-content">
                             <div class="feed-header">
                                 <h3><span class="en">{safe_title}...</span><span class="lang-zh">{safe_title}...</span></h3>
                             </div>
