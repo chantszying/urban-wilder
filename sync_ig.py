@@ -40,7 +40,11 @@ def fetch_ig_posts():
         paging = data.get('paging', {})
         url = paging.get('next')
         
-    print(f"歷史貼文抓取完畢，總共取得 {len(all_posts)} 篇貼文。")
+print(f"歷史貼文抓取完畢，總共取得 {len(all_posts)} 篇貼文。")
+    if all_posts:
+        print("💡 第一篇貼文測試:", all_posts[0].get('caption', '')[:50])
+    else:
+        print("❌ 警告：抓到的貼文數量是 0！")
     return all_posts
 
 def update_html():
