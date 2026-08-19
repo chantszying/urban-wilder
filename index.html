@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 🚨 請在此修改：網站分頁標題 (顯示在瀏覽器標籤頁上的名稱) 🚨 -->
     <title>Tsz Ying @Urban.Wilder</title>
-    
+
     <!-- 引入 Font Awesome 用於社交媒體小圖標與箭頭 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* ─── 網站整體顏色與字體設定 ─── */
         :root {
@@ -32,7 +32,7 @@
         /* ─── 語言切換設定 (Language Toggle CSS) ─── */
         body.lang-en .lang-zh { display: none !important; }
         body.lang-zh .en { display: none !important; }
-        
+
         #lang-toggle-btn {
             background-color: transparent;
             color: var(--accent);
@@ -46,7 +46,7 @@
             background-color: var(--accent);
             color: white !important; 
         }
-        
+
         /* ─── 頁首 (Header) 設定 ─── */
         header {
             background-color: var(--primary);
@@ -66,7 +66,7 @@
             font-size: 1.1rem;
             color: #d1e2e3;
         }
-        
+
         /* ─── 導覽列與懸浮選單設計 (Navigation) ─── */
         nav {
             display: flex;
@@ -131,7 +131,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .caret-toggle {
             margin-left: 6px;
             font-size: 13px;
@@ -162,7 +162,7 @@
             margin-top: 5px;
             border: 1px solid rgba(0,0,0,0.05);
         }
-        
+
         @media (min-width: 769px) {
             .nav-item:hover .dropdown-menu {
                 display: block;
@@ -232,7 +232,7 @@
             border-bottom: none;
             border-left: 3px solid var(--accent); 
         }
-        
+
         #main-nav.dropdown-mode .dropdown-menu {
             position: static;
             transform: none;
@@ -244,7 +244,7 @@
             border-radius: 0;
             display: none; 
         }
-        
+
         .nav-item.expanded .dropdown-menu {
             display: block !important;
         }
@@ -265,7 +265,7 @@
             background-color: transparent !important;
             border-left: 3px solid var(--accent) !important;
         }
-        
+
         #main-nav.dropdown-mode #lang-toggle-btn {
             margin: 15px 20px;
             width: calc(100% - 40px);
@@ -298,7 +298,7 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         /* ─── 首頁：個人簡介區塊設定 ─── */
         .profile-container {
             text-align: center;
@@ -355,7 +355,7 @@
             color: var(--primary);
             margin-top: 0;
         }
-        
+
         .btn {
             display: inline-block;
             background: var(--accent);
@@ -455,7 +455,7 @@
             color: var(--text);
             transition: box-shadow 0.3s;
             min-height: 280px;
-            
+
             /* 🚨 設定滾動邊距，避免錨點滑動定位時，卡片被上方的選單列遮住 🚨 */
             scroll-margin-top: 100px;
         }
@@ -469,6 +469,13 @@
             border-right: 1px solid rgba(0,0,0,0.08);
         }
         .feed-photo img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
    			 position: absolute;
    			 top: 0;
    			 left: 0;
@@ -615,7 +622,7 @@
                 display: none !important; 
             }
         }
-        
+
         /* ─── 頁尾 (Footer) ─── */
         footer {
             text-align: center;
@@ -658,20 +665,20 @@
 
     <!-- 導覽列 -->
     <nav id="main-nav" data-active-page="home">
-        
+
         <!-- 首頁 -->
         <button id="btn-nav-home" class="active" onclick="showPage('home')">
             <span class="en">Home</span><span class="lang-zh">首頁</span>
         </button>
-        
+
         <button id="btn-nav-academic" onclick="showPage('academic')" style="display: none;">
             <span class="en">Research</span><span class="lang-zh">學術研究</span>
         </button>
-        
+
         <button id="btn-nav-cv" onclick="showPage('cv')" style="display: none;">
             <span class="en">CV</span><span class="lang-zh">個人履歷</span>
         </button>
-        
+
         <!-- Articles -->
         <div class="nav-item blog-nav">
             <button id="btn-nav-blog" onclick="showPage('blog')">
@@ -703,7 +710,7 @@
                 </button>
             </div>
         </div>
-        
+
         <!-- 語言切換 -->
         <button id="lang-toggle-btn" onclick="toggleLanguage()">
             <i class="fa-solid fa-globe"></i> 
@@ -713,7 +720,7 @@
 
     <!-- 網頁內容容器 -->
     <div class="container">
-        
+
         <!-- ============================================== -->
         <!-- 第 1 頁：首頁 (Home)                           -->
         <!-- ============================================== -->
@@ -721,13 +728,13 @@
             <div class="profile-container">
                 <!-- 🚨 請在此修改：您的個人頭像照片 (替換 src 裡面的網址) 🚨 -->
                 <img src="Image/Profile.jpeg" class="profile-avatar" alt="Profile Avatar">
-                
+
                 <!-- 🚨 請在此修改：您的姓名 🚨 -->
                 <h2>
                     <span class="en">Hello, I'm Chan Tsz Ying</span>
                     <span class="lang-zh">Hello, I'm Chan Tsz Ying</span>
                 </h2>
-                
+
                 <!-- 🚨 請在此修改：您的中英文自我介紹文字 🚨 -->
                 <p style="max-width: 600px; margin: 10px auto; color: var(--text-light);">
                     <span class="en">
@@ -741,7 +748,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
 我對生態、環境議題充滿興趣和熱誠，源自於一次難忘的淡水兩棲動物生態導賞。那次經驗令我印象深刻，並啟發我先後完成了環境管理學士和碩士學位，最終展開我的哲學碩士研究旅程。
                     </span>
                 </p>
-                
+
                 <!-- 🚨 請在此修改：您的社群連結 (替換 href 內的 # 或現有網址) 🚨 -->
                 <div class="social-icons">
                     <a href="https://scholar.google.com/" target="_blank" class="social-icon" title="Google Scholar">
@@ -755,7 +762,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                     </a>
                 </div>
             </div>
-            
+
             <div class="card" style="display: none;">
                 <!-- 🚨 請在此修改：您的學術經歷簡介 🚨 -->
                 <h3>
@@ -788,7 +795,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                     <span class="lang-zh">註：您可以手動在此列出您的論文，以呈現類似 Google Scholar 的版面，或直接連結至您的主頁。</span>
                 </i>
             </p>
-            
+
             <!-- 🚨 請在此修改：論文卡片資訊 (標題、作者、期刊名稱、閱讀連結 href) 🚨 -->
             <div class="card">
                 <h3>
@@ -829,11 +836,11 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                 <!-- 🚨 請在此修改：履歷 PDF 下載連結 (替換 href 內的網址) 🚨 -->
                 <a href="#" class="btn" target="_blank"><span class="en">Download PDF Version</span><span class="lang-zh">下載 PDF 版本</span></a>
             </div>
-            
+
             <!-- 🚨 請在此修改：教育背景 (時間、學位、學校與介紹) 🚨 -->
             <div class="card">
                 <h2><span class="en">Education</span><span class="lang-zh">教育背景</span></h2>
-                
+
                 <!-- 第一個學歷 -->
 		<div class="cv-item">
                     <div class="cv-date">2024 - Present</div>
@@ -844,7 +851,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                         <span class="lang-zh">我的研究是關於利用功能性狀研究香港城市蜂類和花之間的關係，如何影響他們在城市的群落。</span>
                     </p>
                 </div> <!-- 結束第一個學歷的包覆 -->
-                
+
                 <!-- 第二個學歷  --!> 
                 <div class="cv-item">
                     <div class="cv-date">2021 - 2023</div>
@@ -865,7 +872,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                         <span class="lang-zh">「高密度城市環境中貓科掠食者的適應性。」</span>                    </p>
                 </div> <!-- 結束第三個學歷的包覆 -->
             </div>
-            
+
             <!-- 🚨 請在此修改：工作與研究經歷 (時間、職位、機構與工作內容清單) 🚨 -->
             <div class="card">
                 <h2><span class="en">Research & Experience</span><span class="lang-zh">研究與工作經歷</span></h2>
@@ -900,7 +907,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                     <span class="lang-zh">謝謝你來到這裡看我的文章～ 這裡主要是旅遊日誌，以及分享我所製作的小小企劃！如果有興趣、有任何問題，或者有合作的想法，都歡迎聯絡我✨✨</span>
                 </p>
             </div>
-            
+
             <div class="card" style="text-align: center; padding: 40px;">
                 <div class="sub-tabs">
                     <button id="btn-blog-travel" class="btn" onclick="showBlogTab('travel')" style="background-color: var(--accent);">
@@ -933,7 +940,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DaSUQoLj6h3/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-1.cdninstagram.com/v/t51.82787-15/731674072_17949733476197794_8937726516208436_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&cb=30a688f7-66ad4956&ig_cache_key=MzkzMjI5MzQ3MDU3NTU5Mjc4OA%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeEsNJ-7JJL766bwX9QKTBiPRqN3l7J-ct5Go3eXsn5y3gk8RP_bTJgCl6ZOJxqy1udORspcIv8ihSkqvgkpPq35&_nc_ohc=U8QBQFX2LLgQ7kNvwEz1yTU&_nc_oc=AdqbobvPBObpAsT8IXTCbnjWryVwqAbZTEPuh5lwfbun2ZiwSiWNor7EtHAcghUFr-4&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQHPNOVC6umRabKuKrdkbDm4eOUAYhbxVTO2A74d1Qp8jw&oe=6A8AF34D" alt="Post Photo">
@@ -951,7 +958,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DaIaEjvjyUO/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/730474048_17949080877197794_719089146519138431_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&cb=30a688f7-66ad4956&ig_cache_key=MzkyOTUwMzgxMjU0NDI1MzM2Mw%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeEMZm5sjKo8qBE29EAQgrV5zAYI5rifPoHMBgjmuJ8-gUL2ye6xpJqJFQAnLIV1xjB1M6RLJJ0Rr-llzk9UwkVY&_nc_ohc=wNvx94XA3_MQ7kNvwFI3yoS&_nc_oc=AdqtTuHKwOk_1KBbnhA3IVBPqKYTpvNKPQ5Yjwvbk4fyLj5JW8ROjZQdu4rpQM9i3e8&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQHnMGdEqvoQEq7jKr386lwtfVZkqq78LtaYOJ5G1BJw7w&oe=6A8AFCC1" alt="Post Photo">
@@ -969,7 +976,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DaFN_yfD9HY/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/730109472_17948836500197794_8221285967549343972_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&cb=30a688f7-66ad4956&ig_cache_key=MzkyODYwNzQ3NjAyMjAzMDQxMQ%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeFfT_IUkGAzgt1c60OziFIYXNPgLc8RA41c0-AtzxEDjUkDZNp-65OYkM3VIb_pRdeZJoP3RUO_wviotvhyp7x6&_nc_ohc=7ST8FveF4d4Q7kNvwGY3vBt&_nc_oc=Adq_7Ch6NBgMdJ3OcfG6f48qrba94WvEayCVjvuMS2tP0oB6eqKu5Abr_4knFvfyteo&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQFxLsaV7b1AFQymgst10kW8EHZZHDQRO1HVIM3X20lweQ&oe=6A8B1C51" alt="Post Photo">
@@ -987,7 +994,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DZaIKlBEvuF/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-1.cdninstagram.com/v/t51.82787-15/720634138_17946361158197794_503553033909361567_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&cb=30a688f7-66ad4956&ig_cache_key=MzkxNjQ3ODIxNDk4NTgwMDQ4MA%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeGI4FSmByrnRsYH-AAi5L-2hlI1FUebDZCGUjUVR5sNkKTUaRERE1QSrHXccS3wpXk2jP94c-JE5Ot6yJy_9YZk&_nc_ohc=KQ6W1n-1rjIQ7kNvwFckLtY&_nc_oc=AdoxxnsMY3Dyswi0jAeOEq9aUR4v-fEyaaFI73EwmJDyBB40pTTDpOzhWfdoNJQaFsk&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQFjJd0_fy5QhduqZrdnCqS1nhJrtrj6JNDLd_d7Az82EQ&oe=6A8AEE13" alt="Post Photo">
@@ -1005,7 +1012,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DUSc1AZj8eB/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/625345085_17928305604197794_7644856701617736120_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&cb=30a688f7-66ad4956&ig_cache_key=MzgyMzU4OTQ0NzM0NzE5MDI5NA%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeF5ZZ2z1u8Ncfi3KuDxMxBvNbjKVIXpmDw1uMpUhemYPDV7OSQ3XkvV474bH13sDArLijQ8SSIxL_PC7FW2tHYz&_nc_ohc=nEX_xOeku8wQ7kNvwFq7kiB&_nc_oc=Adqhp7IbWnl8oFejmkm_5iSNACkPL7SPORClD14iHds1zpHuchpQUf39ATrEFt57CYQ&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQGSg9ohPuvuznKYB_w0u1Yc2Jb1Dd1KZZRTxUKKFxpnfg&oe=6A8AF51F" alt="Post Photo">
@@ -1023,7 +1030,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DRrzmQcjxnj/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-1.cdninstagram.com/v/t51.82787-15/589111889_17921070690197794_1942032184494319873_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&cb=30a688f7-66ad4956&ig_cache_key=Mzc3NzMzOTYyMTkyODU2NTk5Mw%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeETn3qu9STJwVtBjArf3cltpZg4Bd9RRUelmDgF31FFR5HAtuYUW60FYGoIzBgolzVIGkqDjdvN3AOVQvXs0Wfb&_nc_ohc=BCVOCg9oqgoQ7kNvwESHqyH&_nc_oc=AdqW3SV4LQvAGhBP-qD6dm9140MOPGPlqqLhm8u48d01NuaCsIKv5w88lB1kt2TVJp0&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQGffIJhT5z7g9IaetMDZPYH3unqsIofXeSwQo-mO2dZZA&oe=6A8AF808" alt="Post Photo">
@@ -1041,7 +1048,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DRrxjsGD7c1/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-1.cdninstagram.com/v/t51.82787-15/587190283_17921068224197794_3318333845834930095_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&cb=30a688f7-66ad4956&ig_cache_key=Mzc3NzMzMDY1MTQ2OTk0OTc4Mw%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeGOuqUhhGfARUSbKASC1_ONuQAG94eOGrK5AAb3h44aspZYBDbS62RtLIX8Gw_UYtZoDrA4TPieotyNrbOCaHmt&_nc_ohc=OYo_QaKZuMIQ7kNvwE2PtTe&_nc_oc=AdpbwRhG16jUZCzNs_YHPLfmt-A53tVuh9wQ2fa_UgmKwuMMFOBZpdfMN8bQ2VtoxxQ&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQHnY_qzTN4w3GGCJx4l3cEQ7I35xlT1MxMMV6zW_oNjFw&oe=6A8AF324" alt="Post Photo">
@@ -1059,7 +1066,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DOqUK9qD7Mw/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/549051182_17913067263197794_1164732701229591580_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&cb=30a688f7-66ad4956&ig_cache_key=MzcyMjg3Njc1MDEzODQyNjI3OQ%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeGRMWLCTAruGoucYMhdeILh5rp26MRv_NXmunboxG_81RxMkonloPrq6VJHk0-SL1boeWBHEvGlv8kgSKqIn6KF&_nc_ohc=8ve19xYTN34Q7kNvwHtUdZK&_nc_oc=AdoWl0GeCY5gem7TYmTtcVptELJQ91_65SblYvLFE1BFnynAFvgy0tcuoV55qc7lDFw&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQFFnQinTEtufl-2KevvgMXtjw1IOaSotorJ-xSiFVzr-Q&oe=6A8B00E8" alt="Post Photo">
@@ -1077,7 +1084,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DOqUKEDj0YD/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/549222164_17913067215197794_1167172428322893829_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&cb=30a688f7-66ad4956&ig_cache_key=MzcyMjg3NjY4NjI5MjcwMTU2OA%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeHxWFSNUvuObDvMEL1PVzijmNatoE9VmMOY1q2gT1WYwxpmxmz1fy_eIa5g6au1r-cRzTy5EVqQ7-3iszK7iQv0&_nc_ohc=tYNZShElOqIQ7kNvwEut6yx&_nc_oc=AdpLz4O_bMB144RL1RkRle_zSof87fOAd82CVx-2Iyf-VkWw1Ejqp_8GIkPKtuU6z3E&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQEVFJaeCyOvMaELgYmHHaChIeXDVb9fG65AF7mlIpE5qw&oe=6A8B0DD9" alt="Post Photo">
@@ -1095,7 +1102,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DNfcvbwz7m2/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/535831036_17909651709197794_8259860168360206694_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&cb=30a688f7-66ad4956&ig_cache_key=MzcwMTY1MTgwNDAxMTg0Mzk2NQ%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeGTk-rK8KDPcDS9Ap6wsE2NWTcwV37UveRZNzBXftS95CmCWiQoWGtRmFLHmft0CnycO1X7LJae_feStw6JvTKO&_nc_ohc=yEUbT-AQZg8Q7kNvwGarRdw&_nc_oc=Ado7rtxScMx4MbtHBU04luf07623p9-u5owKvIGZ42-7MAf95bpX7FrsjDysb6EPHq0&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQGPLiu6yuJhR_bUKgywfhDenECrGTeDWohXCYMKHj2E1A&oe=6A8AFB7C" alt="Post Photo">
@@ -1113,7 +1120,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DLc-EjQTML9/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.75761-15/514195692_17903789385197794_1405990679030600171_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&cb=30a688f7-66ad4956&ig_cache_key=MzY2NTA3NzE3OTA3NzM5MTM1Nw%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeG4me45vR_lyH-qLlKjlsO7OnMaCqPAXlY6cxoKo8BeVjQJ_hlQLyUZ2MFkIJ1yR0BzcdCg8pFWiVvcWbj9o69v&_nc_ohc=YDvrM9KdbRYQ7kNvwGrPyQF&_nc_oc=Adp9KL-enfamhed2phqIKB4978z5gyeZv5AQfhI-w2g2V1nH6rQrQG6xQVhIehgtEfQ&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQHLCPl0bBuUX3rztYqclUZEIOE9k1BSPE6g7E_QPRzdgQ&oe=6A8AE9A2" alt="Post Photo">
@@ -1131,7 +1138,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DLc84VfzsT9/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.75761-15/513837641_17903787465197794_4905502716712355065_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&cb=30a688f7-66ad4956&ig_cache_key=MzY2NTA3MTkzODAwOTUyNzQ2OA%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeG3iUdH5PTMUchGvkghXeThbOhO6M3ahsps6E7ozdqGylJRhBa0iw2SyA7GeotX7qV8q88Y8X_rF0gClQIAohTT&_nc_ohc=DlFmhWEzHTAQ7kNvwGVfkzU&_nc_oc=AdqG5eK-AmLvSqSF_jPWtWzKhQr-UZfdi3xwEY6foFMuMMpc_UzWX4ZVMnk8iF8qTgo&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQHPeLegledmwmgSIRntbdpxOU_xSYtqmgbjsHTxxHkCmg&oe=6A8B0A15" alt="Post Photo">
@@ -1149,7 +1156,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DLbS2fczYt1/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-1.cdninstagram.com/v/t51.75761-15/513936197_17903708724197794_5724580500922719433_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&cb=30a688f7-66ad4956&ig_cache_key=MzY2NDYwNTYyMTE3OTQ5NDg4OA%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeFLB9TT6TrRf-RBMK9JgThmZO45qCjEDmRk7jmoKMQOZLvxuOTMc31VcO27-OttyMEp7fFuYHHI32ErggDjIfph&_nc_ohc=WA1rKCfzPFQQ7kNvwHZ7_4Y&_nc_oc=Adodmf-jORLlt0AZlSbUzcRAknNwIkGnL0qJwT1BFYm2Y8EOIB7XnGfdngttnuctLXI&_nc_zt=23&_nc_ht=scontent-ord5-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQFsXy4I8LEo-h7vHCpTHbMNVK-XgPRfI_nbPYiWhdxofA&oe=6A8B0948" alt="Post Photo">
@@ -1167,7 +1174,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DKBTyPNzJRM/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.75761-15/500283310_17899335237197794_2998511809900608407_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&cb=30a688f7-66ad4956&ig_cache_key=MzYzODUzOTYxMjk3MDczMTEzNw%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeHYIOkAKAmqjfFEvTplrVIFu-HvfNFjBs274e980WMGzeo1PZZ-yzX55PfXX-dot2U49Wc5fuYjCNHfd5SRci-5&_nc_ohc=jwyQtz6_nu8Q7kNvwF90k7W&_nc_oc=AdomeVwLMcGP_nLKyE3TDllGdw-GC3aRpOHc3BimXAsDB_IZJv8iks4X_Sx4jko-5C4&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQGp-P21CltF2Z3S0L9ji74fw32M5UN44Kats--o3QHuGw&oe=6A8AF9E0" alt="Post Photo">
@@ -1185,7 +1192,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DFH72UuzCE4/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.75761-15/474722359_17884930053197794_7195802719896986512_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&cb=30a688f7-66ad4956&ig_cache_key=MzU1MTA3MDAzMDA3NzU2NTQ5Mw%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeGDXaZy_m35I64ZoOm9PvF2h5GtN4PO6gqHka03g87qCjjvseJw6BV6YYhDZVvcgj06edAW5D1U1IQQQEquMQaB&_nc_ohc=zQpXWNEZlagQ7kNvwFdARH5&_nc_oc=Adpd0AmFZt-0qHGUi4ML_9EiX2LuhAbpamE7PTJC4WmdLzkqk9W9csIJwz8bQEgclPQ&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQHqfuztv2GWpxVikniJyKZTRBXjoMZfVlybJ5iZ0m8O-Q&oe=6A8AF32C" alt="Post Photo">
@@ -1203,7 +1210,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DFHyO8MTFKF/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/659950852_18308821504274150_7038630468059697604_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&cb=30a688f7-66ad4956&ig_cache_key=MzU0ODc1MjI1NTY0ODY1NzA5Ng%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeHOpE5GPhrItMVa8uVAgZg2eWuElNHV_wh5a4SU0dX_CJ_y9U8a6l_Y8PCdmwsqxPfMmCs9DNVcm2sDpT0XLTd8&_nc_ohc=TSEvDshK6vcQ7kNvwEnPYOh&_nc_oc=Adqrdf9y4CA7PdNwF5A6FLBFb_ztZZ3MhNcvxEYhNTqYSS6k4SBfMWNMzD0rORfBQh8&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQHjSCMmGI9IbNu4WyYI8T8a2fPBXaXhXHqiM_ORxywMdw&oe=6A8AE795" alt="Post Photo">
@@ -1221,7 +1228,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DFFNg6WTyeh/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/660855363_18101522872764285_3850548432506594543_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&cb=30a688f7-66ad4956&ig_cache_key=MzU0ODc1MTA3OTk3Njc3ODc4MQ%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeFO7-RKAI2fj8hBJhOM_28pMBzIRTAWAhcwHMhFMBYCF_0MIcJjqxUe-3m_MQLTgBHzox7pEgqAh7xIpbnqIa0M&_nc_ohc=cHGi6ugapwwQ7kNvwGrt9YM&_nc_oc=AdoYaLo8YGFMEScTqJwnKXLOCfmCK2JoQ-rP-h3ztyBmzCk38Ja92Cnlt7169V7bl1s&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQFQWI1ibJTKGxNINZ8UfZfC3M0ADdvZnMaCkisOu-ZPPA&oe=6A8B11C9" alt="Post Photo">
@@ -1239,7 +1246,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DFCoIzWTVgh/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/655989509_18173820700392646_7017219319790496681_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&cb=30a688f7-66ad4956&ig_cache_key=MzU0ODc0OTAyNTYwNjgzMTc0MA%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeEHeM92tOmIERVj09BBqaIhAapXSmq6F4IBqldKaroXglproqrd6m2CqitWsy4wn4aAtDqCvEgBNkNYCOtNh6ms&_nc_ohc=JTL15Kg2e40Q7kNvwGKqCx2&_nc_oc=AdoEYNTF_q0CPE9o7ka4WEKHKbffGXQRRFP4-vyBhooTEtAOcGPMrfCGlmqLyDcDsgU&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQFmFKkJ0A2vT0NBjdOvFwR_kUFifbaDWX6AwH7IDOS2MQ&oe=6A8AE7E1" alt="Post Photo">
@@ -1257,7 +1264,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                             </div>
                         </div>
                     </a>
-            
+
                     <a href="https://www.instagram.com/p/DE_tM-cT6Lo/" target="_blank" class="feed-card">
                         <div class="feed-photo">
                             <img src="https://scontent-ord5-2.cdninstagram.com/v/t51.82787-15/658239092_18095936900025461_2969052958518460697_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&cb=30a688f7-66ad4956&ig_cache_key=MzU0ODc1MzgyMzA2ODQxMDY3Mg%3D%3D.3-ccb7-5-cb30a688f7-66ad4956&ccb=7-5&_nc_sid=a54f6b&efg=eyJlZmdfdGFnIjoiYmVzdF9pbWFnZV91cmxnZW4uQ0FST1VTRUxfSVRFTS5DMyJ9&_nc_eui2=AeESZJoi4kMSBSVULG4mustK4bhT6PD8FJThuFPo8PwUlBETpezdbOXJ1CMNZlveKDPeRIXWtcqd1d_wJliqE2Hb&_nc_ohc=GO3XadlmfIUQ7kNvwET8ZfH&_nc_oc=AdoDIYnjx_3F38L7KEUKAMvGsT5mlycjwKOeb_xAm5yng825uGLfRDqrKJFJT2bP9Hk&_nc_zt=23&_nc_ht=scontent-ord5-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=F5l0SnceohOcEUP3lcq3YQ&oh=00_AQFYWIrCrlRLVoiZxnm0ca4H5dblA1znAw6YUU-GsBiSRQ&oe=6A8AEA30" alt="Post Photo">
@@ -1294,7 +1301,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
         <!-- 第 5 頁：攝影作品集 (Photography)              -->
         <!-- ============================================== -->
         <div id="photography" class="page-section">
-            
+
             <div class="sub-tabs">
                 <button id="btn-photo-gallery" class="btn" onclick="showPhotoTab('gallery')" style="background-color: var(--accent);">
                     <span class="en">My Gallery</span><span class="lang-zh">我的相片集</span>
@@ -1313,7 +1320,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                 </div>
 
                 <div class="card" style="text-align: center; padding: 40px;">
-                    
+
                     <div class="content-dropdown-wrapper">
                         <!-- 🚨 請在此修改：相片集的下拉選單選項。若有新增分頁，需在下方增加對應的 div 區塊 🚨 -->
                         <select id="gallery-select" class="content-select" onchange="showGalleryTab(this.value)">
@@ -1350,7 +1357,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                         <span class="lang-zh">以下是不同相機和菲林的介紹，以及拍攝出來的效果～ 如果有興趣可以點進去看看 ᴗ͈ˬᴗ͈ෆ</span>
                     </p>
                 </div>
-                
+
                 <div class="content-dropdown-wrapper">
                     <!-- 🚨 請在此修改：若有新增相機，請在這裡加入 <option> 標籤，並設定對應的 value 🚨 -->
                     <select id="camera-select" class="content-select" onchange="showCameraItem(this.value)">
@@ -1364,7 +1371,7 @@ My passion for nature and environmental issues was sparked by a memorable freshw
                 </div>
 
                 <div class="feed-list">
-                    
+
                     <!-- 🚨 請在此修改：第一張相機卡片。注意 `data-camera="ricoh"` 必須與上方選單的 value 一致 🚨 -->
                     <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3335638/photos" target="_blank" class="feed-card" data-camera="ricoh">
                         <div class="feed-photo">
@@ -1540,7 +1547,7 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             event.preventDefault();
             event.stopPropagation();
             const clickedNavItem = event.target.closest('.nav-item');
-            
+
             document.querySelectorAll('.nav-item').forEach(item => {
                 if (item !== clickedNavItem) {
                     item.classList.remove('expanded');
@@ -1557,14 +1564,14 @@ Each film produces different colors and grain sizes. Feel free to click in to se
                 section.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
-            
+
             document.querySelectorAll('#main-nav button, #main-nav .nav-item > button').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             const activeBtn = document.getElementById(`btn-nav-${pageId}`);
             if (activeBtn) activeBtn.classList.add('active');
-            
+
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('expanded');
             });
@@ -1589,17 +1596,17 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             window.scrollTo({ top: 0, behavior: 'smooth' });
             window.dispatchEvent(new Event('resize'));
         }
-        
+
         function showBlogTab(tabId) {
             document.getElementById('blog-tab-travel').style.display = 'none';
             document.getElementById('blog-tab-project').style.display = 'none';
-            
+
             document.getElementById('btn-blog-travel').style.backgroundColor = 'var(--primary)';
             document.getElementById('btn-blog-project').style.backgroundColor = 'var(--primary)';
 
             document.getElementById('blog-tab-' + tabId).style.display = 'block';
             document.getElementById('btn-blog-' + tabId).style.backgroundColor = 'var(--accent)';
-            
+
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
             closeMobileNav();
             window.dispatchEvent(new Event('resize'));
@@ -1608,13 +1615,13 @@ Each film produces different colors and grain sizes. Feel free to click in to se
         function showPhotoTab(tabId) {
             document.getElementById('photo-tab-gallery').style.display = 'none';
             document.getElementById('photo-tab-cameras').style.display = 'none';
-            
+
             document.getElementById('btn-photo-gallery').style.backgroundColor = 'var(--primary)';
             document.getElementById('btn-photo-cameras').style.backgroundColor = 'var(--primary)';
 
             document.getElementById('photo-tab-' + tabId).style.display = 'block';
             document.getElementById('btn-photo-' + tabId).style.backgroundColor = 'var(--accent)';
-            
+
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
             closeMobileNav();
             window.dispatchEvent(new Event('resize'));
@@ -1625,12 +1632,12 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             document.getElementById('gallery-tab-film').style.display = 'none';
 
             document.getElementById('gallery-tab-' + tabId).style.display = 'block';
-            
+
             const selectElem = document.getElementById('gallery-select');
             if (selectElem && selectElem.value !== tabId) {
                 selectElem.value = tabId;
             }
-            
+
             window.dispatchEvent(new Event('resize'));
         }
 
@@ -1669,7 +1676,7 @@ Each film produces different colors and grain sizes. Feel free to click in to se
         document.addEventListener('click', function(event) {
             const nav = document.getElementById('main-nav');
             const menuBtn = document.getElementById('floating-menu-btn');
-            
+
             if (nav.classList.contains('dropdown-mode') && nav.style.display === 'flex') {
                 if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
                     nav.style.display = 'none';
@@ -1683,7 +1690,7 @@ Each film produces different colors and grain sizes. Feel free to click in to se
             });
         });
     </script>
-    
+
     <script type="text/javascript">
     /* curator-feed-default-feed-layout */
     (function(){
