@@ -276,12 +276,12 @@
         
         /* feed-photo 佔 40% 寬度 */
         .feed-photo { flex: 0 0 40%; position: relative; background: #eaeaea; border-right: 1px solid rgba(0,0,0,0.08); }
-        .feed-photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; } /* 改為 contain 顯示全圖 */
+        .feed-photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background-color: #f9f9f9; } /* 修復：使用 contain 顯示全圖 */
         .feed-photo-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; width: 100%; height: 100%; -webkit-overflow-scrolling: touch; }
         .feed-photo-carousel::-webkit-scrollbar { height: 6px; }
         .feed-photo-carousel::-webkit-scrollbar-thumb { background-color: rgba(23, 59, 60, 0.3); border-radius: 4px; }
         .feed-photo-item { flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9; }
-        .feed-photo-item img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; } /* 改為 contain 顯示全圖 */
+        .feed-photo-item img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; } /* 修復：使用 contain 顯示全圖 */
         
         /* feed-content 佔剩餘寬度 */
         .feed-content { flex: 1; display: flex; flex-direction: column; padding: 20px 30px; box-sizing: border-box; }
@@ -316,15 +316,6 @@
             .feed-content { padding: 20px; }
             .feed-avatar { position: static; margin-right: 10px; }
             .feed-footer { justify-content: flex-start; }
-            
-            #gallery-tab-film { margin-left: -15px !important; margin-right: -15px !important; width: calc(100% + 30px) !important; }
-            #gallery-tab-film .crt-feed-window { width: 100% !important; height: auto !important; }
-            #gallery-tab-film .crt-feed { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 1px !important; height: auto !important; }
-            #gallery-tab-film .crt-post { position: relative !important; left: auto !important; top: auto !important; transform: none !important; width: 100% !important; box-sizing: border-box !important; padding: 0 !important; margin: 0 !important; }
-            #gallery-tab-film .crt-post-c { width: 100% !important; height: 100% !important; aspect-ratio: 1 / 1 !important; }
-            #gallery-tab-film .crt-image, #gallery-tab-film .crt-post-image { width: 100% !important; height: 100% !important; position: absolute !important; top: 0 !important; left: 0 !important; }
-            #gallery-tab-film .crt-image img { width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute !important; top: 0 !important; left: 0 !important; margin: 0 !important; }
-            #gallery-tab-film .crt-post-content { display: none !important; }
             
             /* 手機版：Gallery 改為一行兩張 */
             .gallery-item { flex: 0 0 calc(50% - 7.5px); }
@@ -439,15 +430,12 @@
                 
                 <!-- 社群與外連圖標清單 -->
                 <div class="social-icons">
-                    <!-- 🚨 需要您修改：Google Scholar 個人主頁連結 🚨 -->
                     <a href="https://scholar.google.com/" target="_blank" class="social-icon" title="Google Scholar">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </a>
-                    <!-- 🚨 需要您修改：Instagram 連結 🚨 -->
                     <a href="https://www.instagram.com/urban.wilder/" target="_blank" class="social-icon" title="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <!-- 🚨 需要您修改：Lomography 作品集連結 🚨 -->
                     <a href="https://www.lomography.hk/homes/urbanwilder" target="_blank" class="social-icon" title="Lomography">
                         <i class="fa-solid fa-camera-retro"></i>
                     </a>
@@ -456,13 +444,10 @@
 
             <!-- 🚨 在此隱藏整個 Academic Path 卡片 🚨 -->
             <div class="card" style="display: none;">
-                <!-- 🚨 需要您修改：學術經歷簡介標題 🚨 -->
                 <h3>
                     <span class="en">My Academic Path</span>
                     <span class="lang-zh">我的學術旅程</span>
                 </h3>
-                
-                <!-- 🚨 需要您修改：學術經歷內容 🚨 -->
                 <p>
                     <span class="en">I am an MPhil student at Lingnan University in Hong Kong. Currently, my research focuses on urban bee and wasp communities in Hong Kong, using a functional trait-based approach to assess how floral resources and microclimate affect community assembly across the urban gradient. To see a full list of my published papers and current research projects, please visit my academic portfolio.</span>
                     <span class="lang-zh">我目前是香港嶺南大學的哲學碩士生。我的研究主要關注香港城市的蜜蜂與黃蜂群落，利用基於功能性狀的方法，評估花卉資源與微氣候如何影響城市化梯度中的群落組成。如欲查看我發表的論文與當前研究項目的完整清單，請瀏覽我的學術頁面。</span>
@@ -491,45 +476,29 @@
                 </i>
             </p>
             
-            <!-- 論文卡片 1 -->
             <div class="card">
-                <!-- 🚨 需要您修改：論文 1 的標題 🚨 -->
                 <h3>
                     <span class="en">Impact of Urban Ecosystems on Feline Behavior</span>
                     <span class="lang-zh">城市生態系統對貓科動物行為的影響</span>
                 </h3>
                 <p>
-                    <!-- 🚨 需要您修改：論文 1 的作者與期刊資訊 🚨 -->
-                    <strong>
-                        <span class="en">Authors:</span><span class="lang-zh">作者：</span>
-                    </strong> Your Name, Co-Author A<br>
-                    <strong>
-                        <span class="en">Journal:</span><span class="lang-zh">期刊：</span>
-                    </strong> Journal of Urban Ecology (2025)
+                    <strong><span class="en">Authors:</span><span class="lang-zh">作者：</span></strong> Your Name, Co-Author A<br>
+                    <strong><span class="en">Journal:</span><span class="lang-zh">期刊：</span></strong> Journal of Urban Ecology (2025)
                 </p>
-                <!-- 🚨 需要您修改：論文 1 的連結 (將 href="#" 中的 # 替換為真實網址) 🚨 -->
                 <a href="#" class="btn" target="_blank">
                     <span class="en">Read Paper</span><span class="lang-zh">閱讀論文</span>
                 </a>
             </div>
             
-            <!-- 論文卡片 2 -->
             <div class="card">
-                <!-- 🚨 需要您修改：論文 2 的標題 🚨 -->
                 <h3>
                     <span class="en">Another Great Research Paper Title</span>
                     <span class="lang-zh">另一篇優秀的研究論文標題</span>
                 </h3>
                 <p>
-                    <!-- 🚨 需要您修改：論文 2 的作者與期刊資訊 🚨 -->
-                    <strong>
-                        <span class="en">Authors:</span><span class="lang-zh">作者：</span>
-                    </strong> Your Name, Co-Author B<br>
-                    <strong>
-                        <span class="en">Journal:</span><span class="lang-zh">期刊：</span>
-                    </strong> Nature Studies (2023)
+                    <strong><span class="en">Authors:</span><span class="lang-zh">作者：</span></strong> Your Name, Co-Author B<br>
+                    <strong><span class="en">Journal:</span><span class="lang-zh">期刊：</span></strong> Nature Studies (2023)
                 </p>
-                <!-- 🚨 需要您修改：論文 2 的連結 (將 href="#" 中的 # 替換為真實網址) 🚨 -->
                 <a href="#" class="btn" target="_blank">
                     <span class="en">Read Paper</span><span class="lang-zh">閱讀論文</span>
                 </a>
@@ -548,26 +517,19 @@
                     <span class="en">A detailed overview of my professional and academic background.</span>
                     <span class="lang-zh">專業與學術背景的詳細總覽。</span>
                 </p>
-                <!-- 🚨 需要您修改：PDF 履歷下載連結 (將 href="#" 中的 # 替換為您的 PDF 檔案網址) 🚨 -->
                 <a href="#" class="btn" target="_blank">
                     <span class="en">Download PDF Version</span><span class="lang-zh">下載 PDF 版本</span>
                 </a>
             </div>
 
-            <!-- 學歷區塊 -->
             <div class="card">
-                <h2>
-                    <span class="en">Education</span><span class="lang-zh">教育背景</span>
-                </h2>
+                <h2><span class="en">Education</span><span class="lang-zh">教育背景</span></h2>
                 <div class="cv-item">
-                    <!-- 🚨 需要您修改：您的學歷資訊 (時間、學位、學校、論文題目) 🚨 -->
                     <div class="cv-date">2023 - 2024</div>
                     <div class="cv-title">
                         <span class="en">Master's degree in Environmental Management</span><span class="lang-zh">環境管理碩士</span>
                     </div>
-                    <div>
-                        <span class="en">Hong Kong University</span><span class="lang-zh">香港大學</span>
-                    </div>
+                    <div><span class="en">Hong Kong University</span><span class="lang-zh">香港大學</span></div>
                     <p style="font-style: italic; color:var(--text-light)">
                         <span class="en">"Adaptation of Feline Predators in High-Density Urban Environments."</span>
                         <span class="lang-zh">「高密度城市環境中貓科掠食者的適應性。」</span>
@@ -579,9 +541,7 @@
                         <span class="en">Bachelor of Social Sciences (Honours) in Environment and Resources Management</span>
                         <span class="lang-zh">環境及資源管理社會科學學士（榮譽）學位</span>
                     </div>
-                    <div>
-                        <span class="en">Hong Kong Baptist University</span><span class="lang-zh">香港浸會大學</span>
-                    </div>
+                    <div><span class="en">Hong Kong Baptist University</span><span class="lang-zh">香港浸會大學</span></div>
                     <p style="font-style: italic; color:var(--text-light)">
                         <span class="en">"Graduated with First Class Honours."</span>
                         <span class="lang-zh">「以一級榮譽畢業。」</span>
@@ -589,22 +549,12 @@
                 </div>
             </div>
 
-            <!-- 工作與研究經歷區塊 -->
             <div class="card">
-                <h2>
-                    <span class="en">Research & Experience</span><span class="lang-zh">研究與工作經歷</span>
-                </h2>
+                <h2><span class="en">Research & Experience</span><span class="lang-zh">研究與工作經歷</span></h2>
                 <div class="cv-item">
-                    <!-- 🚨 需要您修改：您的工作/研究經歷 (時間、職稱、機構、工作項目) 🚨 -->
-                    <div class="cv-date">
-                        <span class="en">2024 - Present</span><span class="lang-zh">2024 - 至今</span>
-                    </div>
-                    <div class="cv-title">
-                        <span class="en">Postdoctoral Researcher</span><span class="lang-zh">博士後研究員</span>
-                    </div>
-                    <div>
-                        <span class="en">Wildlife Institute, City, State</span><span class="lang-zh">野生動物研究所, 城市, 州</span>
-                    </div>
+                    <div class="cv-date"><span class="en">2024 - Present</span><span class="lang-zh">2024 - 至今</span></div>
+                    <div class="cv-title"><span class="en">Postdoctoral Researcher</span><span class="lang-zh">博士後研究員</span></div>
+                    <div><span class="en">Wildlife Institute, City, State</span><span class="lang-zh">野生動物研究所, 城市, 州</span></div>
                     <ul style="padding-left: 20px;">
                         <li>
                             <span class="en">Lead field research tracking urban wildlife populations using GPS collars.</span>
@@ -634,7 +584,6 @@
             </div>
             
             <div class="card" style="text-align: center; padding: 40px;">
-                <!-- Blog 子分頁按鈕 (Tabs) -->
                 <div class="sub-tabs">
                     <button id="btn-blog-travel" class="btn" onclick="showBlogTab('travel')" style="background-color: var(--accent);">
                         <span class="en">Travel</span><span class="lang-zh">旅遊</span>
@@ -644,13 +593,12 @@
                     </button>
                 </div>
 
-                <!-- Travel 標籤內容 (預設顯示) -->
                 <div id="blog-tab-travel" class="sub-tab-content" style="display: block;">
 <!-- IG_TRAVEL_POSTS_START -->
-
+<!-- 為了展示精簡了內容，待 GitHub Action 運行後會自動覆蓋生成包含 object-fit: contain 的完整貼文 -->
             <div class="content-dropdown-wrapper" style="margin-bottom: 25px;">
                 <select class="content-select" onchange="filterTravelLocation(this.value)">
-<option value="all">All Locations / 全部地區</option>
+                    <option value="all">All Locations / 全部地區</option>
                     <option value="Banqiao, Taiwan">Banqiao, Taiwan</option>
                     <option value="Kathmandu, Nepal">Kathmandu, Nepal</option>
                     <option value="Seoul, Korea">Seoul, Korea</option>
@@ -661,642 +609,385 @@
                 </select>
             </div>
             
-<div class="feed-list">
+            <div class="feed-list">
+                <p style="color:var(--text-light); padding: 40px 0;">
+                    <span class="en">Travel posts syncing...</span>
+                    <span class="lang-zh">旅遊貼文同步中...</span>
+                </p>
+            </div>
+<!-- IG_TRAVEL_POSTS_END -->
+                </div>
 
-                    <div class="feed-card" data-location="Kathmandu, Nepal">
-                        <!-- 照片區塊 (強制在左邊) -->
-                        <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/775814321_17956887480197794_3485319167188741862_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=PCm6-v8Dt-EQ7kNvwFN08BT&_nc_oc=AdpdqeqvZSBnD7YH88Ogc30N6AbK4N4lpbFly2EEzzAsY5t76loBkGGJPdCYYSoH6w0&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHLldKHL4XkzNJC5q5jVrYF-NvwTLfDXTqkq4vTNkgOgA&oe=6A8E1310" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/774512626_17956887498197794_6958756390895488316_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=lomlYjsl9A8Q7kNvwHHOZ7I&_nc_oc=AdplYlQ82RU3Cm9kcjqpz4kVHj1hLqw826tWPsTgdV6wsUcSq3dH7VpDUeP0PKR3MJk&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF10Rk92SC3nwPa3nrE-aKUcUnMbfe87mUL-3TMu5vvMw&oe=6A8E2886" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/777881511_17956887495197794_4533504859849447318_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Bf9H0CJ7OvUQ7kNvwFdN2th&_nc_oc=AdrjSudg4nYJSoiCkybxKQZeFJzpk65VogjAuopqJpKoXGtZME2zW8y4z1y3a2k9UIg&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQES9VUfKdoPHQgmFVDJRaXGM7lSPei3pzHoD7Nw40-FZw&oe=6A8E3DBA" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/777418197_17956887519197794_3899433190233729584_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=0DTy215rUdQQ7kNvwHjPmp_&_nc_oc=AdpgB3T98J0rzYrBydOEVUstjW5uWlfYwBSVaUUzbaE0o46XUIiEOTBnjC8cEuTArRE&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHzl3WANriN4M1VU2FkoHfQnLVECYfxuxjiRk7Jcguz-g&oe=6A8E1731" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/773800145_17956887552197794_7936992138209192487_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=VZcXCd25kBMQ7kNvwFzhBDx&_nc_oc=AdplHheFB5al1nFZ2tXupcM0uDU1wzdQ1IyVSFiynkgwtlf5xRehw5wgx_XPIDlhOlw&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFGtKkPcyfDDlZOtiw_VChb44XrCFROekd-icw0YIV5jQ&oe=6A8E288D" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/775814328_17956887543197794_4428482644790884392_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Ob14x_4ioI4Q7kNvwEx8bVg&_nc_oc=AdrxLSLkyixTbIbiKvDMdenLeqh6g7VvrHM1Y5PyhosVFRrmisnKVL9iJwYo0fTqlyI&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEYoNliFxCMuFgwE_0ZJNQKRKZMGzyaPc0aMM1UQaZyLA&oe=6A8E240D" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/774984627_17956887561197794_7577843395581326042_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=AE4JyYsjvocQ7kNvwFvL9zo&_nc_oc=Adr2jTCd6WfJfxXI9bxDNud0v_fDzt5Z-cLo9hx1qtuFoBj3bw7NwXElrRAM5wq6ats&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEtUK5fWDIgjiONokLzTb_ni_MygF-EkZ8QcNV-BX1yog&oe=6A8E1F71" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/774468261_17956887588197794_6040641374655193346_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=JCx1YhcWEDcQ7kNvwEr1IK2&_nc_oc=Adrd-qVFJb8IsL81CBvUKgcCR0oqxy7D-Na5hn_ZqzULBb509fnuDaAX4oPGV6c33p8&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGnxH26VRj_jDcAFHmlflC1PIkxWcJYyzzBxoyxfheTMg&oe=6A8E2303" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/775468783_17956887603197794_1018432217132304798_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=G22VNieMHf8Q7kNvwEyWq4m&_nc_oc=AdobpokYrynGqNOT8PhBNRpbi9V_DxLXD1DeGoNkieqJqyEMbMGek06V42MSfWjaphE&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEsj-kMno717OhQ0zNhT7FpTqe_r2q-_jGlH61atJ7rhg&oe=6A8E0F4A" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/777165339_17956887612197794_725783423131873045_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=0KTGfTDD1KoQ7kNvwEAZeTR&_nc_oc=Adr8Mr8-cccA1DSl4AKqHtzfigYBFqOBMkIjdcKs3j8_MPj6nnosU9NUNugJEfxnnHs&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEVv1w8zH6XegUfgWp3IlL-uuqW_D1RIWeibEp3MMMviw&oe=6A8E3260" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
+                <div id="blog-tab-project" class="sub-tab-content" style="display: none; margin-top: 20px;">
+<!-- IG_PROJECT_POSTS_START -->
+                <div class="feed-list">
                 </div>
+<!-- IG_PROJECT_POSTS_END -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 第 5 頁：攝影作品集 (Photography)              -->
+        <!-- ============================================== -->
+        <div id="photography" class="page-section">
+            <div class="sub-tabs">
+                <button id="btn-photo-gallery" class="btn" onclick="showPhotoTab('gallery')" style="background-color: var(--accent);">
+                    <span class="en">My Gallery</span><span class="lang-zh">我的相片集</span>
+                </button>
+                <button id="btn-photo-cameras" class="btn" onclick="showPhotoTab('cameras')" style="background-color: var(--primary);">
+                    <span class="en">My Cameras and Films</span><span class="lang-zh">我的相機和菲林簡介</span>
+                </button>
+            </div>
+
+            <!-- 攝影畫廊 (Gallery) - 已經將 Curator 替換為我們自己的同步佈局 -->
+            <div id="photo-tab-gallery" class="sub-tab-content" style="display: block;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2><span class="en">My Gallery</span><span class="lang-zh">我的相片集</span></h2>
+                </div>
+                <div class="card" style="text-align: center; padding: 40px;">
+<!-- IG_GALLERY_POSTS_START -->
+                    <!-- 當 Action 執行後，這裡會被 4 個不同 Hashtag 的 Carousel 取代 -->
+                    <p style="color:var(--text-light);"><span class="en">Loading gallery...</span><span class="lang-zh">載入相片集中...</span></p>
+<!-- IG_GALLERY_POSTS_END -->
+                </div>
+            </div>
+
+            <!-- 我的相機與底片 (Cameras and Films) -->
+            <div id="photo-tab-cameras" class="sub-tab-content" style="display: none;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2>
+                        <span class="en">My Cameras & Film Stocks</span><span class="lang-zh">相機介紹與底片庫</span>
+                    </h2>
+                    <p style="color:var(--text-light)">
+                        <span class="en">Below is an introduction to the different cameras and films I use.</span>
+                        <span class="lang-zh">以下是不同相機和菲林的介紹，以及拍攝出來的效果～ </span>
+                    </p>
+                </div>
+                <div class="content-dropdown-wrapper">
+                    <select id="camera-select" class="content-select" onchange="showCameraItem(this.value)">
+                        <option value="all">All Cameras & Films / 全部顯示</option>
+                        <option value="ricoh">Ricoh 500</option>
+                        <option value="canon">Canon Ex Auto</option>
+                        <option value="nikon">Nikon AF600</option>
+                        <option value="films">Film Stocks / 菲林介紹</option>
+                        <option value="tips">Camera Tips / 相機小貼士</option>
+                    </select>
+                </div>
+
+                <div class="feed-list">
+                    <!-- 相機卡片 1：Ricoh 500 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3335638/photos" target="_blank" class="feed-card" data-camera="ricoh">
+                        <div class="feed-photo">
+                            <img src="https://cdn.assets.lomography.com/57/06fc41594f78d57fcdae34ff93f0c9f3403a9c/1024x1545x2.jpg?auth=0788ce86b681d1f7dc7808a4755d9c0f1d062cba54dd29c3e3b1915ccc7875a1" alt="Ricoh 500 Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
                         </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
                         <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">到尼泊爾嘅最後一章 —— 火葬儀式 🇳🇵...</span><span class="lang-zh">到尼泊爾嘅最後一章 —— 火葬儀式 🇳🇵...</span></h3>
-                            </div>
+                            <div class="feed-header"><h3>Ricoh 500</h3></div>
                             <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> Kathmandu, Nepal
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">到尼泊爾嘅最後一章 —— 火葬儀式 🇳🇵<br><br>喺香港，生死係一樣好私人嘅事<br>但喺印度教，死亡嘅儀式係好公開嘅活動<br><br>好幸運可以觀察呢個火葬儀式<br>係呢個過程中深深感受到生死原來可以「這麼近，那麼遠」<br>感受到佢哋所相信嘅輪迴，呢種生死輪迴原來可以咁接近生活<br>喺火葬台上，離世嘅人完成咗佢嘅任務<br>而火葬台對岸有新生命誕生，在世嘅人仍然有屬於佢哋嘅任務需要完成<br><br>另外最震撼我嘅係<br>就快要離世嘅人佢哋會想住係火葬儀式嘅附近<br>雖然我唔知道佢哋心入面點諗<br>但係選擇係面對住死亡嘅儀式嘅地方離世<br>呢一種嘅感覺對我嚟講好震撼<br><br>────── ⋆⋅☆⋅⋆ ────── ⋆⋅☆⋅⋆ ──────<br><br>係觀看火葬儀式之前 <br>我哋係火葬儀式對岸見苦行僧、同埋參觀下寺廟<br><br>每座神廟中央都供奉住「濕婆林伽」（Shiva Lingam）<br>濕婆神同時兼具「毀滅者」同「重生者」嘅身份，信徒會喺火葬場對面供奉林伽<br>完全呼應咗「死亡只係下一次重生起點」嘅觀念🥺<br>喺呢度，完全感受到呢個地方嗰種生死輪迴嘅觀念。<br><br>────── ⋆⋅☆⋅⋆ ────── ⋆⋅☆⋅⋆ ──────<br><br>喺火葬儀式隔離有一座 building，係俾一啲準備離世嘅人住<br>佢哋希望離世後，可以喺最短嘅時間內進行火葬儀式<br><br>當佢哋離世後，先人會被包上純潔嘅白布或黃布<br>家人會喺河邊為先人淨身，撒上萬壽菊，並塗抹硃砂粉作為最後嘅祝福<br>最後會抬住先人喺火葬台上轉三個圈，按照傳統，由長負責點火，火種會由先人嘅口部開始點燃<br><br>而令人印象深刻嘅係，當火葬進行緊嘅時候<br>河嘅對岸就會舉行盛大嘅阿爾堤祈福祭典！<br>氣氛非常熱烈，大家會拍手、唱歌<br>呢啲掌聲同歌聲，就好似慶祝緊先人終於圓滿完成一生<br>祝福佢勇敢邁向下一個旅程。<br><br>而呢個儀式嘅花費其實唔平，大約需要成 200 蚊美金先完成到<br>因為木材本身已經好貴（有啲家庭甚至會選用特別嘅木材），加上火葬台位置嘅收費唔同，仲有各種祭祀費用（包括白布、硃砂、萬壽菊，以及請祭司主持儀式嘅利是）<br>即使費用對當地人嚟講係沉重負擔，現場依然見到唔少家庭為先人進行呢個儀式！<br>令我深深感受到，呢場儀式對佢哋嚟講係幾咁重要……<br><br>按照傳統佢哋需要守喪，但係我唔肯定而家現代生活中<br>佢哋會唔會簡化部分嘅程序<br>先人死後 13 日內，靈魂仍會喺屋企徘徊<br>負責主祭嘅長子必須剃光頭（只留後腦一細撮頭髮），換上無縫線嘅純白棉布<br>佢要同外界完全隔離，瞓喺鋪草蓆嘅地下<br><br>親人離世儀式完成後，家屬仲要面對長達一年嘅守喪期，保持絕對嘅潔淨（Chokho）：<br><br>嚴禁食肉、蛋、蒜頭同洋蔥，唔可以飲酒食煙。食物一定要自己煮，唔可以去餐廳或食外人煮嘅嘢。<br><br>呢一年內，家屬禁止進入任何神廟拜神，只可以祭祖，以免冒犯神靈。<br><br>主祭者一年內唔准剪頭髮同剃鬚；唔可以著皮革製品（只著帆布鞋或赤腳）。無論冬天有幾凍，每日朝早都要用凍水沖涼淨身。<br><br>每個農曆忌日，都要請祭司舉行「Masik Shraddha」祭祀，繼續供奉米糰，確保先人靈魂唔會捱餓。<br><br>────── ⋆⋅☆⋅⋆ ────── ⋆⋅☆⋅⋆ ──────<br><br>呢一次嘅尼泊爾之旅體驗到好多屬於當地嘅文化<br>令我印象好深刻 希望呢種文化可以有更多人去了解一下🥹<br><br>最近尼泊爾嘅post 好多都係嚟自呢本書，同埋當地導遊嘅講解<br>大家有興趣一定要睇！🥹<br><br>────── ⋆⋅☆⋅⋆ ────── ⋆⋅☆⋅⋆ ──────<br><br>2-9 June, 2026.<br>🎞 | #lomographycolornegative400<br>📷 | #canonexauto <br>🖨 | @megatoni_production <br>📍 | Kathmandu, Nepal<br><br>#urbanwilderfilm<br>#urbanwildertravel</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
+                                <p style="margin: 0;">
+                                    <span class="en">This is a mechanical rangefinder camera equipped with a 40mm f/2.8 lens. It is very lightweight and features both shutter-priority and metering functions (which require a battery). Unfortunately, the light meter on the copy I bought is broken, so I don't take it out very often.<br><br>The photos taken with this camera are a bit less sharp compared to the Canon Ex Auto, and they tend to have a bit of halation. If you love something lightweight and portable and don't mind a slightly lower sharpness, this camera is actually great for casual everyday carry and shooting!</span>
+                                    <span class="lang-zh">這是一部機械旁軸相機，搭載 40mm f/2.8 鏡頭。它非常輕巧，同時具備快門先決與測光功能（需要電池）。可惜我買到這部的測光已經壞了，所以比較少帶它出門。<br><br>這部相機拍出來的相片，銳利度比起 Canon Ex Auto 稍微低一些，而且帶有一點光暈。如果你喜歡輕便好攜帶，又不在意銳利度稍微偏低的話，這部相機其實非常適合隨身攜帶拍攝！</span>
+                                </p>
                             </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
+                            <div class="feed-footer">
                                 <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DcIVh4Djw7l/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
                             </div>
                         </div>
-                    </div>
-            
-                    <div class="feed-card" data-location="Kathmandu, Nepal">
-                        <!-- 照片區塊 (強制在左邊) -->
+                    </a>
+
+                    <!-- 相機卡片 2：Canon Ex Auto -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3334881/photos" target="_blank" class="feed-card" data-camera="canon">
                         <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/731674072_17949733476197794_8937726516208436_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=dlW5j7eXDTEQ7kNvwHQp4sw&_nc_oc=AdpTjYNoVWCPsROGKssMKlINMtpjr6D-mK3QiN6sVMmvuALeJ8Npe5lC3CWHTdT8018&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQE91TfqwAyJrj5SH5ieZZwmW0pDNhcBz7HsF7GPPGLC1g&oe=6A8E3F0D" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+                            <img src="https://cdn.assets.lomography.com/a0/cba10b239d77c7b3c1a78d5ea702effde9dff3/1216x806x2.jpg?auth=dc888b351d4378783345a7da62d7f4b31e2085d57dbe4134ea53a52ff789c63a" alt="Canon Ex Auto Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
                         </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/734932297_17949733494197794_3407416356761428395_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=uRwtdIUDosgQ7kNvwG_dzzm&_nc_oc=AdrS8sHoEwqIWQ9luOhaQw-z7w6QuJ7lx_UkNu6J9wNDb5nVSqpzB3EX0P0JoOCHOCg&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEiOBecqhMpSDFpuR5nWC15zkSHePsvjK1jXsireREq2Q&oe=6A8E0DF7" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/731727123_17949733518197794_1912008604234287398_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=2olIEqcoSMsQ7kNvwGld9B6&_nc_oc=Ado2FVeyZZTo8Cjy14xPYnEvmlRED9LWc51iehr8GTIk7xqnG_HZ1RxG5H5bX4pS7no&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFdSUokcA0Z4lQWxVwdP7Cx-475vUJDK9iFmdAqZe8eFw&oe=6A8E0D92" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/734329828_17949733530197794_3555923699660894598_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=AWWMyJVcYVEQ7kNvwHvKfau&_nc_oc=AdotqkEXyPwxpML0S6tEkhCiVTKeaEbkFN0W6rldRzCl0pZbScxZz4H5hCiy0_UVwUw&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEaa6Y1NGY47-7FCMPLvYuMXERQy2EIDpqG4V_tHBLWfQ&oe=6A8E0E3A" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/734973666_17949733539197794_689958568718478599_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=JWohVErtfykQ7kNvwES1UVC&_nc_oc=AdqQUflV6TLzSbfPdyrL-Xcve8jtMfvmPKuPohT7BO-fV5XA0U9Q88P-97GxDaB0XHI&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGmw6XXPqcblcsM39u4E1rYZyabTmcHFIZIW58R2FHoeg&oe=6A8E0B37" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/731580664_17949733557197794_120086659179984467_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=STaVTOJwscIQ7kNvwH_NlY8&_nc_oc=AdqxVbkN0ohLQa4gpA3ZA-Aqx26vXZDrYS5yoXm6TwBwC7CCB-Zl5SC2ZJOSiQ-M7vs&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEyhsUbJS6O6aZz2o80zvyCSmC7XSDHQHvelvMpMIb9PQ&oe=6A8E2508" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/732747580_17949733575197794_6575295670214720307_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=tWMYQqqAXO8Q7kNvwHTx1Yt&_nc_oc=AdrqsjJAjizE5u3eBq6-rJZ1AlBZGtsxZGqFOco_tRa550nblX7cshBpGjZk07fdaHk&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEVnLTvpPibDGa0sKbEXvEFc4KrBYdurf6Ht4kzNzldbQ&oe=6A8E3869" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/731105028_17949733602197794_4647889317050953789_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=HvoJXff8RSQQ7kNvwFgHOLL&_nc_oc=Adru3eXHUxX0rwUhS8ceSA_RIXDffDTTxS2RbcFyRgoBlmD_iP4Nzl-wFhzJtACohGo&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEpSB-LAtjG_c7tJH0KJVSHqmKkcV1TzDCNvQxT3ob_4w&oe=6A8E3979" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/736248523_17949733584197794_2730526381902359805_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=TqTghCfYYJEQ7kNvwEm1UYm&_nc_oc=AdqCkoUiBt1j2sXxPyKcPZlv4gyKebMCZ-Gkt3KN74_gTJrsorkJYGRD3hSoee9yR5U&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFF_RaTavC0LTFf9qKkmy9_81sknI8Bhlej_gpf0dyLFQ&oe=6A8E1E57" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m84/AQOTpLXj3-blh7nkGV_12QvkrPo5uNAStm2u5QJEc9e7xXGXJOidiaWcir49VBylRfgQ_Gryq_FbjTPs9xRtpRdwi3RUPakGRq5qOWI.mp4?_nc_cat=110&_nc_sid=5e9851&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_ohc=1JGjrNL7LVkQ7kNvwH4h42B&efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQ0FST1VTRUxfSVRFTS5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIiwieHB2X2Fzc2V0X2lkIjoxNzk0OTczMzQ5NzE5Nzc5NCwiYXNzZXRfYWdlX2RheXMiOjUwLCJ2aV91c2VjYXNlX2lkIjoxMDE0NiwiZHVyYXRpb25fcyI6NSwidXJsZ2VuX3NvdXJjZSI6Ind3dyJ9&ccb=17-1&vs=4ca6df897aa3bc77&_nc_vs=HBksFQIYTGlnX2JhY2tmaWxsX3RpbWVsaW5lX3ZvZC8zOTQwQUU0NTZEMEFEQ0FCOURGQzM5OEMwN0VEN0U5N192aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYUWlnX3hwdl9wbGFjZW1lbnRfcGVybWFuZW50X3YyLzNGNEEzQzA1OTY0RDY2NjA5Mjk0M0QzNDBBMzFBQzg5X2F1ZGlvX2Rhc2hpbml0Lm1wNBUCAsgBEgAoABgAGwKIB3VzZV9vaWwBMRJwcm9ncmVzc2l2ZV9yZWNpcGUBMRUAACbE086OgMziPxUCKAJDMywXQBd2yLQ5WBAYEmRhc2hfYmFzZWxpbmVfMV92MREAde4HZcSeAQA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&edm=AM6HXa8EAAAA&_nc_zt=28&oh=00_AQF5ncumxmLe4TYwvqwjosxK-y2CfjizPl1-Qa-_ozr3Sg&oe=6A8A368E" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/734088646_17949733593197794_2960964853762123900_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Lks7M8DPzSoQ7kNvwHDDZH4&_nc_oc=AdqMkpFRuMqukx0O6qk__XrcV_dPtVU9P-1DoJyFEoV3pDhkAAx6gemhSL7cWXGpgO4&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGlC_Th2i2kCAEBXi9hCvuOY4fmbPw1hDwnFjxCu_2K7Q&oe=6A8E13F7" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
                         <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. 尼泊爾除咗有好多狗狗 佢哋嘅宗教文化...</span><span class="lang-zh">. 尼泊爾除咗有好多狗狗 佢哋嘅宗教文化...</span></h3>
-                            </div>
+                            <div class="feed-header"><h3>Canon Ex Auto</h3></div>
                             <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> Kathmandu, Nepal
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>尼泊爾除咗有好多狗狗 佢哋嘅宗教文化亦都隨處可見 🇳🇵✨<br><br>尼泊爾有約 81% 人口信奉印度教，8-9% 係佛教徒<br>但最特別嘅係，大部分尼泊爾人除咗信印度教，仲會同時信埋佛教！<br><br>而圖中嘅萬壽菊花環<br>喺印度教日常祭祀中係不可或缺嘅聖物<br>尼泊爾人每日都會買花環嚟供奉神龕、街角嘅寺廟，以祈求神明庇佑 <br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>喺街上可以見到好多呢啲金屬蓮花 <br>上面散落著紅色嘅硃砂粉、米粒以及殘破嘅花瓣<br>呢啲都係當地居民進行印度教晨間祭祀後留下嘅供品。<br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>占星術喺呢度都係隨處可見 🔮<br>喺當地嘅印度教社會中，吠陀占星術同建築風水對佢哋嚟講好重要<br>凡係結婚挑日子、起樓睇方位、生病或是遇到人生低谷<br>都會搵呢類占星師尋求解答與儀式化解<br><br>另外，佢哋覺得凡人都需要占星術呢隻「宇宙之眼」<br>先可以睇清自己嘅過去、現在與未來，從而避開危險，走向解脫 ✨<br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>左圖：猴神哈努曼（Hanuman）🐒<br>係羅摩神（Rama，毗濕奴嘅化身）最忠誠嘅僕人與戰士<br>象徵著無私嘅奉獻、巨大嘅力量與勇氣<br>信徒拜祭時會用朱砂膏搽落佢身上，日積月累後就變成圖中咁樣<br><br>點解信徒要咁做？其中一個原因係因為一個有趣故事：<br>據說哈努曼有一次見到羅摩嘅妻子悉多，喺額頭上點紅色嘅硃砂<br>悉多話畀佢知，咁做係為咗保佑丈夫羅摩長壽<br>哈努曼一聽，為咗羅摩就將自己全身都塗成紅色！<br><br>右圖：喺尼泊爾，成日都會見到信徒虔誠地觸摸神像<br>一嚟表示佢哋對神明嘅尊敬，<br>佢哋亦相信只要咁樣做就可以得到神明嘅力量同庇佑 <br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>黑拜拉弗（Kaal Bhairav）神像 <br>攝於加德滿都杜巴廣場（Durbar Square）<br>黑拜拉弗是濕婆神最恐怖、最憤怒嘅化身<br>尼泊爾人相信喺黑拜拉弗面前講大話會招致嚴厲嘅懲罰<br>因此呢度曾經被用嚟作為見證誓言或審判嘅地方<br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>加德滿都遊樂園（Kathmandu Fun Park）🎡<br>我同朋友一開始係被呢個樂園嘅「翻版迪士尼公仔」吸引咗入去 (๑♡⌓♡๑)<br>入面有齊所有基本經典遊樂設施<br>例如摩天輪、旋轉木馬、海盜船、碰碰車等<br>但唔知點解，呢個樂園除咗翻版迪士尼公仔之外<br>對於機動遊戲嘅理解都好似有啲唔同🤣<br>佢嘅摩天輪同鞦韆都係以驚人速度旋轉！<br>好好奇如果尼泊爾人有機會去其他國家嘅樂園玩，佢哋會唔會覺得好悶呢？🫣<br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>達拉哈拉塔（Dharahara）<br>於 1830 年代興建，係加德滿都嘅標誌<br>曾經係市內最高建築 <br>當時尼泊爾正全力抵禦英屬印度嘅擴張<br><br>呢座塔係軍事防禦嘅核心<br>塔頂號角聲一響就能夠聚集一班軍人<br>可惜，英國人發現軍事上難以征服尼泊爾於是改用策略<br>用金錢同政治權謀挑動貴族內鬥<br>尼泊爾亦因此陷入長達百年嘅拉納家族專制統治<br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>納拉揚希蒂王宮（Narayanhiti Palace）<br>拉納家族統治結束後，納拉揚希蒂王宮就出現<br>成為尼泊爾近代最具代表性嘅皇家居所<br>亦係世上規模最宏偉嘅王宮之一，見證住沙阿王朝嘅興衰 <br><br>2001 年，呢度發生咗震驚全球嘅「皇室滅門慘案」<br>王儲喺晚宴中槍殺包括國王、皇后在內嘅多位皇室成員<br>呢場慘劇徹底粉碎咗民眾心中對皇室嘅神聖光環<br>加速咗尼泊爾邁向共和嘅進程<br>2008 年尼泊爾正式廢除君主制度，呢座充滿故事嘅王宮，最終化身為博物館<br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>尼亞塔波拉神廟（Nyatapola Temple）<br>位於巴克塔普爾（Bhaktapur），係全尼泊爾最高嘅神廟 <br>守護石雕站立於階梯兩側，越上層嘅石雕代表守護力量更強大：<br>· 第一層：大力士（力量大於常人 10 倍）<br>· 第二層：大象（力量大於大力士 10 倍）<br>· 第三層：獅子（力量大於大象 10 倍）<br>· 第四層：神鷹，鷹頭獅身（力量大於獅子 10 倍）<br>· 第五層：女神希提拉克希米（力量大於凡人萬倍）<br>❁ ───── ❁ ───── ❁ ───── ❁ ───── ❁<br><br>Nepali Terracotta Tiger 🐅<br>我係尼泊爾買嘅嘢入面最鍾意嘅一個！<br>聽講係守護者，用嚟辟邪！<br><br>2-9 June, 2026.<br>🎞 | #lomographycolornegative400<br>📷 | #canonexauto <br>🖨 | @megatoni_production <br>📍 | Kathmandu, Nepal<br><br>#urbanwilderfilm<br>#urbanwildertravel</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
+                                <p style="margin: 0;">
+                                    <span class="en">This is a camera I bought during my trip to Japan &lt;3<br><br>It's a mechanical rangefinder camera paired with a 35mm lens that can operate completely without a battery. After taking it out for a spin, I've found the image results to be truly outstanding! It also features a shutter-priority auto-exposure mode (which does require a battery), allowing me to rely directly on the built-in light meter while shooting—super convenient.<br><br>The only minor drawback is that it has a bit of weight to it, so carrying it around on long trips can get a bit heavy on the shoulders~</span>
+                                    <span class="lang-zh">這是我從日本旅行時買回來的相機 &lt;3<br><br>它是機械旁軸相機並配搭 35mm 鏡頭，即使沒有電池也能正常運作。實際拍攝下來，我覺得它的成像效果非常出色！它同時具備「快門先決」的自動曝光功能（需要電池），讓我在拍攝時可以直接依賴內建測光，非常方便。<br><br>唯一的小缺點就是稍微有些份量，長途旅行背著它肩膀確實會比較辛苦～</span>
+                                </p>
                             </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
+                            <div class="feed-footer">
                                 <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DaSUQoLj6h3/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
                             </div>
                         </div>
-                    </div>
-            
-                    <div class="feed-card" data-location="Kathmandu, Nepal">
-                        <!-- 照片區塊 (強制在左邊) -->
+                    </a>
+
+                    <!-- 相機卡片 3：Nikon AF600 -->
+                    <a href="#" target="_blank" class="feed-card" data-camera="nikon">
                         <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/730474048_17949080877197794_719089146519138431_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=wNvx94XA3_MQ7kNvwEwsYqL&_nc_oc=AdqQJ9JvVND_bPedjFsJLoOK1r7MAvTGqIyFOZYl1vn_oUcveFlREY9fgZgj-QDSH2E&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQH5M2rmd5DbRY7Gx0JSxOkDLpfcoolSgoAppaoEqlNzbQ&oe=6A8E1041" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+                            <img src="https://placehold.co/800x800/eaeaea/a3a3a3?text=Nikon+AF600" alt="Nikon AF600 Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
                         </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/734958274_17949080889197794_7634378589637946859_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=K5hHFNhLFDgQ7kNvwG5VTnQ&_nc_oc=Adr2z2mzWi6cYY_xRpJhFvwEP-TxB6EsIYSeNeWLp3x3F0TP_og5xORo9raRr1bxFr0&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFld-SCYurpMGaPkUa_lExScIItiVq1vmGyouFNOl8XFw&oe=6A8E2F08" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/730223544_17949081051197794_8924374108599512844_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=2MBpweM0No4Q7kNvwG68uQ0&_nc_oc=Adpgba8QyloH4kZHqWx0wnJ38XGpYdegb7kLXGxd51Cbp8KX3D3g2Xx3v3KYnQP5d7g&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEWAqLb4Ky85URboCtbQVeDMi_MLtbQquIqq9lsWzuXcA&oe=6A8E40AC" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/729674446_17949081060197794_5123398392490461958_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=4kgAnUNuS0YQ7kNvwEPbznz&_nc_oc=Adrqn5pZ1ETtfkEeKRY0hBLlEKLCaUocJ9_vYzlXwrXEbnKN03BsKsW47DbLau39Xi0&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF66sK8G1YYc6XEfq7Y96Z8xymHkO4eZiZr3BSE857-bQ&oe=6A8E2ABB" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/729692078_17949081072197794_7261888358947545886_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=IFvSTjjj3CEQ7kNvwEG3IW9&_nc_oc=AdqH10I-J6FUbyYIAq5mQz5LO23tCBtk5fCpvLBk2mykFHSvs2Rco6XPXZ00__PZTV0&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHwpK9tt_GMovS8Gek1wzH5U2-W_SXkjSPHrX1jtFtiMA&oe=6A8E38A6" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/731045014_17949081081197794_8695465394797788083_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=KkFNxdEBXAwQ7kNvwHx3dPz&_nc_oc=AdrV_YzLMSn6TWn4PK43y33s6GyN4JR4o3rVEEp9k5R9vAkiNyJLue3wfotWeAc7fLg&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEHOSuHUk5wuemPoDPyDIqVpmZ_cmzSck2onJlVX1hbMA&oe=6A8E0BA4" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
                         <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. 喺尼泊爾可以見到好多狗狗 佢哋喺市區...</span><span class="lang-zh">. 喺尼泊爾可以見到好多狗狗 佢哋喺市區...</span></h3>
-                            </div>
+                            <div class="feed-header"><h3>Nikon AF600</h3></div>
                             <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> Kathmandu, Nepal
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>喺尼泊爾可以見到好多狗狗<br>佢哋喺市區隨處可見，甚至會瞓喺路中心、舖頭正門<br>🐾 〰️〰️〰️〰️〰️ 🐕 〰️〰️〰️〰️〰️ 🐾<br><br>呢度嘅狗狗背後有一個故事：<br>傳說中閻羅王有兩隻四眼狗守衛地獄之門<br>意味住善待狗狗可以取悅閻羅王，保證亡者順利到達天國<br>所以喺傳統燈節嘅其中一日 — Kukur Tihar (敬狗節)<br>當地人會為狗狗戴上花環、點上朱砂，以感謝狗狗<br><br>可能因為咁，尼泊爾嘅狗狗喺市區隨處可見<br>而且每次見到佢哋，都係喺路中心瞓得好 chill<br>當地人都好習慣佢哋嘅存在，會俾剩飯、餅乾佢哋食🍪<br>🐾 〰️〰️〰️〰️〰️ 🐕 〰️〰️〰️〰️〰️ 🐾<br><br>但係狗狗咁多，同時都會衍生一啲問題<br>估計尼泊爾全國有超過二百萬隻流浪狗<br>數量多到甚至連昂高頭都會見到佢哋嘅蹤影 <br>(好多都冇打狂犬病疫苗)<br><br>即使當地有進行 CNVR (捕捉、絕育、打疫苗、放回)<br>加德滿都每日仍然有約 400 宗狗咬傷事件<br>所以狂犬病喺尼泊爾仍然難以控制 (lll⚆ᗜ⚆)<br>🐾 〰️〰️〰️〰️〰️ 🐕 〰️〰️〰️〰️〰️ 🐾<br><br>相反，貓貓喺短短呢幾日淨係見到兩隻<br>兩隻都係有家嘅小貓 🥹🐈<br>希望天下間所有可愛小狗都可以有家<br>唔使再執人哋食剩嘅嘢<br>落雨嘅時候亦唔使周圍搵地方遮風擋雨<br>UOᴥOU 🏠💚<br><br>2-9 June, 2026.<br>🎞 | #lomographycolornegative400<br>📷 | #canonexauto <br>🖨 | @megatoni_production <br>📍 | Kathmandu, Nepal<br><br>#urbanwilderfilm<br>#urbanwildertravel</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
+                                <p style="margin: 0;">
+                                    <span class="en">I'm still trying the camera, will share to you guys after using the camera!</span>
+                                    <span class="lang-zh">還在試用中~ 用了一段時間後再和大家分享！</span>
+                                </p>
                             </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
+                            <div class="feed-footer">
                                 <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DaIaEjvjyUO/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
                             </div>
                         </div>
-                    </div>
-            
-                    <div class="feed-card" data-location="Kathmandu, Nepal">
-                        <!-- 照片區塊 (強制在左邊) -->
+                    </a>
+
+                    <!-- 卡片 4：底片作品集 -->
+                    <a href="https://www.lomography.hk/homes/urbanwilder/films" target="_blank" class="feed-card" data-camera="films">
                         <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/730109472_17948836500197794_8221285967549343972_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=GaUxr6IKa7gQ7kNvwGiwmOS&_nc_oc=Adony-ZNrL6J8P5gE9NZqQYpPtfc56kv9yFtS5_6MZJVjFxqQ7ghA3PKovt-ZfBlLps&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQERxsFLMn8SrSARCUEmt0UJC0TUjXrbCpeTXXDOhyxIMQ&oe=6A8E2FD1" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+                            <img src="https://cdn.assets.lomography.com/de/61f3acf570677a3628165a80c12d991b6d13ea/1216x806x1.jpg?auth=5fc7b7d7cf230b26b5934b9c27ac3bdfa2d4cc0df87b0662d156f3e77ce49876" alt="Film Stocks Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
                         </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/731700254_17948836527197794_5091284061280311914_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=6l8Che4NxDwQ7kNvwGHdhIt&_nc_oc=Adohh8lThSTEJkrWgdT-Zf6KsbvwCOpEMF3MxH1IDQnbWZu5k366idSyyAKrgZyrT2E&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGx8xFx_qPC2doxYsnNbwB0ivu9QNJp7P5ZvYYXT22Kfg&oe=6A8E3B27" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/732628637_17948836509197794_8600645017743206144_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_DR1TQXRG4EQ7kNvwHeoOZD&_nc_oc=AdplZhv1s0Dm02zgefubtbetpw4Y8KomKAbM4L8OtRdWC_xtWsUS8o1Z-bbL1oVhRNU&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFi3vxfZwohkBEdjpYIfs9ES6dMNDt_r3-8RxNct8h-pQ&oe=6A8E1895" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/732853594_17948836518197794_8610083374640396147_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=aKE5WXStj5gQ7kNvwEeuaQz&_nc_oc=AdrX2YBRf76ru1EVSZDImAH6BoG8R75o7_4BwZU3787NlaMWbfyf-K6BDssq8vJg7Fw&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGXWgbrcpLDygqOhI6lDKG0xpjtUXWG11-YvvIaZbp5gA&oe=6A8E0CA1" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/730090189_17948836536197794_6452420473306729161_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=-6LSmild-68Q7kNvwG9MPNX&_nc_oc=AdrTHzDGu0AwW_0ScCUgIaqHMyoAEN7DWYHb541UB6e121D-HuMq3OTgDnr1MAi2-yE&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHoj9zsClyQSQqL-czdHaupvuJgyoEybSL_LEp80daWvw&oe=6A8E15F2" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/729692076_17948836545197794_4202059599489082346_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=lpiTtSakjZkQ7kNvwFFENeD&_nc_oc=Adox6BrcE7mUyHSTXH9FxJgHQqfwIT51qsw37PBXbol1KYH2trx4xkPbPmjD89ERQc8&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFOmL1Jrtic6AYENAUiX2s4tDgLhUh1D2V_k5LPI1Tyig&oe=6A8E1BCC" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/730854542_17948836554197794_5271954471647524544_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=4-U19w1Xix4Q7kNvwGPlpoM&_nc_oc=AdrFSSht3onig3kVixU8vTsGcorcl3zunUi9FQezkLLnzjhACF1DTKatAP1erPaCtaM&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEBbvwvvJQKD-5zVMmZ22NHs1vj_oAUfiWJE-4yzjo2aw&oe=6A8E383C" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/730223540_17948836572197794_4669626415884464808_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=UY82-llEbJ8Q7kNvwG-vrZI&_nc_oc=Adq6Otq9P_TrksTNKv6892-L8WGcfeouI68Pzb4-hDnZpYIq-33RAJFIX4yU--yGV78&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEgh7CwOgp--G7ya9wL6Sdzu_PgFxhf1k5AgObDNEbXmw&oe=6A8E1D83" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/731111417_17948836563197794_8776635268826146505_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=MDGHvrlMTKkQ7kNvwEpLPPZ&_nc_oc=AdrJ78hUueQLbUn1Vs6WYqfl-ggdEDit3asSpebH_yErDeBAgqS5ZMT-Vq57MuL958w&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEVRY__6zmFsXja73J5ZoANi0owJCP68EdsMgR326NE0g&oe=6A8E167C" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
                         <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. 今次去尼泊爾特登簡咗新菲林 - ki...</span><span class="lang-zh">. 今次去尼泊爾特登簡咗新菲林 - ki...</span></h3>
-                            </div>
+                            <div class="feed-header"><h3>Film Stocks</h3></div>
                             <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> Kathmandu, Nepal
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>今次去尼泊爾特登簡咗新菲林 - kiro 400<br>但係個佛塔勁靚, 一下子就影晒卷菲林了<br>顏色係偏紅、黃 好適合尼泊爾呢個地方( ˶ˆ꒳ˆ˵ )<br><br>第一次係外國D&S 返嚟香港再scan嚟睇吓有咩分別<br>每一個人沖掃出嚟嘅效果都好唔同、有唔同嘅style<br>搞到有啲想自己develop菲林, 但係應該好難( ⚆ д ⚆ )<br><br>今次啲相主要都係Film Foundry到develop 同scan<br>少部分係Megatoni Production scan<br><br>𝗙𝗶𝗿𝘀𝘁 𝘁𝗶𝗺𝗲 𝗮𝘁 𝗮 𝗰𝗼𝗻𝗳𝗲𝗿𝗲𝗻𝗰𝗲<br>人真的超多, 超像大型比賽的規模<br>但平時出席這些大型活動 都是用手語溝通<br>來到健聽的世界 原來我自己也有點不適應<br><br>這次除了自己speed talk之外 <br>朋友參加了poster session 張poster好靚～<br><br>conference竟然還有電影看🍿 <br>是關於雪豹保育的電影 好睇~~❄️( ˶’ᵕ’˶)❄️<br>🌿 ────────🐾 ──────── 🌿<br><br>𝗥𝗶𝗱𝗶𝗻𝗴 𝗠𝗼𝘁𝗼𝗿𝗰𝘆𝗰𝗹𝗲𝘀 𝗶𝗻 𝗡𝗲𝗽𝗮𝗹<br>我乘坐電單車的次數並不多 <br>只是在東南亞旅行時才會有機會體驗<br>而在尼泊爾乘搭電單車的速度是特別快 <br>(有點爽(◍˃ ᵕ ˂◍))<br>〰️〰️〰️〰️〰️〰️ 🇳🇵 〰️〰️〰️〰️〰️〰️<br><br>博達哈佛塔 𝗕𝗼𝘂𝗱𝗵𝗮𝗻𝗮𝘁𝗵 𝗦𝘁𝘂𝗽𝗮<br>尼泊爾必去景點之一！<br>佛塔超級大,也有人進行維護 <br>所以也不會很殘舊<br>(可以上去平台近距離觀看佛塔)<br>(但平台超級多白鴿便便) <br>(一定要著厚襪 🧦)<br><br>2-9 June, 2026.<br>🎞️ | #KIRO400<br>📷 | #canonexauto <br>🖨️ | @film_foundry | @megatoni_production <br>📍 | Kathmandu, Nepal<br><br>#urbanwilderfilm<br>#urbanwildertravel</p>
+                                <div style="flex-grow: 1;">
+                                    <p style="margin: 0 0 10px 0;">
+                                        <span class="en">A photo collection of the film stocks I've used, serving as a reference to show the effects of different film brands:</span>
+                                        <span class="lang-zh">這是我使用過的底片合集，作為展示不同底片品牌拍攝效果的參考：</span>
+                                    </p>
+                                    <ul style="text-align: left; margin: 0 auto; display: inline-block; line-height: 1.8;">
+                                        <li>Candido 800</li>
+                                        <li>Fujifilm Color 200</li>
+                                        <li>Fujifilm Color 400</li>
+                                        <li>Kodak ColorPlus 200</li>
+                                        <li>Kodak Ultramax 400</li>
+                                        <li>Retocolor Prism 400</li>
+                                        <li>VIBE 400 b&w</li>
+                                    </ul>
                                 </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
                             </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
+                            <div class="feed-footer">
                                 <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DaFN_yfD9HY/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
+                                <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
                             </div>
                         </div>
+                    </a>
+                </div> 
+
+                <!-- 卡片 5：相機電池技巧 -->
+                <div class="card" data-camera="tips" style="margin-top: 40px; text-align: left; scroll-margin-top: 100px;">
+                    <h3 style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-wrench" style="color: var(--accent);"></i>
+                        <span class="en">Camera Battery Tips</span>
+                        <span class="lang-zh">相機電池Tips</span>
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 15px;">
+                        <div style="flex: 1 1 300px;">
+                            <p style="margin: 0; line-height: 1.7;">
+                                <span class="en">As for power, this camera originally used PX625 mercury batteries, which are pretty hard to come by nowadays. If you run into this issue, you can simply use a battery adapter paired with a LR44 battery to solve it!</span>
+                                <span class="lang-zh">關於電力方面，這種相機過去通常使用 PX625 水銀電池，現在比較難買到。如果遇到這個問題，可以購買電池轉接器搭配 LR44 電池來使用，就能解決了！</span>
+                            </p>
+                        </div>
+                        <div style="flex: 0 1 250px;">
+                            <img src="https://preview.redd.it/mr9-adapter-with-sr44-do-i-need-to-compensate-v0-s4p8728h6phd1.jpeg?width=640&crop=smart&auto=webp&s=56d24cd0a21a3839c298732987247fbc560398db" alt="PX625 Battery Adapter" style="max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        </div>
                     </div>
-            
-                    <div class="feed-card" data-location="unknown">
-                        <!-- 照片區塊 (強制在左邊) -->
-                        <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/720634138_17946361158197794_503553033909361567_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=rFes3QbUeVIQ7kNvwFLqIdB&_nc_oc=AdpPkpWiFm2XcV-8MNVy89j3dkbVCrMrn9jspVKVsefpL1dyLR8Zjr0mD5ebo1QDS40&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHKh4wHaXcu8APGcDf-yRc_jSRLRK6w9GnTRgWZlRk8EQ&oe=6A8E39D3" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/720563117_17946361167197794_7465150708590796595_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=o4DLzFZZMBoQ7kNvwHt4Alu&_nc_oc=Adrty70XGVrWLqxQw89Fwm-WTyIasZoi7zBO7FHp7eI0vBY92SCF2vVYdl-RN4Py558&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF2IIENS8EIWAPxd0ajyOLBiClPmz8P6WXliovqt9x5Og&oe=6A8E2F31" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/720950153_17946361176197794_5351091280244637445_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=3d9fsbn9PtAQ7kNvwFy7BV5&_nc_oc=AdrEEb5612sdQAvYgm7PD0PTlcXkUrFNoWmR8LpkuKkJVAAgGqUzef2KfkbLzfP9BWM&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHcrjWqeYr8pHPrfisvh1LjHvwoKfPDEwmVl6GEha05NQ&oe=6A8E21CF" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/722245338_17946361185197794_2857747255695507482_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=5z-M44aZNfUQ7kNvwHLFdT3&_nc_oc=AdqzgZzESpoJO0Cv3CQpm0JRZaP-reBehsMqc3G1FDl9clARFL0fpHkVbcotTQ01n_k&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF0lZn2Myvuy2_t7XQcS-0bxpOinD5CyqNQM8D4J713Aw&oe=6A8E3B6F" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/721601487_17946361212197794_4666705396907753508_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=nJPdcNvuerYQ7kNvwF7bVak&_nc_oc=AdomlfeMRXoODqQbxbKUDEPvn2k_IYhti7XFC1qEeazS4caqiAE_H1hvWNRShd_afp0&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGEl7S75NmRcgqxOhIL-N5KW34fvNtU_ygLEd9ELXgcrA&oe=6A8E3A28" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/721757603_17946361200197794_3004952959676015571_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=oVCezG3_aU8Q7kNvwHF-8A3&_nc_oc=AdopfYUfoZ2xzeU1ctjmfkZtoLniimN0z4StT6q6DowVa1XsQcDttsVURVYGEFy8vFc&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGXroOwdrVgBBZyJDDvDu0V2prrJlfwjBia7H1m035Zug&oe=6A8E3BEC" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/722245200_17946361203197794_1548764624187845428_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=cX1-DaVyeWUQ7kNvwFEAspS&_nc_oc=AdqU2w3vuXZiAof9ynO7pK96VHWSAe9XuJ7T2ZOb5kF7NIbxAVwJ_Jyj2UCgRkcdY9s&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF03OZQffWxnDVWUNn6HhumYOCK5Tz6lkH8MdCRSSmTFw&oe=6A8E3154" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/720112010_17946361221197794_6067011574395281957_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=rXu59-Yvrn4Q7kNvwFx5R3J&_nc_oc=Adpk1YHM3wV_oFu8jCtqtL5_SvJQSjS3kIttTxwoMbWznk_aeT4crh-UUwJalqmFH14&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFGyrAzaS6Ev31qa0DsRfk-kZi05Xobq1Vkao07FxJ0Sw&oe=6A8E100D" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/720761041_17946361230197794_3288750009709749872_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Tvj5o4sBEeUQ7kNvwFmZPDc&_nc_oc=AdrUqn9Cu90B_nIW6FpeoHC3jxF0RC-uNgnPLmrEKqmN7T65eWSIX8S2FWYwCdnLGbg&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGZfWGWq5ywsSNhI-raFstQP0LmwK-Q5I3dF8RI44i5Eg&oe=6A8E2F09" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
                 </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
-                        <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. “A photo is not ju...</span><span class="lang-zh">. “A photo is not ju...</span></h3>
-                            </div>
-                            <div class="feed-desc">
-                                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>“A photo is not just a photo. There are so many possibilities, and so much chemistry inside.”<br><br>This thought just popped into my mind after spending two days with Jagadish. Life is always full of surprises. <br><br>I was so impressed by his artwork when I first met him, and he totally changed the way I think about photography.<br>—————————<br>Over the past few days, we shot film, developed, and processed it together. <br><br>By trying different ways of printing the photos, I realized just how many possibilities there are. <br><br>Different textures, different timings, different chemicals…<br><br>Just like Jagadish said: “That’s crazy, look at the chemistry!”<br>—————————<br>I wish I had more time to keep learning this craft, and more time to focus on this kind of work back in HK.<br><br>#urbanwildertravel</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
-                            </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
-                                <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DZaIKlBEvuF/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div class="feed-card" data-location="Yilan, Taiwan">
-                        <!-- 照片區塊 (強制在左邊) -->
-                        <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/625345085_17928305604197794_7644856701617736120_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=QprIYbWJkhAQ7kNvwHv-J9w&_nc_oc=Adqb2iABpSvQKP24vrGN2BHb88z5jhfSg1B-1k6avq7qFnV70eZTtuooPbfQEzB5xYk&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGK9bz3kHLKaNID8ZtJom0ZH8D6LY_bz62RRLQRY7qcIg&oe=6A8E40DF" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/626843135_17928305613197794_2916213671903575535_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=BVoTBStbI_YQ7kNvwE9V0Qr&_nc_oc=Adomy0t2SDGkCMYrOJaTA3OFdgGLAsTdNJQTHt6Vx6hOzlbUStlA0TNHF-nRvo_k5-s&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGhJjoCUMj4W-4LslJQIyYq8Vy2RnV6spQwWMeergY9Ug&oe=6A8E19B5" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/625285477_17928305622197794_4405851490954653402_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=W6EDUHYRfT0Q7kNvwH0qG62&_nc_oc=Ado-oIK9Dwb0ra35gIDgQMB8B3Ptai8O0Gbc8QTMwJ0sGL2E8vFfRtHp3Q3xLS0mcIU&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEa71YLsm6I4OaULFnGwWT6ysAqbKS6CzuLwU4cniWX9g&oe=6A8E0F08" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/625868874_17928305643197794_3628808473469535957_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=IW1EDOx8ZGsQ7kNvwGPxw83&_nc_oc=AdrwOfPSVdqRMF9kceF10dbm3Kk86nX6jO7rsFTQSqIbVu5322Sy-YoyfPi2aZ_mSGs&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGPr1I3G3vBA7Lu8JYy1HfkjM8pnvYImBQ0M5yIA1-bJw&oe=6A8E155E" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/624869014_17928305652197794_7033566005865467528_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=7q9tslLS86sQ7kNvwHlQ9Um&_nc_oc=Ado3Uqhw7b5yY9JdX32dEFJvG2QXf18IUYjMrbEteD_uxlGxHOMVer8vk8SOizd2Eaw&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHeevw-Rt1ltfR1JTGVtKqx3QiNfSLWPHLLNxG9jBr1ag&oe=6A8E1DBC" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/625116605_17928305661197794_8101321590123739305_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=RedKCQbv6uIQ7kNvwFs68oU&_nc_oc=AdpMNuN9n8gmNXFlzR2dwe2KzYkOkns3e947Y0XFE5hjU5YIYhWFhdfXMOvtrCTKC0A&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEKhtjnbpPpL6Ns3epHfY6lScLs-Jtpnp3RLdBcS127Kw&oe=6A8E3BF5" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/625322365_17928305634197794_1804967341095662825_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=9mvx3QNjmIoQ7kNvwEZkR34&_nc_oc=AdpGszkQFSBvAmRClMpL4J3afhNBwf0ylzm7E2hlElkBkQuanyfDdedPG2nZMgwnk7s&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGDwhZy5aNLfgkOhlgPrm1kRHF5WjhNq0W2cHZpqGJyjQ&oe=6A8E129D" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
-                        <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. 第一次唔係香港倒數🥹～ 和狗狗一起共...</span><span class="lang-zh">. 第一次唔係香港倒數🥹～ 和狗狗一起共...</span></h3>
-                            </div>
-                            <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> Yilan, Taiwan
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>第一次唔係香港倒數🥹～<br>和狗狗一起共渡的時光<br>吃了美味的甜品🍮🍧<br><br>17-31 December, 2025.<br>1-3 January, 2026.<br>🎞️ | #Fujicolor400 #Candido800<br>📷 | #canonexauto <br>🖨️ | @hk_camera <br>📍 | Yilan, Taiwan<br><br>#urbanwilderfilm<br>#urbanwildertravel</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
-                            </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
-                                <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DUSc1AZj8eB/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div class="feed-card" data-location="Tokyo, Japan">
-                        <!-- 照片區塊 (強制在左邊) -->
-                        <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/589111889_17921070690197794_1942032184494319873_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=BCVOCg9oqgoQ7kNvwGDkp30&_nc_oc=AdqNp5LCC1sTR0h8sIPQpSpXL1gyRWDAL2dRpzIPLrvDZ8iXF9vrx5sRHw0T-bArpJc&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF0Szv0jc_pYv_kufh5Posf1yOMQB2n2WWaisLLfyxpQw&oe=6A8E0B88" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/589520796_17921070702197794_1700160292445854750_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=rmRnnP7gx9EQ7kNvwERydOE&_nc_oc=AdqatBhbGSL7SNpYhzSnxfDWAjpjUQs6I9CqDmDqHnirSf5b8eds7X-0iSKXzsIMpxY&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEKh_AqCREEiFwj_Tfkn1W-8Xt_SHFU5dOu51CY72fx1g&oe=6A8E2F59" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/588807888_17921070711197794_2549540965905308117_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=KzL-UMKZQJwQ7kNvwGflkKk&_nc_oc=AdpwOdB3CS-_SWXv528BHM8lqRDjdH4-oB4N_stCqe30XYM6-W9KTyX7iW_hosCmlH4&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFPNpoopheLwiMXVz0BORQK_DnvPVBNhiWKCzN41Jt8Kw&oe=6A8E2B31" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587943902_17921070726197794_6404453242544250382_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=b6wBMuoXMkIQ7kNvwHf07cM&_nc_oc=AdogaT3nBPiqgwYnJWuIcb_X-vbnX4l1MTK5M28SyDF8Chnun76RYkKU0KSlpwH0jxY&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQG3xbj5moYTBjyw52w4nIamHrnankqjTL-CiEdWUtqxqA&oe=6A8E3411" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/588954591_17921070729197794_7337736002743197467_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=gk87Fh8awWwQ7kNvwFgSqlK&_nc_oc=AdqsOAmrVhWCKluozups8TergvES8YJRV0xFPFN_0d7O0NvIJ44uYlvVvsskRsMOboI&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFnDRiVkrBMPyD0M61qHQEE-PHVAFHAxGy4TpOrlTSa6Q&oe=6A8E2A0D" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587968355_17921070738197794_514667059358825785_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=lhDSX7in3nsQ7kNvwFbDMHr&_nc_oc=Adp1P_RxWwSJb8IVmWKG8Z3pK915gzxtyTXqIgjn9-KPzjE7t1jtDSS3z5RnHRIwm0E&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGD9BSqqqwVNex6p_ujotjT1rUOYDQysYVkXWd-KyhjSQ&oe=6A8E24B1" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587978735_17921070747197794_6104166875383290693_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=FV1DZk7BjNMQ7kNvwGmmAaO&_nc_oc=AdqCsqkCEGEIxB-5oflBUJ3y44OOimQOB-xzQ9gBkmIXtwGfJ7WkLa7ol1MvZ-XMAJs&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGqNNSnMjYRWJuPEmluEzAZZiGZohaltn3jX7BUgZYBTg&oe=6A8E2A77" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587829278_17921070756197794_1266343149386364739_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=fy-wA2X4_LgQ7kNvwE2bWni&_nc_oc=AdpaVElRw4vYIivyz678HbygtytS-e3TdkjdisfU-8RbBjgjumGFvQdzjiudnkivaLk&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQH-rSqU0Xupy4MR72kHvbrjtxFdkMOgmyRfc_rMZox27g&oe=6A8E1573" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587958230_17921070765197794_1632258636922094558_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=FetVL25zVF4Q7kNvwGabWPF&_nc_oc=AdrfqFFtbbFRsvEfbyr7P8GEGbM_JbQXnHFDQ1y3TQWJ28hZo8Nqoj6u1RX2dXiGllQ&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHnHCjJ_VIKILg1YsNRiOh0LduqkpAwWi4TNN68lghzHA&oe=6A8E15A1" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/588419249_17921070774197794_6124270034423675279_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=3JkYViKyRj8Q7kNvwEkOiCF&_nc_oc=Adr1QtZOE2_gCkhZw4X3oXIyss4kYk7ttDnZLTWWvOHHXtC8bchpmichCPAJANDg8S4&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEQPYQuvNi7Znbf5fBhdntJde3VBqOwN0vODIRI207f-Q&oe=6A8E1750" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587201175_17921070783197794_8616865752323183758_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=bv6Xf_HdNhgQ7kNvwGLa9aH&_nc_oc=AdqQXXol3FJsS7VkkDJ3QlI9cKjGFVCVZFRIZa9iFu30H2Y4zTUNo1IPSI9UHichAmo&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGTbWKPr9nE9l0dOujWqgfgOF9bzUvi_o4xeEw1oUryqg&oe=6A8E342D" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587924072_17921070792197794_600675680033284666_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=l_YM08fopUAQ7kNvwH944hI&_nc_oc=AdoL4XCLwCFDuqBCdXQDQzqOGbhwsS8YgLl2zPMznSm0jurPBbPfTiEQFPwC0HGSKdo&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEvkJFdOa1gLnO7J68y5A4W0_Uc7sXE6xILt2zBRkKqVA&oe=6A8E265B" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587858524_17921070801197794_8070058037387874660_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=M51dVYfYCgsQ7kNvwGFHJlP&_nc_oc=AdqFtWbC0AVp7MZ8YZPZk--NVH2736ftE3hrxlCiR0CCSVqsadBSmCVF1oG5j27WY6I&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHoEa5vdHd5bFCUbzwz4Cuie9U-P2YUXGlGV6-pzJcySA&oe=6A8E0B7A" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/588818366_17921070810197794_4011046564203282095_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=8KIf0QEeEmYQ7kNvwHCv6qB&_nc_oc=Ado5jqWgrnvoIE8dnQlZUeh-MHxcnrlZ3zn1ulUCNLjvLtLwdPboqmdqiSXjHXF8P5U&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHxsro1R2bB9QnDWZsVhRNiQRBZS4z-4WnJ0FRv2AQDaA&oe=6A8E2D0A" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587591295_17921070819197794_7739673181892329073_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Rpslq-yoVOkQ7kNvwG1QJAc&_nc_oc=AdqdeSGAVhpkvxMxjA1GGbSEtoDWC771qbLPS_QuyZadITkMlDTxp8F9QLQtGRtADbU&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHunTqj2Pi4urEGWVkKrVlZ9ev8quJbskkxKtsM5YjCJQ&oe=6A8E25F8" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/587548200_17921070828197794_2504365569520611714_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=nnqNmL-2bJQQ7kNvwFiesfd&_nc_oc=AdrvEOBn-y9Xim5ARyqTDQXGMcgiY8Zc2M1dMq2PL0hXV8KGs5NPoblzNnhZEMqTj_Q&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQG-kgIojMjiAIT-hTKUvAJyiqYbGztiggpbA8XsvWcLJQ&oe=6A8E2931" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587326704_17921070843197794_7401554729787001220_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=DAlid5uYZ9YQ7kNvwF4DigQ&_nc_oc=AdocjVsQGDcLWWOI0RbjoR1a9WjseZLjqNwtpUOyTvI2NCwsW0dSsKVPArzFaoPyGBM&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGIq0Pf2Fi4uXzqsJtORfY_mMD664UQ8DaUE1fjAPF5Lg&oe=6A8E30EA" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587762611_17921070855197794_4689915196519223078_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=4SSescsm034Q7kNvwFFGtwb&_nc_oc=AdoVzOkXDBf3mOV2SoCsW29tZggiv1b9Gwb6OUZO6oKbi8nq_4HjgIBVXr-XxCy0ylU&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHOIKKGu-Lh41pWKzM4Unq1o5VchbQuZcNLbHvTxK5y2g&oe=6A8E1311" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
-                        <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. 𝓣𝓸𝓴𝔂𝓸 𝟐𝟎𝟐𝟓 𝓓𝓮𝓪𝓯𝓵𝔂𝓶...</span><span class="lang-zh">. 𝓣𝓸𝓴𝔂𝓸 𝟐𝟎𝟐𝟓 𝓓𝓮𝓪𝓯𝓵𝔂𝓶...</span></h3>
-                            </div>
-                            <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> Tokyo, Japan
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>𝓣𝓸𝓴𝔂𝓸 𝟐𝟎𝟐𝟓 𝓓𝓮𝓪𝓯𝓵𝔂𝓶𝓹𝓲𝓬𝓼<br>一直都想開Post, 但心情一直都好複雜唔識去形容<br><br>由一年前決定要參加開始, 每一日都好辛苦咁練習<br>我黎之前心中一直有個目標, 覺得自己起碼有頭五名內<br><br>點知 第一場對克羅地亞, 世界排名第二<br>個心灰到… 練咁耐 我連晉級嘅機會都冇<br><br>但係好坦白咁講, <br>我黎之前都有講過有幾個對手我好想試下同佢地打<br>而克羅地亞就係其中一個我想打嘅對手<br>今次能夠交手 都讓我心滿意足<br><br>雖然就係好傷心、有遺憾<br>但係我都覺得自己係一個好幸福嘅人<br>能夠有咁嘅福氣同唔同嘅世界高手交流<br>唔係個個都有機會<br><br>———————————————————————<br><br>係短短一年間, 克服左好多野 成長了不少<br>多謝大家係背後提升我硬件、軟件上嘅野 <br>讓我有強大嘅力量去面對賽事<br>完左比賽 我都好清晰知道自己爭啲咩要去改進<br><br>以下排名不分先後<br>未能一一道謝，掛漏萬一<br>@gus_cheung @lightup.counselling @sportlight.athletes @coach_bryanleung @laidback_st_ @island.sports.massage <br>@ Lingu教練同隊友們 <br>@ MU教練們同隊友們 <br>@星期日練習嘅教練們及同伴們 <br><br>@hkcsad 給予機會及教練同隊友們<br><br>夢，已經完結<br>未來去向如何 也不知道<br>未來有冇機會再追多次夢 我都唔知道<br>但 我會好好裝備自己，機會到時我會好好把握<br><br>多謝一年前鼓起勇氣再接觸跆拳嘅自己<br><br>19-27 November, 2025.<br>🎞️ | #KodakUltramax400<br>📷 | #canonexauto <br>🖨️ | @hk_camera <br>📍 | Tokyo, Japan<br><br>#urbanwilderfilm<br>#urbanwildertravel<br>#deaflympics2025 #deaflympicstokyo2025 #2025聽障奧運 #聽障奧運 #2025東京聽障奧林匹克運動會 #聾人運動員</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
-                            </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
-                                <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DRrzmQcjxnj/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div class="feed-card" data-location="Tokyo, Japan">
-                        <!-- 照片區塊 (強制在左邊) -->
-                        <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587190283_17921068224197794_3318333845834930095_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=OYo_QaKZuMIQ7kNvwFlJcWu&_nc_oc=AdoeoajnMzJDzNsJA-t3b6VEBKphNrMrem3mJQW-aKywMIpliH14SmqE0Jx8NnbTf6Y&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHlbNn_9_GE3WHL4_AEqJP2gJbL-OCR5cmUHEqDNHDbTw&oe=6A8E3EE4" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/588388170_17921068233197794_5209157573908743536_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=aKJ0atwRVS0Q7kNvwEiN0ph&_nc_oc=AdpxtWLJAbMlJmwjIhimfqNMSHkrr_DnCocJFeGLc63JIXjdKSglzicvapifMj0VMEo&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGrwOHwnc_bZx95w8H2Q3vYYIN9GzQcUlK0_kA-3POsBA&oe=6A8E0EBB" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587671128_17921068242197794_5845253201445918077_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Y44hg7QLqaoQ7kNvwFWiBL6&_nc_oc=AdqndPLteNk5xG6RA4OgeH6WOZD-5cjD2rKzBC34iPFk8ChNN4hbgY41faSB2rmtvKI&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQFK5NCfOfdHuRIsjEkgWEHacW0mr1-wXu6hiKgbtt9Ujg&oe=6A8E22D8" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587516622_17921068251197794_4973132823368865157_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=JHcrdl3BlikQ7kNvwGYP_Hh&_nc_oc=AdoZy4WZHgrZYMk2xnDFArd28xl-jY_ZWlmROgBd0r8WTaVRX3Z0XBel2peEcROTBv8&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQGfcV8ok5b-u9jnT-EfY796nEcUPoD3QYTa7-CQiTdJ1w&oe=6A8E1F65" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587671112_17921068263197794_5686756391278521862_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=NEWGtO3ZaB4Q7kNvwGOUct6&_nc_oc=Adrkm4uQtkT4l85s7L8wp8KdpoJF47oJ794S1Bw4UriwxzaIkLBVAGWb_eumgile-tM&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF1nXd3uKoOl3S57kDsMe2uC_aaLzfuexQtrrDR7ondBw&oe=6A8E3608" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/588040782_17921068272197794_6421763469140382172_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=72Lym-1iERkQ7kNvwGoacz0&_nc_oc=AdqlnfKj6aepEuy2jtc4n1WmFJLKIheKF3LSjE8gVgVQwMrvRsZLynYGvRlH-3oJGj0&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQE0LusAsB8---waK8YC_Cl_rWH_XFFPTvasplMIZPk2UQ&oe=6A8E2510" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/587757795_17921068281197794_7438607967392677683_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=7vOWPx9-5egQ7kNvwFKDcB1&_nc_oc=AdoBzMyjFfKIfMunaH9FBpcIqANmVDhws5U9b-Ivn26MysxNbdv6OxpRuRffYR2HDQM&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEUB_XnB__zrQZnBnJKvEiZI_eDqcAl753f4fdYPgj2OQ&oe=6A8E2A59" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/588418679_17921068290197794_3910699990635005605_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=PcY5H-SrJ7gQ7kNvwFYoC9t&_nc_oc=Adou5EHLLRjfXy4ng4-98-lfiwfrJ1HjTRFXgyFKIYYOt_Yja-CQ4WjW9wcLGtAqo_A&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHT-2aOlZARs_-ml8Tz6CWe4UieCZ0uw9iQRyGcoLNFjg&oe=6A8E369E" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587986135_17921068299197794_6954433696636391004_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=VZLvPedWFf0Q7kNvwEJKUmu&_nc_oc=AdplsodunqiDOF3O72zZruX26c7BpRFYri5d39tDdN3IOGsiD05JA6rSwdiLWEjdgAo&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHZq6NTDSoRMeA9xn0MD0av31FgvHu4Q3mzWzsk-QTYlw&oe=6A8E370E" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587516610_17921068308197794_3784021111640305263_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ttyXEkgYJ1MQ7kNvwFT4qlj&_nc_oc=Adp2Fvu-hg-2ZchGimwYiCufq-MPO7G4RoSW4tqoBTvK0K4GbjkUOACPcEW2twJjgDI&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEM18JHtROTFCMm1bilinZbJeCEKS17RPzIffCJBqeeDg&oe=6A8E3983" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/587347023_17921068320197794_6700299491118014780_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=DGvGzxRy7ksQ7kNvwFBW6UJ&_nc_oc=Ado2D5ABu31AXfMUunmcE4bheu1zGzS3hYWY5DYlWqrELV-Ia_D6nvP24aiCLYL44NA&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHBQbCnIefI7HdZTlsCeOI6QwdZu6OryPaqMZD24EslNg&oe=6A8E21F3" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/587069236_17921068329197794_2509091943585144893_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=8k_I4QbR2QkQ7kNvwGzMqvX&_nc_oc=Adra6q2Zo_uoqrxtu_lfsIqBlcDz_I2o25rj4YJiSkzYMdS6bqrtYyNyOQVB6CqftwI&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQG3d8vcwDj0whw-SWAmASjWewCjhXcndJ3wTLrfAHLkqg&oe=6A8E39D7" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/587818667_17921068338197794_6607064451649483097_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=sfiBlDk5JVMQ7kNvwHNXwMN&_nc_oc=AdrqqRWUj-hh7D8njgbUMrMiNNUujRkCiv8P-UtUSk7F2KOMahVEbVBb_GlDJJFHguA&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHeMEjplkErG4oHV4FytgAoZpl-7JNnsEYiwzYwFE-qmw&oe=6A8E2B35" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-15/587623031_17921068347197794_669876320947080004_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=cZcNe9mZZCsQ7kNvwGne9IR&_nc_oc=AdoWbY8SXbgRJC5wfR2sLwYySQyLn24YuGptP63R85CR_Ztm-9MltRx1Rw-E22y6knk&_nc_zt=23&_nc_ht=scontent-iad3-2.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQEyRZtEBm8G6Oi2cRVUJt0tJQMDWnj2TI2zebMCCCsHqA&oe=6A8E2B1C" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/589342248_17921068356197794_8972386114817254955_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=2rG3nnlnjaoQ7kNvwHRTMxx&_nc_oc=Adp7TUSFlbD-lERsWh82MQpsZmhOGWemZsXir3KDID_Ynnq5GVrIEHl8YJiBSfMRwKE&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQE-T7k4TdJqAtkCwQk1AqkeeHtn_rABgr1US32w0bnexA&oe=6A8E211B" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/589250220_17921068368197794_2988532697601072598_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=LJh6skNaeJUQ7kNvwEIafoi&_nc_oc=Adpxrf9ZxXa-q78cKtzC71TcLpF1mRDQl5LXsQMseRNw-GA1v9r-_xwJGeANUgQg4nE&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQF44XTLq_s4crrORuuQY2cO_4c6LaXyKeCTPmQkmyWSqQ&oe=6A8E0C90" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
-                        <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. Day in Tokyo🍁🍂  19...</span><span class="lang-zh">. Day in Tokyo🍁🍂  19...</span></h3>
-                            </div>
-                            <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> Tokyo, Japan
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>Day in Tokyo🍁🍂<br><br>19-27 November, 2025.<br>🎞️ | #KodakUltramax400<br>📷 | #canonexauto <br>🖨️ | @hk_camera <br>📍 | Tokyo, Japan<br><br>#urbanwilderfilm<br>#urbanwildertravel<br>#日比谷公園 #銀杏の葉っぱ #銀杏葉 #銀杏 #日比谷公園紅葉</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
-                            </div>
-                            <div class="feed-footer" style="margin-top: 15px;">
-                                <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
-                                <a href="https://www.instagram.com/p/DRrxjsGD7c1/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                                    <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div class="feed-card" data-location="惠洲">
-                        <!-- 照片區塊 (強制在左邊) -->
-                        <div class="feed-photo">
-                            <div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-15/549051182_17913067263197794_1164732701229591580_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=8ve19xYTN34Q7kNvwE6EfYc&_nc_oc=AdrkS3hMZLy6tiVCKK78vzFUynugCgDEvyf7b-oUiWtOorTzOYNGCean5wuMrbC_u2U&_nc_zt=23&_nc_ht=scontent-iad3-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHWKz6-CWTi42V1m8gaEm7c1dOJpR-K_k19jzj-L7XU9A&oe=6A8E1468" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-15/549309031_17913067272197794_888567641163838511_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_6A1vx_moNYQ7kNvwEoe4iK&_nc_oc=Adr6yLVzcJkWjaNaFy7pnvOPnpclO8DQAlQ11Afku9H-7rgYnhiTgobH0H9Tr-Jr-p8&_nc_zt=23&_nc_ht=scontent-iad6-1.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=I2N0s7RNPv9CJPvUSF0ehg&oh=00_AQHjGaOhG3JMmlWghEhaTg-8-v9oKrw1Iw5ku93DVIOOKQ&oe=6A8E1841" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
-                </div>
-                        </div>
-                        
-                        <!-- 文字區塊 (強制在右邊) -->
-                        <div class="feed-content">
-                            <div class="feed-header">
-                                <h3><span class="en">. 🏨  📷 | #sonya7c #s...</span><span class="lang-zh">. 🏨  📷 | #sonya7c #s...</span></h3>
-                            </div>
-                            <div class="feed-desc">
-                                
-                    <div style="font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: bold;">
-                        <i class="fa-solid fa-location-dot"></i> 惠洲
-                    </div>
-                
-                                <div class="feed-desc-text">
-                                    <p style="margin: 0; text-align: left; font-size: 14px;">.<br>🏨<br><br>📷 | #sonya7c #sonyfe24mmf28g <br>📍 | 惠洲<br><br>#urbanwildertravel</p>
-                                </div>
-                                <button class="read-more-btn" onclick="toggleReadMore(this)">
-                                    <span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>
-                                </button>
-                            </div>
-                            <div class="feed-我只会生成文本，你提出的问题超出了我的程序逻辑范畴。
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾 (Footer) -->
+    <footer style="text-align: center; padding: 40px 20px; margin-top: 20px; color: var(--text-light); font-size: 14px; border-top: 1px solid rgba(23, 59, 60, 0.1);">
+        <div style="margin-bottom: 10px;">
+            <span class="en">Contact with us on:</span><span class="lang-zh">聯絡我們：</span>
+            <a href="https://www.instagram.com/urban.wilder/" target="_blank" style="margin-left: 5px;">
+                <i class="fa-brands fa-instagram"></i> Urban.Wilder
+            </a>
+        </div>
+        <div>
+            &copy; 2026 Chan Tsz Ying. All rights reserved. Powered by Urban.Wilder.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            if (nav.style.display === 'flex' || nav.style.display === '') {
+                nav.style.display = 'none'; 
+            } else {
+                nav.style.display = 'flex'; 
+            }
+        }
+
+        function toggleSub(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const clickedNavItem = event.target.closest('.nav-item');
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if (item !== clickedNavItem) {
+                    item.classList.remove('expanded');
+                }
+            });
+            if (clickedNavItem) {
+                clickedNavItem.classList.toggle('expanded');
+            }
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+
+            document.querySelectorAll('#main-nav button, #main-nav .nav-item > button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.getElementById(`btn-nav-${pageId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('expanded');
+            });
+
+            const nav = document.getElementById('main-nav');
+            const menuBtn = document.getElementById('floating-menu-btn');
+            nav.setAttribute('data-active-page', pageId);
+
+            if (pageId === 'home') {
+                nav.classList.remove('dropdown-mode');
+                nav.style.display = 'flex';
+                menuBtn.style.display = 'none';
+            } else {
+                nav.classList.add('dropdown-mode');
+                if (window.innerWidth <= 768) {
+                    nav.style.display = 'none'; 
+                }
+                menuBtn.style.display = 'flex';
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        function showBlogTab(tabId) {
+            document.getElementById('blog-tab-travel').style.display = 'none';
+            document.getElementById('blog-tab-project').style.display = 'none';
+            document.getElementById('btn-blog-travel').style.backgroundColor = 'var(--primary)';
+            document.getElementById('btn-blog-project').style.backgroundColor = 'var(--primary)';
+
+            document.getElementById('blog-tab-' + tabId).style.display = 'block';
+            document.getElementById('btn-blog-' + tabId).style.backgroundColor = 'var(--accent)';
+
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
+            closeMobileNav();
+            window.dispatchEvent(new Event('resize'));
+            checkReadMoreButtons();
+        }
+
+        function showPhotoTab(tabId) {
+            document.getElementById('photo-tab-gallery').style.display = 'none';
+            document.getElementById('photo-tab-cameras').style.display = 'none';
+            document.getElementById('btn-photo-gallery').style.backgroundColor = 'var(--primary)';
+            document.getElementById('btn-photo-cameras').style.backgroundColor = 'var(--primary)';
+
+            document.getElementById('photo-tab-' + tabId).style.display = 'block';
+            document.getElementById('btn-photo-' + tabId).style.backgroundColor = 'var(--accent)';
+
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('expanded'));
+            closeMobileNav();
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        function showCameraItem(cameraId) {
+            if (cameraId === 'all') {
+                document.getElementById('camera-select').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            const targetCard = document.querySelector(`#photo-tab-cameras [data-camera="${cameraId}"]`);
+            if (targetCard) {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function closeMobileNav() {
+            const nav = document.getElementById('main-nav');
+            if (nav.classList.contains('dropdown-mode') && nav.style.display === 'flex' && window.innerWidth <= 768) {
+                nav.style.display = 'none';
+            }
+        }
+
+        let currentLang = 'en';
+        function toggleLanguage() {
+            const body = document.body;
+            if (currentLang === 'en') {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-zh');
+                currentLang = 'zh';
+            } else {
+                body.classList.remove('lang-zh');
+                body.classList.add('lang-en');
+                currentLang = 'en';
+            }
+        }
+        
+        function filterTravelLocation(location) {
+            const cards = document.querySelectorAll('#blog-tab-travel .feed-card');
+            cards.forEach(card => {
+                if (location === 'all' || card.getAttribute('data-location') === location) {
+                    card.style.display = ''; 
+                } else {
+                    card.style.display = 'none'; 
+                }
+            });
+        }
+
+        function toggleReadMore(btn) {
+            const textContainer = btn.previousElementSibling;
+            if (textContainer.classList.contains('expanded')) {
+                textContainer.classList.remove('expanded');
+                btn.innerHTML = '<span class="en">Show more...</span><span class="lang-zh">顯示更多...</span>';
+            } else {
+                textContainer.classList.add('expanded');
+                btn.innerHTML = '<span class="en">Show less</span><span class="lang-zh">顯示更少</span>';
+            }
+            if (currentLang === 'en') {
+                document.body.classList.remove('lang-zh');
+                document.body.classList.add('lang-en');
+            } else {
+                document.body.classList.remove('lang-en');
+                document.body.classList.add('lang-zh');
+            }
+        }
+
+        function checkReadMoreButtons() {
+            setTimeout(() => {
+                document.querySelectorAll('.feed-desc-text').forEach(el => {
+                    const btn = el.nextElementSibling;
+                    if (btn && btn.classList.contains('read-more-btn')) {
+                        if (el.scrollHeight > el.clientHeight) {
+                            btn.style.display = 'inline-block';
+                        } else {
+                            if (!el.classList.contains('expanded')) {
+                                btn.style.display = 'none';
+                            }
+                        }
+                    }
+                });
+            }, 100);
+        }
+
+        window.addEventListener('load', checkReadMoreButtons);
+        window.addEventListener('resize', checkReadMoreButtons);
+
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('main-nav');
+            const menuBtn = document.getElementById('floating-menu-btn');
+            if (nav.classList.contains('dropdown-mode') && nav.style.display === 'flex') {
+                if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+                    nav.style.display = 'none';
+                }
+            }
+            document.querySelectorAll('.nav-item.expanded').forEach(item => {
+                if (!item.contains(event.target)) {
+                    item.classList.remove('expanded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
