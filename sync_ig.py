@@ -7,7 +7,7 @@ IG_USER_ID = os.getenv("IG_USER_ID")
 HTML_FILE = "index.html"
 
 # 多分頁設定 (Travel 與 Project)
-CONFIGS = [
+FEED_CONFIGS = [
     {
         "hashtag": "#urbanwildertravel",
         "start_tag": "<!-- IG_TRAVEL_POSTS_START -->",
@@ -19,6 +19,18 @@ CONFIGS = [
         "end_tag": "<!-- IG_PROJECT_POSTS_END -->"
     }
 ]
+
+# Gallery 類別設定
+GALLERY_CONFIG = {
+    "start_tag": "<!-- IG_GALLERY_POSTS_START -->",
+    "end_tag": "<!-- IG_GALLERY_POSTS_END -->",
+    "categories": [
+        {"title": "Film Photo", "hashtags": ["#urbanwilderfilm"]},
+        {"title": "Cat & Dog", "hashtags": ["#urbanwilderdog", "#urbanwildercat"]},
+        {"title": "Bee & Wasp", "hashtags": ["#urbanwilderwasps", "#urbanwilderbees"]},
+        {"title": "Butterfly", "hashtags": ["#urbanwilderbutterfly"]}
+    ]
+}
 
 def fetch_ig_posts():
     print("開始抓取 Instagram 所有歷史貼文（含多張照片與自動翻頁）...")
@@ -48,7 +60,8 @@ def update_html():
     with open(HTML_FILE, 'r', encoding='utf-8') as f:
         file_data = f.read()
 
-    for config in CONFIGS:
+    # ====== 1. 處理 Travel & Project Feed ======
+    for config in FEED_CONFIGS:
         hashtag = config["hashtag"]
         start_tag = config["start_tag"]
         end_tag = config["end_tag"]
@@ -78,12 +91,12 @@ def update_html():
             if not image_urls and post.get('media_url'):
                 image_urls.append(post.get('media_url'))
 
-            # 製作相片區塊 (Carousel)
+            # 製作相片區塊 (Carousel)，強制套用 object-fit: contain
             photos_html_block = '<div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">'
             for img_url in image_urls:
                 photos_html_block += f"""
                         <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="{img_url}" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            <img src="{img_url}" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
                         </div>
                 """
             photos_html_block += '</div>'
@@ -105,8 +118,6 @@ def update_html():
 
             formatted_caption = caption.replace('\n', '<br>')
 
-            # 🌟 絕對強制的左右排版 HTML
-            # 利用 feed-card 的 flex-direction: row 確保照片在左，文字在右
             post_html = f"""
                     <div class="feed-card" {loc_attr}>
                         <!-- 照片區塊 (強制在左邊) -->
@@ -161,6 +172,53 @@ def update_html():
             file_data = re.sub(pattern, rf"\1\n{generated_html}\n\3", file_data, flags=re.DOTALL)
         else:
             print(f"❌ 錯誤：找不到 {start_tag}")
+
+    # ====== 2. 處理 Gallery 區塊 ======
+    gallery_html = ""
+    for cat in GALLERY_CONFIG["categories"]:
+        cat_title = cat["title"]
+        cat_hashtags = cat["hashtags"]
+        
+        cat_posts = []
+        for post in posts:
+            caption = post.get('caption', '')
+            if any(tag in caption for tag in cat_hashtags):
+                cat_posts.append(post)
+                
+        if not cat_posts:
+            continue
+            
+        gallery_html += f'                    <div class="gallery-category">\n'
+        gallery_html += f'                        <h3>{cat_title}</h3>\n'
+        gallery_html += f'                        <div class="gallery-carousel">\n'
+        
+        for post in cat_posts:
+            permalink = post.get('permalink', '')
+            img_url = ''
+            
+            # 取出第一張照片當封面即可
+            if post.get('media_type') == 'CAROUSEL_ALBUM':
+                children = post.get('children', {}).get('data', [])
+                if children:
+                    img_url = children[0].get('media_url', '')
+            else:
+                img_url = post.get('media_url', '')
+                
+            if not img_url:
+                continue
+                
+            gallery_html += f'''                            <a href="{permalink}" target="_blank" class="gallery-item">
+                                <img src="{img_url}" alt="{cat_title}">
+                            </a>\n'''
+                            
+        gallery_html += f'                        </div>\n'
+        gallery_html += f'                    </div>\n'
+
+    pattern_gal = rf'({re.escape(GALLERY_CONFIG["start_tag"])})(.*?)({re.escape(GALLERY_CONFIG["end_tag"])})'
+    if re.search(pattern_gal, file_data, flags=re.DOTALL):
+        file_data = re.sub(pattern_gal, rf'\1\n{gallery_html}\n\3', file_data, flags=re.DOTALL)
+    else:
+        print(f"❌ 錯誤：找不到 Gallery Start Tag")
 
     with open(HTML_FILE, 'w', encoding='utf-8') as f:
         f.write(file_data)
