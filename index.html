@@ -324,6 +324,17 @@
         footer { text-align: center; padding: 40px 20px; margin-top: 20px; color: var(--text-light); font-size: 14px; border-top: 1px solid rgba(23, 59, 60, 0.1); }
         footer a { color: var(--accent); text-decoration: none; font-weight: bold; transition: color 0.3s; }
         footer a:hover { color: var(--primary); }
+        /* 專屬攝影頁面的頁首背景 */
+        header.photo-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://cdn.assets.lomography.com/64/61fb86fda82bde7c2d4272ea38d9fd973007b7/1216x1221x1.jpg?auth=973c4a406e72c3047187e4d5cc3a6559299dce83124c61c214714ae19c2f7cdb');
+            background-size: cover;
+            background-position: center 30%;
+            padding: 90px 20px;
+            transition: all 0.4s ease;
+        }
+        header.photo-bg h1, header.photo-bg p {
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
     </style>
 </head>
 <body class="lang-en">
@@ -2920,6 +2931,12 @@
                 section.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
+            const mainHeader = document.querySelector('header');
+            if (pageId === 'photography') {
+                mainHeader.classList.add('photo-bg');
+            } else {
+                mainHeader.classList.remove('photo-bg');
+            }
 
             document.querySelectorAll('#main-nav button, #main-nav .nav-item > button').forEach(btn => {
                 btn.classList.remove('active');
