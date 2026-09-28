@@ -3084,6 +3084,9 @@
         }
         // 自動擷取 IG 貼文第一句作為標題
         // ==========================================
+        // ==========================================
+        // 自動擷取 IG 貼文第一句作為標題，並從內文中移除
+        // ==========================================
         function autoGenerateBlogTitles() {
             const feedCards = document.querySelectorAll('.feed-card');
 
@@ -3092,32 +3095,53 @@
                 const headerH3 = card.querySelector('.feed-header h3');
 
                 if (pElement && headerH3) {
+                    // 使用正則表達式，根據 <br> 標籤分割 HTML 內容
                     const htmlContent = pElement.innerHTML;
-                    const lines = htmlContent.split(/<br\s*\/?>/i);
-
+                    const rawLines = htmlContent.split(/(<br\s*\/?>)/i); 
+                    
                     let firstSentence = "";
+                    let targetIndex = -1; // 記錄第一句話在陣列中的位置
 
-                    for (let i = 0; i < lines.length; i++) {
-                        let textLine = lines[i].replace(/<[^>]*>?/gm, '').trim();
+                    // 尋找真正的第一句話
+                    for (let i = 0; i < rawLines.length; i++) {
+                        // 如果是 <br> 標籤就跳過
+                        if (rawLines[i].toLowerCase().includes('<br')) continue;
+
+                        let textLine = rawLines[i].replace(/<[^>]*>?/gm, '').trim();
+                        
+                        // 找到第一個有意義的文字（不是空的，也不是單獨的點）
                         if (textLine && textLine !== '.') {
                             firstSentence = textLine;
+                            targetIndex = i;
                             break;
                         }
                     }
 
                     if (firstSentence) {
-                         // 標題字數
+                        // 1. 設定標題
                         const maxLength = 25;
                         let displayTitle = firstSentence.length > maxLength 
                             ? firstSentence.substring(0, maxLength) + "..." 
                             : firstSentence;
-
                         headerH3.innerHTML = `<span class="en">${displayTitle}</span><span class="lang-zh">${displayTitle}</span>`;
+
+                        // 2. 從內文中移除這第一句話
+                        // 為了避免影響排版，我們把這段文字替換成空字串
+                        rawLines[targetIndex] = rawLines[targetIndex].replace(firstSentence, '');
+
+                        // 如果抓取到的第一句話前面有單獨的「.」加上換行，也一併清理乾淨
+                        for (let j = 0; j < targetIndex; j++) {
+                           if (rawLines[j].replace(/<[^>]*>?/gm, '').trim() === '.') {
+                               rawLines[j] = ''; // 移除點
+                           }
+                        }
+                        
+                        // 將處理後的 HTML 重新組合並放回 p 標籤中
+                        pElement.innerHTML = rawLines.join('');
                     }
                 }
             });
         }
-
         window.addEventListener('load', autoGenerateBlogTitles);
         window.addEventListener('load', checkReadMoreButtons);
         window.addEventListener('resize', checkReadMoreButtons);
