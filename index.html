@@ -306,6 +306,68 @@
         .gallery-item img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
         .gallery-item:hover img { transform: scale(1.05); }
 
+        /* Hero Shot 與 燈箱樣式  */
+        /* 每個分類的第一張照片設為 Hero Shot (佔兩格寬度) */
+        .gallery-item:first-child {
+            flex: 0 0 calc(50% - 7.5px); 
+            aspect-ratio: 2 / 1; 
+        }
+
+        /* 燈箱 (Lightbox) 樣式 */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(23, 59, 60, 0.95); 
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -45px; right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: var(--accent); }
+        .lightbox-btn {
+            margin-top: 20px;
+            background: var(--accent);
+            color: #fff;
+            padding: 10px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .lightbox-btn:hover { background: #4a7273; transform: translateY(-2px); }
+        
         @media (max-width: 768px) {
             .content-select { width: 100%; max-width: 280px; }
             .card { padding: 25px 15px !important; }
@@ -323,6 +385,10 @@
             
             /* 💡 微調 2：讓 Gallery 照片縮小一點，呈現「一排顯示兩張半」的視覺提示 */
             .gallery-item { flex: 0 0 42%; }
+            .gallery-item:first-child { 
+                flex: 0 0 85%; 
+                aspect-ratio: 4 / 3; 
+            }
             
             /* 💡 微調 3：嘗試強制在手機端顯示底部滑桿 (部分 Android 瀏覽器支援) */
             .gallery-carousel::-webkit-scrollbar,
@@ -367,6 +433,17 @@
             left: 0;
             top: 0;
             will-change: transform;
+        }
+        .feed-photo .custom-scrollbar-track {
+            position: absolute;
+            bottom: 15px; /* 距離照片底部的距離 */
+            left: 5%;
+            width: 90%;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.3); /* 稍微加深底色讓滑塊更清楚 */
+        }
+        .feed-photo .custom-scrollbar-thumb {
+            background-color: #ffffff; /* 文章上的滑塊改為純白色更亮眼 */
         }
 
         @media (max-width: 768px) {
@@ -2959,6 +3036,17 @@
             &copy; 2026 Chan Tsz Ying. All rights reserved. Powered by Urban.Wilder.
         </div>
     </footer>
+    <!-- 燈箱 (Lightbox) 結構 -->
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <div class="lightbox-container">
+            <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged Photo">
+            <a id="lightbox-ig-link" href="#" target="_blank" class="lightbox-btn">
+                <i class="fa-brands fa-instagram"></i> 
+                <span class="en">View on Instagram</span><span class="lang-zh">在 IG 上查看</span>
+            </a>
+        </div>
+    </div>
 
     <script>
         function toggleMenu() {
@@ -3320,6 +3408,44 @@
             });
         }
         window.addEventListener('load', initGalleryPermanentScrollbars);
+        // 初始化 Gallery 燈箱效果 (Lightbox) 
+        function initLightbox() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxIgLink = document.getElementById('lightbox-ig-link');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault(); // 阻止原本跳轉至 IG 的行為
+                    
+                    // 抓取被點擊圖片的來源與連結
+                    const imgSrc = this.querySelector('img').src;
+                    const igUrl = this.getAttribute('href');
+                    
+                    // 將資料放入燈箱
+                    lightboxImg.src = imgSrc;
+                    lightboxIgLink.href = igUrl;
+                    
+                    // 顯示燈箱並防止背景滑動
+                    lightbox.classList.add('show');
+                    document.body.style.overflow = 'hidden'; 
+                });
+            });
+        }
+
+        // 關閉燈箱邏輯
+        function closeLightbox(e) {
+            // 如果點到的是照片本身或是按鈕，就不要關閉
+            if (e.target.id === 'lightbox-img' || e.target.closest('.lightbox-btn')) return;
+            
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('show');
+            document.body.style.overflow = ''; // 恢復背景滑動
+        }
+
+        window.addEventListener('load', initLightbox);
+        //
     </script>
 </body>
 </html>
