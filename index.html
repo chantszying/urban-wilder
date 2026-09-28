@@ -3100,24 +3100,6 @@
                 }
             });
         });
-        function updatePostTitles() {
-    const feedCards = document.querySelectorAll('.feed-card');
-    
-    feedCards.forEach(card => {
-        const descP = card.querySelector('.feed-desc-text p');
-        const headerH3 = card.querySelector('.feed-header h3');
-        
-        if (descP && headerH3) {
-            let firstLine = '';
-            // 如果成功找到第一句話，就自動替換掉標題
-        if (firstLine) {
-            headerH3.innerHTML = `
-                ${firstLine}
-                ${firstLine}
-            `;
-        }
-    }
-});
     </script>
 </body>
 </html>
