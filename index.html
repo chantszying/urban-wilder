@@ -275,9 +275,21 @@
         .feed-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
         
         /* feed-photo 佔 40% 寬度 */
-        .feed-photo { flex: 0 0 40%; position: relative; background: #eaeaea; border-right: 1px solid rgba(0,0,0,0.08); }
-        .feed-photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background-color: #f9f9f9; } /* 修復：使用 contain 顯示全圖 */
-        .feed-photo-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; width: 100%; height: 100%; -webkit-overflow-scrolling: touch; }
+        .feed-photo { 
+            flex: 0 0 40%; 
+            position: relative; 
+            background: #f9f9f9; 
+            border-right: 1px solid rgba(0,0,0,0.08); 
+            display: flex; 
+            flex-direction: column; /* 💡改為垂直排列，讓滑桿自然排在下方 */
+        }
+        .feed-photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background-color: #f9f9f9; }
+        .feed-photo-carousel { 
+            display: flex; overflow-x: auto; scroll-snap-type: x mandatory; width: 100%; 
+            height: auto !important; /* 💡取消強制100%高度 */
+            flex-grow: 1; /* 💡自動填滿剩餘空間 */
+            -webkit-overflow-scrolling: touch; 
+        }
         .feed-photo-carousel::-webkit-scrollbar { height: 6px; }
         .feed-photo-carousel::-webkit-scrollbar-thumb { background-color: rgba(23, 59, 60, 0.3); border-radius: 4px; }
         .feed-photo-item { flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9; }
@@ -449,15 +461,16 @@
             will-change: transform;
         }
         .feed-photo .custom-scrollbar-track {
-            position: absolute;
-            bottom: 15px; /* 距離照片底部的距離 */
-            left: 5%;
+            position: relative;
+            bottom: auto;
+            left: 0;
             width: 90%;
+            margin: 10px auto 15px auto; /* 置中並與相片保持距離 */
             z-index: 10;
-            background-color: rgba(0, 0, 0, 0.3); /* 稍微加深底色讓滑塊更清楚 */
+            background-color: rgba(23, 59, 60, 0.12); /* 恢復淺色底軌 */
         }
         .feed-photo .custom-scrollbar-thumb {
-            background-color: #ffffff; /* 文章上的滑塊改為純白色更亮眼 */
+            background-color: var(--accent); /* 恢復主題色滑塊 */
         }
 
         @media (max-width: 768px) {
