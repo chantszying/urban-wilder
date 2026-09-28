@@ -3083,9 +3083,6 @@
                 });
             }, 100);
         }
-        // 自動擷取 IG 貼文第一句作為標題
-        // ==========================================
-        // ==========================================
         // 自動擷取 IG 貼文第一句作為標題，並從內文中移除
         // ==========================================
         function autoGenerateBlogTitles() {
@@ -3119,8 +3116,8 @@
                     }
 
                     if (firstSentence) {
-                        // 1. 設定標題
-                        const maxLength = 25;
+                        // 1. 設定標題字數
+                        const maxLength = 30;
                         let displayTitle = firstSentence.length > maxLength 
                             ? firstSentence.substring(0, maxLength) + "..." 
                             : firstSentence;
