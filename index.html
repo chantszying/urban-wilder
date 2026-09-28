@@ -347,6 +347,40 @@
         header.photo-bg h1, header.photo-bg p {
             text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
         }
+        /* ─── 常駐自訂進度滑桿（手機版專用） ─── */
+        .custom-scrollbar-track {
+            display: none; 
+            width: 100%;
+            height: 4px;
+            background-color: rgba(23, 59, 60, 0.12); 
+            border-radius: 4px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-scrollbar-thumb {
+            height: 100%;
+            background-color: var(--accent); 
+            border-radius: 4px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            will-change: transform;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-carousel {
+                scrollbar-width: none !important; 
+                -ms-overflow-style: none !important; 
+            }
+            .gallery-carousel::-webkit-scrollbar {
+                display: none !important; 
+            }
+            .custom-scrollbar-track {
+                display: block !important;
+            }
+        }
     </style>
 </head>
 <body class="lang-en">
@@ -3169,6 +3203,52 @@
                 }
             });
         });
+        function initGalleryPermanentScrollbars() {
+            const carousels = document.querySelectorAll('.gallery-carousel');
+
+            carousels.forEach(carousel => {
+                if (carousel.nextElementSibling && carousel.nextElementSibling.classList.contains('custom-scrollbar-track')) {
+                    return;
+                }
+
+                const track = document.createElement('div');
+                track.className = 'custom-scrollbar-track';
+
+                const thumb = document.createElement('div');
+                thumb.className = 'custom-scrollbar-thumb';
+                track.appendChild(thumb);
+
+                carousel.parentNode.insertBefore(track, carousel.nextSibling);
+
+                function updateThumb() {
+                    const scrollWidth = carousel.scrollWidth;
+                    const clientWidth = carousel.clientWidth;
+                    const scrollLeft = carousel.scrollLeft;
+
+                    if (scrollWidth <= clientWidth) {
+                        track.style.display = 'none';
+                        return;
+                    } else {
+                        track.style.display = '';
+                    }
+
+                    const visibleRatio = Math.max(clientWidth / scrollWidth, 0.2);
+                    thumb.style.width = (visibleRatio * 100) + '%';
+
+                    const maxScroll = scrollWidth - clientWidth;
+                    const scrollPercent = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+                    const maxThumbTravel = track.clientWidth - thumb.clientWidth;
+                    thumb.style.transform = `translateX(${scrollPercent * maxThumbTravel}px)`;
+                }
+
+                carousel.addEventListener('scroll', updateThumb, { passive: true });
+                window.addEventListener('resize', updateThumb);
+
+                setTimeout(updateThumb, 300);
+            });
+        }
+
+        window.addEventListener('load', initGalleryPermanentScrollbars);
     </script>
 </body>
 </html>
