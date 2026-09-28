@@ -3082,7 +3082,43 @@
                 });
             }, 100);
         }
+        // 自動擷取 IG 貼文第一句作為標題
+        // ==========================================
+        function autoGenerateBlogTitles() {
+            const feedCards = document.querySelectorAll('.feed-card');
 
+            feedCards.forEach(card => {
+                const pElement = card.querySelector('.feed-desc-text p');
+                const headerH3 = card.querySelector('.feed-header h3');
+
+                if (pElement && headerH3) {
+                    const htmlContent = pElement.innerHTML;
+                    const lines = htmlContent.split(/<br\s*\/?>/i);
+
+                    let firstSentence = "";
+
+                    for (let i = 0; i < lines.length; i++) {
+                        let textLine = lines[i].replace(/<[^>]*>?/gm, '').trim();
+                        if (textLine && textLine !== '.') {
+                            firstSentence = textLine;
+                            break;
+                        }
+                    }
+
+                    if (firstSentence) {
+                         // 標題字數
+                        const maxLength = 25;
+                        let displayTitle = firstSentence.length > maxLength 
+                            ? firstSentence.substring(0, maxLength) + "..." 
+                            : firstSentence;
+
+                        headerH3.innerHTML = `<span class="en">${displayTitle}</span><span class="lang-zh">${displayTitle}</span>`;
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('load', autoGenerateBlogTitles);
         window.addEventListener('load', checkReadMoreButtons);
         window.addEventListener('resize', checkReadMoreButtons);
 
