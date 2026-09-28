@@ -3210,7 +3210,6 @@
             });
         });
         function initGalleryPermanentScrollbars() {
-            // 🚨 同時選取 Gallery 和 Article 裡的照片輪播
             const carousels = document.querySelectorAll('.gallery-carousel, .feed-photo-carousel');
 
             carousels.forEach(carousel => {
@@ -3220,9 +3219,11 @@
 
                 const track = document.createElement('div');
                 track.className = 'custom-scrollbar-track';
+                track.style.cursor = 'pointer'; // 滑鼠變成點擊圖示
 
                 const thumb = document.createElement('div');
                 thumb.className = 'custom-scrollbar-thumb';
+                thumb.style.touchAction = 'none'; // 🚨 避免手機拖曳滑桿時觸發網頁上下滾動
                 track.appendChild(thumb);
 
                 carousel.parentNode.insertBefore(track, carousel.nextSibling);
@@ -3236,7 +3237,7 @@
                         track.style.display = 'none';
                         return;
                     } else {
-                        track.style.display = '';
+                        track.style.display = 'block'; 
                     }
 
                     const visibleRatio = Math.max(clientWidth / scrollWidth, 0.2);
@@ -3250,11 +3251,74 @@
 
                 carousel.addEventListener('scroll', updateThumb, { passive: true });
                 window.addEventListener('resize', updateThumb);
-
                 setTimeout(updateThumb, 300);
+
+                // --- 🚨 新增：讓滑桿可以被直接點擊與拖曳 ---
+                let isDragging = false;
+                let startX;
+                let initialScrollLeft;
+
+                // 1. 滑鼠/手指「按下」滑塊
+                function onDragStart(e) {
+                    isDragging = true;
+                    // 判斷是滑鼠還是手指觸控
+                    startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                    initialScrollLeft = carousel.scrollLeft;
+                    document.body.style.userSelect = 'none'; // 拖曳時防止反白文字
+                }
+
+                // 2. 滑鼠/手指「移動」
+                function onDragMove(e) {
+                    if (!isDragging) return;
+                    e.preventDefault(); // 阻擋預設滾動行為
+                    
+                    const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                    const walk = currentX - startX; // 計算移動距離
+                    
+                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                    const maxThumbTravel = track.clientWidth - thumb.clientWidth;
+                    const ratio = maxScroll / maxThumbTravel; // 計算真實照片滾動的比例
+                    
+                    // 根據滑塊移動的距離，去滾動上方的照片
+                    carousel.scrollLeft = initialScrollLeft + (walk * ratio);
+                }
+
+                // 3. 滑鼠/手指「放開」
+                function onDragEnd() {
+                    isDragging = false;
+                    document.body.style.userSelect = '';
+                }
+
+                // 綁定拖曳事件 (同時支援手機 Touch 與電腦 Mouse)
+                thumb.addEventListener('mousedown', onDragStart);
+                thumb.addEventListener('touchstart', onDragStart, { passive: true });
+
+                // 為了滑動順暢，移動與放開的監聽器綁定在 document 上
+                document.addEventListener('mousemove', onDragMove, { passive: false });
+                document.addEventListener('touchmove', onDragMove, { passive: false });
+                document.addEventListener('mouseup', onDragEnd);
+                document.addEventListener('touchend', onDragEnd);
+
+                // 4. 點擊軌道空白處，照片直接跳到該位置
+                track.addEventListener('click', (e) => {
+                    if (e.target === thumb) return; // 如果是點到滑塊本身就不處理
+                    
+                    const trackRect = track.getBoundingClientRect();
+                    const clickX = e.clientX - trackRect.left;
+                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                    const maxThumbTravel = track.clientWidth - thumb.clientWidth;
+                    
+                    // 計算點擊位置的百分比 (讓滑塊中心對齊點擊點)
+                    let scrollPercent = (clickX - thumb.clientWidth / 2) / maxThumbTravel;
+                    scrollPercent = Math.max(0, Math.min(1, scrollPercent)); // 確保限制在 0~1 之間
+                    
+                    carousel.scrollTo({
+                        left: scrollPercent * maxScroll,
+                        behavior: 'smooth'
+                    });
+                });
             });
         }
-
         window.addEventListener('load', initGalleryPermanentScrollbars);
     </script>
 </body>
