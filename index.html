@@ -3101,40 +3101,23 @@
             });
         });
         function updatePostTitles() {
-            const feedCards = document.querySelectorAll('.feed-card');
-            
-            feedCards.forEach(card => {
-                const descElement = card.querySelector('.feed-desc-text p');
-                const headerElement = card.querySelector('.feed-header h3');
-                
-                if (descElement && headerElement) {
-                    // 取得內文並根據換行符號切割成陣列
-                    const textLines = descElement.innerText.split('\n');
-                    
-                    let firstLine = '';
-                    // 逐行尋找第一句非空白、且不是單純一個「.」的有效文字
-                    for (let line of textLines) {
-                        const cleanLine = line.trim();
-                        if (cleanLine && cleanLine !== '.') {
-                            firstLine = cleanLine;
-                            break;
-                        }
-                    }
-                    
-                    // 如果成功找到第一句話，就自動替換掉原本被截斷的標題
-                    if (firstLine) {
-                        headerElement.innerHTML = `
-                            ${firstLine}
-                            ${firstLine}
-                        `;
-                    }
-                }
-            });
+    const feedCards = document.querySelectorAll('.feed-card');
+    
+    feedCards.forEach(card => {
+        const descP = card.querySelector('.feed-desc-text p');
+        const headerH3 = card.querySelector('.feed-header h3');
+        
+        if (descP && headerH3) {
+            let firstLine = '';
+            // 如果成功找到第一句話，就自動替換掉標題
+        if (firstLine) {
+            headerH3.innerHTML = `
+                ${firstLine}
+                ${firstLine}
+            `;
         }
-
-        // 確保在網頁與所有貼文元素載入完成後執行
-        window.addEventListener('load', updatePostTitles);
-        //
+    }
+});
     </script>
 </body>
 </html>
