@@ -370,15 +370,18 @@
         }
 
         @media (max-width: 768px) {
-            .gallery-carousel {
+            /* 在手機端關閉系統那條碰了才會出現的隱藏原生滑桿 */
+            .gallery-carousel, .feed-photo-carousel {
                 scrollbar-width: none !important; 
                 -ms-overflow-style: none !important; 
             }
-            .gallery-carousel::-webkit-scrollbar {
+            .gallery-carousel::-webkit-scrollbar, .feed-photo-carousel::-webkit-scrollbar {
                 display: none !important; 
             }
+            /* 手機端常駐開啟自訂滑桿，絕不自動消失 */
             .custom-scrollbar-track {
                 display: block !important;
+                margin-bottom: 10px; /* 給滑桿一點底部空間 */
             }
         }
     </style>
@@ -3180,7 +3183,10 @@
                         }
                         
                         // 將處理後的 HTML 重新組合並放回 p 標籤中
-                        pElement.innerHTML = rawLines.join('');
+                        let newHtml = rawLines.join('');
+                        // 🚨 清除開頭殘留的換行標籤(<br>)與空白，解決頂部空隙問題
+                        newHtml = newHtml.replace(/^(\s*<br\s*\/?>\s*)+/gi, '');
+                        pElement.innerHTML = newHtml;
                     }
                 }
             });
@@ -3204,7 +3210,8 @@
             });
         });
         function initGalleryPermanentScrollbars() {
-            const carousels = document.querySelectorAll('.gallery-carousel');
+            // 🚨 同時選取 Gallery 和 Article 裡的照片輪播
+            const carousels = document.querySelectorAll('.gallery-carousel, .feed-photo-carousel');
 
             carousels.forEach(carousel => {
                 if (carousel.nextElementSibling && carousel.nextElementSibling.classList.contains('custom-scrollbar-track')) {
