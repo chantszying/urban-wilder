@@ -313,13 +313,24 @@
             /* 手機版：卡片變垂直排列 (照片在上，文字在下) */
             .feed-card { flex-direction: column; }
             .feed-photo { flex: none; height: 320px; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
-            .feed-photo-item { min-height: 320px; }
             .feed-content { padding: 20px; }
             .feed-avatar { position: static; margin-right: 10px; }
             .feed-footer { justify-content: flex-start; }
             
-            /* 手機版：Gallery 改為一行兩張 */
-            .gallery-item { flex: 0 0 calc(50% - 7.5px); }
+            /* 💡 微調 1：讓 Article 貼文照片之間有一點縫隙，並露出下一張的邊緣 */
+            .feed-photo-carousel { gap: 8px; padding-right: 15px; } 
+            .feed-photo-item { flex: 0 0 92%; min-height: 320px; border-radius: 4px; }
+            
+            /* 💡 微調 2：讓 Gallery 照片縮小一點，呈現「一排顯示兩張半」的視覺提示 */
+            .gallery-item { flex: 0 0 42%; }
+            
+            /* 💡 微調 3：嘗試強制在手機端顯示底部滑桿 (部分 Android 瀏覽器支援) */
+            .gallery-carousel::-webkit-scrollbar,
+            .feed-photo-carousel::-webkit-scrollbar {
+                display: block; 
+                height: 5px;
+                background: transparent;
+            }
         }
 
         footer { text-align: center; padding: 40px 20px; margin-top: 20px; color: var(--text-light); font-size: 14px; border-top: 1px solid rgba(23, 59, 60, 0.1); }
