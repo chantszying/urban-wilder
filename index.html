@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 🚨 需要您修改：網站標題 (顯示在瀏覽器分頁上) 🚨 -->
     <title>Tsz Ying @Urban.Wilder</title>
     
     <!-- 引入 Font Awesome 用於社交媒體小圖標 -->
@@ -14,8 +13,8 @@
     <style>
         /* ─── 網站整體顏色與字體設定 ─── */
         :root {
-            --primary: #173b3c;      /* 主色：深青色/松綠色，用於標題、頁首與重點背景 */
-            --accent: #5e8b8c;       /* 點綴色：灰藍色，用於按鈕、強調文字與連結 */
+            --primary: #173b3c;      /* 主色：深青色/松綠色 */
+            --accent: #5e8b8c;       /* 點綴色：灰藍色 */
             --bg: #f2f7f8;           /* 網站背景色：淡藍色/冰水色 */
             --card-bg: #ffffff;      /* 卡片背景色：純白色 */
             --text: #2c3e3e;         /* 主要文字顏色：深藍灰色 */
@@ -30,7 +29,7 @@
             line-height: 1.7;
         }
 
-        /* ─── 語言切換設定 (Language Toggle CSS) ─── */
+        /* ─── 語言切換設定 ─── */
         body.lang-en .lang-zh { display: none !important; }
         body.lang-zh .en { display: none !important; }
         
@@ -68,7 +67,7 @@
             color: #d1e2e3;
         }
         
-        /* ─── 導覽列與懸浮選單設計 (Navigation) ─── */
+        /* ─── 導覽列與懸浮選單設計 ─── */
         nav {
             display: flex;
             justify-content: center;
@@ -103,7 +102,6 @@
             border-bottom: 2px solid var(--accent);
         }
 
-        /* 懸浮選單按鈕 */
         #floating-menu-btn {
             display: none; 
             position: fixed;
@@ -149,7 +147,7 @@
         #main-nav.dropdown-mode #lang-toggle-btn { margin: 15px 20px; width: calc(100% - 40px); text-align: center; border: 2px solid var(--accent); color: var(--accent) !important; background: transparent; border-radius: 20px; padding: 8px 15px; }
         #main-nav.dropdown-mode #lang-toggle-btn:hover { background-color: var(--accent) !important; color: #fff !important; }
 
-        /* ─── 網頁主要內容容器與分頁動畫 ─── */
+        /* ─── 容器與動畫 ─── */
         .container { max-width: 1050px; margin: 40px auto; padding: 0 20px; }
         .page-section { display: none; animation: fadeIn 0.6s ease-in-out; }
         .page-section.active { display: block; }
@@ -158,20 +156,17 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* ─── 首頁：個人簡介區塊設定 ─── */
         .profile-container { text-align: center; padding: 30px 20px; margin-bottom: 30px; }
         .profile-avatar { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 4px 15px rgba(23, 59, 60, 0.15); margin-bottom: 20px; background: #ddd; }
         .social-icons { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
         .social-icon { display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: #fff; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-decoration: none; font-size: 20px; transition: all 0.3s ease; }
         .social-icon:hover { background: var(--accent); color: #fff; transform: translateY(-3px); box-shadow: 0 5px 12px rgba(23, 59, 60, 0.2); }
 
-        /* ─── 卡片與內容元件設計 ─── */
         .card { background: var(--card-bg); padding: 30px; margin-bottom: 35px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid rgba(23, 59, 60, 0.05); }
         .card h2, .card h3 { color: var(--primary); margin-top: 0; }
         .btn { display: inline-block; background: var(--accent); color: #fff; padding: 10px 22px; text-decoration: none; border-radius: 4px; cursor: pointer; border: none; margin-top: 15px; margin-right: 10px; font-size: 14px; font-family: sans-serif; font-weight: bold; transition: background 0.2s; }
         .btn:hover { background: #4a7273; }
         
-        /* CV (履歷) 項目設計 */
         .cv-item { margin-bottom: 25px; border-left: 2px solid var(--accent); padding-left: 20px; }
         .cv-date { color: var(--text-light); font-size: 14px; font-weight: bold; font-family: sans-serif; }
         .cv-title { font-size: 19px; font-weight: bold; margin: 5px 0; color: var(--primary); }
@@ -182,7 +177,6 @@
         .content-select { padding: 10px 35px 10px 15px; font-size: 16px; font-family: 'Georgia', serif; font-weight: bold; color: var(--text); background-color: transparent; border: 1px solid rgba(0,0,0,0.15); border-radius: 8px; appearance: none; cursor: pointer; outline: none; transition: all 0.3s ease; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c3e3e%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 12px top 50%; background-size: 12px auto; }
         .content-select:hover { border-color: rgba(0,0,0,0.3); background-color: rgba(0,0,0,0.02); }
 
-        /* ─── 貼文佈局 (Instagram Feed Style) ─── */
         .feed-list { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
         .feed-card { display: flex; flex-direction: row; background: #fff; border: 1px solid rgba(0,0,0,0.12); text-decoration: none; color: var(--text); transition: box-shadow 0.3s; min-height: 280px; scroll-margin-top: 100px; border-radius: 8px; overflow: hidden; }
         .feed-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
@@ -204,7 +198,6 @@
         .feed-footer { margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: center; align-items: center; position: relative; color: var(--text-light); font-size: 12px; letter-spacing: 1.5px; font-family: sans-serif; text-transform: uppercase; }
         .feed-avatar { width: 28px; height: 28px; border-radius: 50%; position: absolute; left: 0; }
 
-        /* ─── Gallery 佈局 ─── */
         .gallery-category { margin-bottom: 45px; text-align: left; }
         .gallery-category h3 { color: var(--primary); font-size: 20px; margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 10px; font-family: 'Georgia', serif;}
         .gallery-carousel { display: flex; overflow-x: auto; gap: 15px; scroll-snap-type: x mandatory; padding-bottom: 15px; -webkit-overflow-scrolling: touch; }
@@ -213,7 +206,6 @@
         .gallery-item { flex: 0 0 auto; height: 300px; scroll-snap-align: start; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); background-color: #f9f9f9; text-decoration: none; }
         .gallery-item img { position: relative; display: block; width: auto; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
 
-        /* 燈箱 (Lightbox) 樣式 */
         .lightbox-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(23, 59, 60, 0.95); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .lightbox-overlay.show { display: flex; opacity: 1; }
         .lightbox-container { position: relative; max-width: 90%; max-height: 90vh; display: flex; flex-direction: column; align-items: center; }
@@ -251,7 +243,6 @@
         }
         header.photo-bg h1, header.photo-bg p { text-shadow: 2px 2px 8px rgba(0,0,0,0.8); }
         
-        /* ─── 常駐自訂進度滑桿（手機版專用） ─── */
         .custom-scrollbar-track { display: none; width: 100%; height: 4px; background-color: rgba(23, 59, 60, 0.12); border-radius: 4px; margin-top: 10px; position: relative; overflow: hidden; }
         .custom-scrollbar-thumb { height: 100%; background-color: var(--accent); border-radius: 4px; position: absolute; left: 0; top: 0; will-change: transform; }
         .feed-photo .custom-scrollbar-track { position: absolute; bottom: 8px; left: 5%; width: 90%; margin: 0; z-index: 10; background-color: rgba(23, 59, 60, 0.12); }
@@ -278,7 +269,7 @@
         </p>
     </header>
 
-    <!-- 懸浮選單按鈕 (僅在進入子頁面時出現) -->
+    <!-- 懸浮選單按鈕 -->
     <button id="floating-menu-btn" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i> Menu
     </button>
@@ -337,19 +328,13 @@
     <!-- 網頁內容容器 (透過 Jekyll Includes 自動載入各個分頁檔案) -->
     <div class="container">
         
-        <!-- ============================================== -->
-        <!-- 第 1 頁：首頁 (Home.html)                      -->
-        <!-- ============================================== -->
+        <!-- 第 1 頁：首頁 -->
         {% include Home.html %}
 
-        <!-- ============================================== -->
-        <!-- 第 2 & 3 頁：學術與個人履歷 (CV.html)          -->
-        <!-- ============================================== -->
+        <!-- 第 2 & 3 頁：學術與個人履歷 -->
         {% include CV.html %}
 
-        <!-- ============================================== -->
-        <!-- 第 4 頁：部落格 (TravelBlog.html & Project.html) -->
-        <!-- ============================================== -->
+        <!-- 第 4 頁：部落格 -->
         <div id="blog" class="page-section">
             <div style="text-align: center; margin-bottom: 30px;">
                 <h2>
@@ -376,9 +361,7 @@
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- 第 5 頁：攝影作品集 (MyGallery.html & MyCamera.html) -->
-        <!-- ============================================== -->
+        <!-- 第 5 頁：攝影作品集 -->
         <div id="photography" class="page-section">
             <div class="sub-tabs">
                 <button id="btn-photo-gallery" class="btn" onclick="showPhotoTab('gallery')" style="background-color: var(--accent);">
@@ -395,7 +378,7 @@
 
     </div>
 
-    <!-- 頁尾 (Footer) -->
+    <!-- 頁尾 -->
     <footer style="text-align: center; padding: 40px 20px; margin-top: 20px; color: var(--text-light); font-size: 14px; border-top: 1px solid rgba(23, 59, 60, 0.1);">
         <div style="margin-bottom: 10px;">
             <span class="en">Contact with us on:</span><span class="lang-zh">聯絡我們：</span>
@@ -408,7 +391,7 @@
         </div>
     </footer>
 
-    <!-- 燈箱 (Lightbox) 結構 -->
+    <!-- 燈箱 -->
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
         <div class="lightbox-container">
             <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
@@ -448,7 +431,9 @@
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
-            document.getElementById(pageId).classList.add('active');
+            const targetSection = document.getElementById(pageId);
+            if (targetSection) targetSection.classList.add('active');
+
             const mainHeader = document.querySelector('header');
             if (pageId === 'photography') {
                 mainHeader.classList.add('photo-bg');
@@ -793,9 +778,6 @@
 
         window.addEventListener('load', initLightbox);
 
-        // ==========================================
-        // 接收外部連結 (如 IG Bio) 的跳轉指令
-        // ==========================================
         window.addEventListener('load', function() {
             const hash = window.location.hash;
             
