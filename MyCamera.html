@@ -1,0 +1,154 @@
+<div id="photo-tab-cameras" class="sub-tab-content" style="display: none;">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2>
+            <span class="en">My Cameras & Film Stocks</span><span class="lang-zh">相機介紹與底片庫</span>
+        </h2>
+        <p style="color:var(--text-light)">
+            <span class="en">Below is an introduction to the different cameras and films I use.</span>
+            <span class="lang-zh">以下是不同相機和菲林的介紹，以及拍攝出來的效果～ </span>
+        </p>
+    </div>
+    <div class="content-dropdown-wrapper">
+        <select id="camera-select" class="content-select" onchange="showCameraItem(this.value)">
+            <option value="all">All Cameras & Films / 全部顯示</option>
+            <option value="ricoh">Ricoh 500</option>
+            <option value="canon">Canon Ex Auto</option>
+            <option value="nikon">Nikon AF600</option>
+            <option value="films">Film Stocks / 菲林介紹</option>
+            <option value="tips">Camera Tips / 相機小貼士</option>
+        </select>
+    </div>
+
+    <div class="feed-list">
+        <!-- 相機卡片 1：Ricoh 500 -->
+        <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3335638/photos" target="_blank" class="feed-card" data-camera="ricoh">
+            <div class="feed-photo">
+                <img src="https://cdn.assets.lomography.com/88/63975dab19c49f6d55cc965c9590bfbddcf43a/1216x1221x1.jpg?auth=485b6977f3b0bd16a7e939f6da5d014bff7634b5c571d9fcef4623f3625e09bd" alt="Ricoh 500 Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="feed-content">
+                <div class="feed-header"><h3>Ricoh 500</h3></div>
+                <div class="feed-desc">
+                    <p style="margin: 0;">
+                        <span class="en">This is a mechanical rangefinder camera equipped with a 40mm f/2.8 lens. It is very lightweight and features both shutter-priority and metering functions (which require a battery). Unfortunately, the light meter on the copy I bought is broken, so I don't take it out very often.<br><br>The photos taken with this camera are a bit less sharp compared to the Canon Ex Auto, and they tend to have a bit of halation. If you love something lightweight and portable and don't mind a slightly lower sharpness, this camera is actually great for casual everyday carry and shooting!</span>
+                        <span class="lang-zh">這是一部機械旁軸相機，搭載 40mm f/2.8 鏡頭。它非常輕巧，同時具備快門先決與測光功能（需要電池）。可惜我買到這部的測光已經壞了，所以比較少帶它出門。<br><br>這部相機拍出來的相片，銳利度比起 Canon Ex Auto 稍微低一些，而且帶有一點光暈。如果你喜歡輕便好攜帶，又不在意銳利度稍微偏低的話，這部相機其實非常適合隨身攜帶拍攝！</span>
+                    </p>
+                </div>
+                <div class="feed-footer">
+                    <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
+                    <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- 相機卡片 2：Canon Ex Auto -->
+        <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3334881/photos" target="_blank" class="feed-card" data-camera="canon">
+            <div class="feed-photo">
+                <img src="https://cdn.assets.lomography.com/06/1aa7e1644b83910671984c1b8dc5f4d17cbe0a/1216x1221x1.jpg?auth=2f7ef2f3f358add7edd74adad83fae9da06493c6a428e6f9b37144ab608f3628" alt="Canon Ex Auto Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="feed-content">
+                <div class="feed-header"><h3>Canon Ex Auto</h3></div>
+                <div class="feed-desc">
+                    <p style="margin: 0;">
+                        <span class="en">This is a camera I bought during my trip to Japan &lt;3<br><br>It's a mechanical rangefinder camera paired with a 35mm lens that can operate completely without a battery. After taking it out for a spin, I've found the image results to be truly outstanding! It also features a shutter-priority auto-exposure mode (which does require a battery), allowing me to rely directly on the built-in light meter while shooting—super convenient.<br><br>The only minor drawback is that it has a bit of weight to it, so carrying it around on long trips can get a bit heavy on the shoulders~</span>
+                        <span class="lang-zh">這是我從日本旅行時買回來的相機 &lt;3<br><br>它是機械旁軸相機並配搭 35mm 鏡頭，即使沒有電池也能正常運作。實際拍攝下來，我覺得它的成像效果非常出色！它同時具備「快門先決」的自動曝光功能（需要電池），讓我在拍攝時可以直接依賴內建測光，非常方便。<br><br>唯一的小缺點就是稍微有些份量，長途旅行背著它肩膀確實會比較辛苦～</span>
+                    </p>
+                </div>
+                <div class="feed-footer">
+                    <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
+                    <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- 相機卡片 3：Nikon AF600 -->
+        <a href="https://www.lomography.hk/homes/urbanwilder/cameras/3328419-nikon-af600/photos" target="_blank" class="feed-card" data-camera="nikon">
+            <div class="feed-photo">
+                <img src="https://cdn.assets.lomography.com/3c/784c63b3d39f63e9894200e71715d17546591d/1216x1221x1.jpg?auth=df2e7ac4a9819344c0ac529d35cd393c0a61f2a8ab0f78c4f16dd74ccab10f6b" alt="Nikon AF600 Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="feed-content">
+                <div class="feed-header"><h3>Nikon AF600</h3></div>
+                <div class="feed-desc">
+                    <p style="margin: 0;">
+                        <span class="en">This is a point-and-shoot camera with an f/3.5 aperture. It has a built-in flash, making it super easy to shoot at night, and it's also very lightweight. It's perfect for carrying around for casual street snaps, so I'll definitely be using it a lot to document my daily life! The sharpness of the lens is impressive, and the photos turn out great!</span>
+                        <span class="lang-zh">這部傻瓜機配備 F3.5 光圈並內建閃光燈，在夜間拍攝也十分輕鬆。它的機身相當輕巧，非常適合帶到街上隨手抓拍，這部相機絕對會成為我記錄日常生活的愛用機！此外，鏡頭的銳利度很不錯，拍出來的成像效果非常棒！</span>
+                    </p>
+                </div>
+                <div class="feed-footer">
+                    <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
+                    <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- 相機卡片 4：Ricohflex New Dia -->
+        <a href="#" target="_blank" class="feed-card" data-camera="Ricohflex">
+            <div class="feed-photo">
+                <img src="https://cdn.assets.lomography.com/1b/2ee0fe973012dafedaef3d934c5caa5561e36d/1216x1224x1.jpg?auth=55acc6d3dd2dede239189ce472275e15052b43a1d1abe654b44fbbc96ad26aa1" alt="Ricohflex New Dia" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="feed-content">
+                <div class="feed-header"><h3>Ricohflex New Dia</h3></div>
+                <div class="feed-desc">
+                    <p style="margin: 0;">
+                        <span class="en">I'm still trying the camera, will share to you guys after using the camera!</span>
+                        <span class="lang-zh">還在試用中~ 用了一段時間後再和大家分享！</span>
+                    </p>
+                </div>
+                <div class="feed-footer">
+                    <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
+                    <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                </div>
+            </div>
+        </a>            
+
+        <!-- 卡片 5：底片作品集 -->
+        <a href="https://www.lomography.hk/homes/urbanwilder/films" target="_blank" class="feed-card" data-camera="films">
+            <div class="feed-photo">
+                <img src="https://cdn.assets.lomography.com/de/61f3acf570677a3628165a80c12d991b6d13ea/1216x806x1.jpg?auth=5fc7b7d7cf230b26b5934b9c27ac3bdfa2d4cc0df87b0662d156f3e77ce49876" alt="Film Stocks Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="feed-content">
+                <div class="feed-header"><h3>Film Stocks</h3></div>
+                <div class="feed-desc">
+                    <div style="flex-grow: 1;">
+                        <p style="margin: 0 0 10px 0;">
+                            <span class="en">A photo collection of the film stocks I've used, serving as a reference to show the effects of different film brands:</span>
+                            <span class="lang-zh">這是我使用過的底片合集，作為展示不同底片品牌拍攝效果的參考：</span>
+                        </p>
+                        <ul style="text-align: left; margin: 0 auto; display: inline-block; line-height: 1.8;">
+                            <li>Candido 800</li>
+                            <li>Fujifilm Color 200</li>
+                            <li>Fujifilm Color 400</li>
+                            <li>Kodak ColorPlus 200</li>
+                            <li>Kodak Ultramax 400</li>
+                            <li>Retocolor Prism 400</li>
+                            <li>VIBE 400 b&w</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feed-footer">
+                    <img src="Image/Profile.jpeg" alt="Avatar" class="feed-avatar">
+                    <span class="en">View Gallery</span><span class="lang-zh">查看相簿</span>
+                </div>
+            </div>
+        </a>
+    </div> 
+
+    <!-- 卡片 6：相機電池技巧 -->
+    <div class="card" data-camera="tips" style="margin-top: 40px; text-align: left; scroll-margin-top: 100px;">
+        <h3 style="display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-wrench" style="color: var(--accent);"></i>
+            <span class="en">Camera Battery Tips</span>
+            <span class="lang-zh">相機電池Tips</span>
+        </h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 15px;">
+            <div style="flex: 1 1 300px;">
+                <p style="margin: 0; line-height: 1.7;">
+                    <span class="en">As for power, this camera originally used PX625 mercury batteries, which are pretty hard to come by nowadays. If you run into this issue, you can simply use a battery adapter paired with a LR44 battery to solve it!</span>
+                    <span class="lang-zh">關於電力方面，這種相機過去通常使用 PX625 水銀電池，現在比較難買到。如果遇到這個問題，可以購買電池轉接器搭配 LR44 電池來使用，就能解決了！</span>
+                </p>
+            </div>
+            <div style="flex: 0 1 250px;">
+                <img src="Image/LR44.jpeg" alt="PX625 Battery Adapter" style="max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            </div>
+        </div>
+    </div>
+</div>
