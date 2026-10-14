@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 🚨 需要您修改：網站標題 🚨 -->
+    <title>CV - Tsz Ying @Urban.Wilder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-en">
+
+    <!-- 頁首區域 -->
+    <header>
+        <h1>
+            <span class="en">Welcome to Tsz Ying Profile</span>
+            <span class="lang-zh">歡迎來到 Tsz Ying 的個人網站</span>
+        </h1>
+        <p>
+            <span class="en">Focusing on Academics, Photography and Urban Wildlife</span>
+            <span class="lang-zh">專注於學術研究、攝影與城市野生動物</span>
+        </p>
+    </header>
+
+    <!-- 懸浮選單按鈕 (子頁面預設顯示) -->
+    <button id="floating-menu-btn" onclick="toggleMenu()" style="display: flex;">
+        <i class="fa-solid fa-bars"></i> Menu
+    </button>
+
+    <!-- 主導覽列 (子頁面預設為懸浮折疊模式) -->
+    <nav id="main-nav" class="dropdown-mode" data-active-page="cv">
+        <button id="btn-nav-home" onclick="location.href='Home.html'">
+            <span class="en">Home</span><span class="lang-zh">首頁</span>
+        </button>
+
+        <!-- 🚨 如果要公開顯示 CV 按鈕，請把下方的 style="display: none;" 刪除 🚨 -->
+        <button id="btn-nav-cv" class="active" onclick="location.href='CV.html'" style="display: none;">
+            <span class="en">CV</span><span class="lang-zh">個人履歷</span>
+        </button>
+
+        <div class="nav-item blog-nav">
+            <button id="btn-nav-blog" onclick="location.href='TravelBlog.html'">
+                <span class="en">Articles</span><span class="lang-zh">文章</span>
+                <i class="fa-solid fa-caret-down caret-toggle" onclick="toggleSub(event)"></i>
+            </button>
+            <div class="dropdown-menu">
+                <button onclick="location.href='TravelBlog.html'">
+                    <span class="en">Travel</span><span class="lang-zh">旅遊</span>
+                </button>
+                <button onclick="location.href='Project.html'">
+                    <span class="en">Project</span><span class="lang-zh">小小企劃</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-item photo-nav">
+            <button id="btn-nav-photography" onclick="location.href='MyGallery.html'">
+                <span class="en">My Camera & Gallery</span><span class="lang-zh">我的相機和相片集</span>
+                <i class="fa-solid fa-caret-down caret-toggle" onclick="toggleSub(event)"></i>
+            </button>
+            <div class="dropdown-menu">
+                <button onclick="location.href='MyGallery.html'">
+                    <span class="en">My Gallery</span><span class="lang-zh">我的相片集</span>
+                </button>
+                <button onclick="location.href='MyCamera.html'">
+                    <span class="en">My Cameras and Films</span><span class="lang-zh">我的相機和菲林簡介</span>
+                </button>
+            </div>
+        </div>
+        
+        <button id="lang-toggle-btn" onclick="toggleLanguage()">
+            <i class="fa-solid fa-globe"></i> 
+            <span class="en">中文</span><span class="lang-zh">EN</span>
+        </button>
+    </nav>
+
+    <div class="container">
+        <!-- ============================================== -->
+        <!-- 個人履歷 (CV)                                  -->
+        <!-- ============================================== -->
+        <div id="cv" class="page-section active">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2>
+                    <span class="en">Curriculum Vitae</span><span class="lang-zh">個人履歷</span>
+                </h2>
+                <p style="color:var(--text-light)">
+                    <span class="en">A detailed overview of my professional and academic background.</span>
+                    <span class="lang-zh">專業與學術背景的詳細總覽。</span>
+                </p>
+                <!-- 🚨 需要您修改：CV PDF 檔案連結 🚨 -->
+                <a href="#" class="btn" target="_blank">
+                    <span class="en">Download PDF Version</span><span class="lang-zh">下載 PDF 版本</span>
+                </a>
+            </div>
+
+            <!-- 🚨 需要您修改：教育背景內容 🚨 -->
+            <div class="card">
+                <h2><span class="en">Education</span><span class="lang-zh">教育背景</span></h2>
+                <div class="cv-item">
+                    <div class="cv-date">2023 - 2024</div>
+                    <div class="cv-title">
+                        <span class="en">Master's degree in Environmental Management</span><span class="lang-zh">環境管理碩士</span>
+                    </div>
+                    <div><span class="en">Hong Kong University</span><span class="lang-zh">香港大學</span></div>
+                    <p style="font-style: italic; color:var(--text-light)">
+                        <span class="en">"Adaptation of Feline Predators in High-Density Urban Environments."</span>
+                        <span class="lang-zh">「高密度城市環境中貓科掠食者的適應性。」</span>
+                    </p>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-date">2021 - 2023</div>
+                    <div class="cv-title">
+                        <span class="en">Bachelor of Social Sciences (Honours) in Environment and Resources Management</span>
+                        <span class="lang-zh">環境及資源管理社會科學學士（榮譽）學位</span>
+                    </div>
+                    <div><span class="en">Hong Kong Baptist University</span><span class="lang-zh">香港浸會大學</span></div>
+                    <p style="font-style: italic; color:var(--text-light)">
+                        <span class="en">"Graduated with First Class Honours."</span>
+                        <span class="lang-zh">「以一級榮譽畢業。」</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🚨 需要您修改：研究與工作經歷 🚨 -->
+            <div class="card">
+                <h2><span class="en">Research & Experience</span><span class="lang-zh">研究與工作經歷</span></h2>
+                <div class="cv-item">
+                    <div class="cv-date"><span class="en">2024 - Present</span><span class="lang-zh">2024 - 至今</span></div>
+                    <div class="cv-title"><span class="en">Postdoctoral Researcher</span><span class="lang-zh">博士後研究員</span></div>
+                    <div><span class="en">Wildlife Institute, City, State</span><span class="lang-zh">野生動物研究所, 城市, 州</span></div>
+                    <ul style="padding-left: 20px;">
+                        <li>
+                            <span class="en">Lead field research tracking urban wildlife populations using GPS collars.</span>
+                            <span class="lang-zh">領導野外調查，使用 GPS 項圈追蹤城市野生動物族群。</span>
+                        </li>
+                        <li>
+                            <span class="en">Analyze large spatial datasets using R and GIS.</span>
+                            <span class="lang-zh">使用 R 語言與 GIS 分析大型空間數據集。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ============================================== -->
+            <!-- 學術研究 (Academic Publications)               -->
+            <!-- ============================================== -->
+            <div id="academic" style="margin-top: 50px;">
+                <h2>
+                    <span class="en">Academic Publications</span><span class="lang-zh">學術出版物</span>
+                </h2>
+                <p style="color:var(--text-light)">
+                    <i>
+                        <span class="en">Note: You can manually list your papers below to mimic your Google Scholar profile, or link directly to it.</span>
+                        <span class="lang-zh">註：您可以手動在此列出您的論文，以呈現類似 Google Scholar 的版面，或直接連結至您的主頁。</span>
+                    </i>
+                </p>
+                
+                <!-- 🚨 需要您修改：論文列表 🚨 -->
+                <div class="card">
+                    <h3>
+                        <span class="en">Impact of Urban Ecosystems on Feline Behavior</span>
+                        <span class="lang-zh">城市生態系統對貓科動物行為的影響</span>
+                    </h3>
+                    <p>
+                        <strong><span class="en">Authors:</span><span class="lang-zh">作者：</span></strong> Your Name, Co-Author A<br>
+                        <strong><span class="en">Journal:</span><span class="lang-zh">期刊：</span></strong> Journal of Urban Ecology (2025)
+                    </p>
+                    <a href="#" class="btn" target="_blank">
+                        <span class="en">Read Paper</span><span class="lang-zh">閱讀論文</span>
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <h3>
+                        <span class="en">Another Great Research Paper Title</span>
+                        <span class="lang-zh">另一篇優秀的研究論文標題</span>
+                    </h3>
+                    <p>
+                        <strong><span class="en">Authors:</span><span class="lang-zh">作者：</span></strong> Your Name, Co-Author B<br>
+                        <strong><span class="en">Journal:</span><span class="lang-zh">期刊：</span></strong> Nature Studies (2023)
+                    </p>
+                    <a href="#" class="btn" target="_blank">
+                        <span class="en">Read Paper</span><span class="lang-zh">閱讀論文</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 10px;">
+            <span class="en">Contact with us on:</span><span class="lang-zh">聯絡我們：</span>
+            <a href="https://www.instagram.com/urban.wilder/" target="_blank" style="margin-left: 5px;">
+                <i class="fa-brands fa-instagram"></i> Urban.Wilder
+            </a>
+        </div>
+        <div>
+            &copy; 2026 Chan Tsz Ying. All rights reserved. Powered by Urban.Wilder.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
