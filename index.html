@@ -3545,6 +3545,27 @@
 
         window.addEventListener('load', initLightbox);
         //
+        // ==========================================
+        // 接收外部連結 (如 IG Bio) 的跳轉指令
+        // ==========================================
+        window.addEventListener('load', function() {
+            // 抓取網址後面的 # 字號內容
+            const hash = window.location.hash;
+            
+            if (hash === '#travel') {
+                // 如果暗號是 #travel，自動打開 Blog 頁面的 Travel 分頁
+                showPage('blog');
+                showBlogTab('travel');
+            } else if (hash === '#gallery') {
+                // 如果暗號是 #gallery，自動打開攝影頁面的相片集分頁
+                showPage('photography');
+                showPhotoTab('gallery');
+            } else if (hash === '#project') {
+                // 如果暗號是 #project，自動打開 Blog 頁面的 Project 分頁
+                showPage('blog');
+                showBlogTab('project');
+            }
+        });
     </script>
 </body>
 </html>
