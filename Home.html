@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 🚨 需要您修改：網站標題 (顯示在瀏覽器分頁上) 🚨 -->
+    <title>Tsz Ying @Urban.Wilder</title>
+    
+    <!-- 引入 Font Awesome 用於社交媒體小圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入共用 CSS 樣式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-en">
+
+    <!-- 頁首區域 -->
+    <header>
+        <!-- 🚨 需要您修改：網站大標題與副標題 🚨 -->
+        <h1>
+            <span class="en">Welcome to Tsz Ying Profile</span>
+            <span class="lang-zh">歡迎來到 Tsz Ying 的個人網站</span>
+        </h1>
+        <p>
+            <span class="en">Focusing on Academics, Photography and Urban Wildlife</span>
+            <span class="lang-zh">專注於學術研究、攝影與城市野生動物</span>
+        </p>
+    </header>
+
+    <!-- 懸浮選單按鈕 (首頁預設隱藏) -->
+    <button id="floating-menu-btn" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i> Menu
+    </button>
+
+    <!-- 主導覽列 -->
+    <nav id="main-nav" data-active-page="home">
+        <!-- 🚨 注意：如果您需要隱藏 Research 或 CV 頁面，可以在對應的 <button> 裡加上 style="display: none;" 🚨 -->
+        <button id="btn-nav-home" class="active" onclick="location.href='Home.html'">
+            <span class="en">Home</span><span class="lang-zh">首頁</span>
+        </button>
+
+        <!-- 🚨 在此隱藏 CV 按鈕 🚨 -->
+        <button id="btn-nav-cv" onclick="location.href='CV.html'" style="display: none;">
+            <span class="en">CV</span><span class="lang-zh">個人履歷</span>
+        </button>
+
+        <div class="nav-item blog-nav">
+            <button id="btn-nav-blog" onclick="location.href='TravelBlog.html'">
+                <span class="en">Articles</span><span class="lang-zh">文章</span>
+                <i class="fa-solid fa-caret-down caret-toggle" onclick="toggleSub(event)"></i>
+            </button>
+            <div class="dropdown-menu">
+                <button onclick="location.href='TravelBlog.html'">
+                    <span class="en">Travel</span><span class="lang-zh">旅遊</span>
+                </button>
+                <button onclick="location.href='Project.html'">
+                    <span class="en">Project</span><span class="lang-zh">小小企劃</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-item photo-nav">
+            <button id="btn-nav-photography" onclick="location.href='MyGallery.html'">
+                <span class="en">My Camera & Gallery</span><span class="lang-zh">我的相機和相片集</span>
+                <i class="fa-solid fa-caret-down caret-toggle" onclick="toggleSub(event)"></i>
+            </button>
+            <div class="dropdown-menu">
+                <button onclick="location.href='MyGallery.html'">
+                    <span class="en">My Gallery</span><span class="lang-zh">我的相片集</span>
+                </button>
+                <button onclick="location.href='MyCamera.html'">
+                    <span class="en">My Cameras and Films</span><span class="lang-zh">我的相機和菲林簡介</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 語言切換按鈕 -->
+        <button id="lang-toggle-btn" onclick="toggleLanguage()">
+            <i class="fa-solid fa-globe"></i> 
+            <span class="en">中文</span><span class="lang-zh">EN</span>
+        </button>
+    </nav>
+
+    <!-- 網頁內容容器 -->
+    <div class="container">
+        <!-- ============================================== -->
+        <!-- 第 1 頁：首頁 (Home)                           -->
+        <!-- ============================================== -->
+        <div id="home" class="page-section active">
+            
+            <div class="profile-container">
+                <!-- 🚨 需要您修改：個人頭像圖片網址 🚨 -->
+                <img src="https://hkeccolab.weebly.com/uploads/1/5/3/3/153337742/published/whatsapp-image-2025-12-02-at-5-11-47-pm.jpeg?1772554079" class="profile-avatar" alt="Profile Avatar">
+                
+                <!-- 🚨 需要您修改：您的名字 🚨 -->
+                <h2>
+                    <span class="en">Hello, I'm Chan Tsz Ying</span>
+                    <span class="lang-zh">你好，我是 Chan Tsz Ying</span>
+                </h2>
+            </div>
+
+            <!-- 社群與外連圖標清單 -->
+            <div class="social-icons">
+                <a href="https://scholar.google.com/" target="_blank" class="social-icon" title="Google Scholar">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </a>
+                <a href="https://www.instagram.com/urban.wilder/" target="_blank" class="social-icon" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.lomography.hk/homes/urbanwilder" target="_blank" class="social-icon" title="Lomography">
+                    <i class="fa-solid fa-camera-retro"></i>
+                </a>
+            </div>
+
+            <!-- 🚨 需要您修改：您的簡短自我介紹 🚨 -->
+            <p style="max-width: 600px; margin: 10px auto; color: var(--text-light);">
+                <span class="en">
+                    Welcome to my personal corner of the internet where I share my academic research, film photography, and encounters with urban wildlife. My passion for nature and environmental issues was sparked by a memorable freshwater and amphibian eco-tour. This experience left a lasting impression on me, leading me to pursue a Bachelor's degree in Environmental Management at HKBU, a Master's degree in Environmental Management at HKU, and eventually begin my MPhil studies.
+                </span>
+                <span class="lang-zh">
+                    歡迎來到我的個人網站，我會在這裡分享我的學術研究、底片攝影，以及與城市野生動物的相遇。我對自然與環境議題的熱情，源自於一次難忘的淡水與兩棲動物生態導覽。那次經驗令我印象深刻，並啟發我先後在香港浸會大學（HKBU）完成環境管理學士學位、在香港大學（HKU）取得環境管理碩士學位，最終展開我的哲學碩士（MPhil）研究旅程。
+                </span>
+            </p>
+
+            <!-- 🚨 💬 Let's Work Together 合作與交流區塊🚨  -->
+            <div class="card" style="text-align: left; max-width: 700px; margin: 30px auto;">
+                <h3 style="text-align: center; color: var(--primary); margin-bottom: 15px;">
+                    <span class="en">Let's Work Together & Connect</span>
+                    <span class="lang-zh">一起交流與合作</span>
+                </h3>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 25px;">
+                    <span class="en">If you are also interested in nature, ecology, film photography, or creative projects, feel free to reach out via Instagram (<a href="https://www.instagram.com/urban.wilder/" target="_blank" style="color: var(--accent); font-weight: bold;">@urban.wilder</a>)! I am currently looking forward to the following forms of exchange:</span>
+                    <span class="lang-zh">如果你對生態、底片攝影或各種有趣的企劃感興趣，歡迎透過 Instagram (<a href="https://www.instagram.com/urban.wilder/" target="_blank" style="color: var(--accent); font-weight: bold;">@urban.wilder</a>) 找我聊聊天！目前特別期待以下形式的交流：</span>
+                </p>
+
+                <!-- 交流項目 1 -->
+                <div class="cv-item" style="margin-bottom: 20px;">
+                    <div class="cv-title" style="font-size: 16px;">
+                        <span class="en">🌿 Eco & Wildlife Chats</span>
+                        <span class="lang-zh">🌿 生態與環境議題交流</span>
+                    </div>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: var(--text-light);">
+                        <span class="en">Exchange thoughts on urban wildlife, bee/wasp observations, and conservation, or share stories of encounters in the field.</span>
+                        <span class="lang-zh">交流關於城市野生動物、蜜蜂/黃蜂觀察、生態保育的所見所聞。</span>
+                    </p>
+                </div>
+
+                <!-- 交流項目 2 -->
+                <div class="cv-item" style="margin-bottom: 20px;">
+                    <div class="cv-title" style="font-size: 16px;">
+                        <span class="en">🎞️ Film Photography Walks</span>
+                        <span class="lang-zh">🎞️ 底片攝影與散步交流</span>
+                    </div>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: var(--text-light);">
+                        <span class="en">Share film camera tips and lab experiences, or go on a photowalk around the city together to capture everyday moments.</span>
+                        <span class="lang-zh">互相交換底片相機的使用心得、沖掃經驗（像是討論哪家沖掃店比較特別），或者一起去城市散步、捕捉日常風景。</span>
+                    </p>
+                </div>
+
+                <!-- 交流項目 3 -->
+                <div class="cv-item" style="margin-bottom: 5px;">
+                    <div class="cv-title" style="font-size: 16px;">
+                        <span class="en">✨ Creative Projects</span>
+                        <span class="lang-zh">✨ 小企劃</span>
+                    </div>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: var(--text-light);">
+                        <span class="en">From Cyanotype creations and handmade crafts to any fun or even slightly wild ideas, let's brainstorm together!</span>
+                        <span class="lang-zh">像是藍曬（Cyanotype）創作、手作小物，或是任何好玩、甚至有其他idea，都歡迎一起創作！</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🚨 在此隱藏整個 Academic Path 卡片 🚨 -->
+            <div class="card" style="display: none;">
+                <h3>
+                    <span class="en">My Academic Path</span>
+                    <span class="lang-zh">我的學術旅程</span>
+                </h3>
+                <p>
+                    <span class="en">I am an MPhil student at Lingnan University in Hong Kong. Currently, my research focuses on urban bee and wasp communities in Hong Kong, using a functional trait-based approach to assess how floral resources and microclimate affect community assembly across the urban gradient. To see a full list of my published papers and current research projects, please visit my academic portfolio.</span>
+                    <span class="lang-zh">我目前是香港嶺南大學的哲學碩士生。我的研究主要關注香港城市的蜜蜂與黃蜂群落，利用基於功能性狀的方法，評估花卉資源與微氣候如何影響城市化梯度中的群落組成。如欲查看我發表的論文與當前研究項目的完整清單，請瀏覽我的學術頁面。</span>
+                </p>
+                
+                <button class="btn" onclick="location.href='CV.html'">
+                    <span class="en">View Academic Profile</span><span class="lang-zh">查看學術背景</span>
+                </button>
+                <button class="btn" style="background-color: var(--primary);" onclick="location.href='CV.html'">
+                    <span class="en">View Full CV</span><span class="lang-zh">查看完整履歷</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾 (Footer) -->
+    <footer>
+        <div style="margin-bottom: 10px;">
+            <span class="en">Contact with us on:</span><span class="lang-zh">聯絡我們：</span>
+            <a href="https://www.instagram.com/urban.wilder/" target="_blank" style="margin-left: 5px;">
+                <i class="fa-brands fa-instagram"></i> Urban.Wilder
+            </a>
+        </div>
+        <div>
+            &copy; 2026 Chan Tsz Ying. All rights reserved. Powered by Urban.Wilder.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
