@@ -778,20 +778,20 @@
 
         window.addEventListener('load', initLightbox);
 
-        window.addEventListener('load', function() {
-            const hash = window.location.hash;
-            
-            if (hash === '#travel') {
-                showPage('blog');
-                showBlogTab('travel');
-            } else if (hash === '#gallery') {
-                showPage('photography');
-                showPhotoTab('gallery');
-            } else if (hash === '#project') {
-                showPage('blog');
-                showBlogTab('project');
-            }
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash;
+    
+    if (hash === '#travel') {
+        showPage('blog');
+        showBlogTab('travel');
+    } else if (hash === '#gallery') {
+        showPage('photography');
+        showPhotoTab('gallery');
+    } else if (hash === '#project') {
+        showPage('blog');
+        showBlogTab('project');
+    }
+});
     </script>
 </body>
 </html>
