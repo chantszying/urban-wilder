@@ -90,9 +90,9 @@ def update_html():
             photos_html_block = '<div class="feed-photo-carousel" style="width: 100%; height: 100%; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;">'
             for img_url in image_urls:
                 photos_html_block += f"""
-                        <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
-                            <img src="{img_url}" alt="Post Photo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
-                        </div>
+                <div class="feed-photo-item" style="flex: 0 0 100%; scroll-snap-align: start; position: relative; min-height: 280px; background-color: #f9f9f9;">
+                <img src="{img_url}" alt="Post Photo" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
+                </div>
                 """
             photos_html_block += '</div>'
             location_match = re.search(r'📍\s*\|\s*([^\n\r]+)', caption)
