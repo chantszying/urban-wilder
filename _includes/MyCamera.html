@@ -14,11 +14,57 @@
             <option value="ricoh">Ricoh 500</option>
             <option value="canon">Canon Ex Auto</option>
             <option value="nikon">Nikon AF600</option>
-            <option value="nikon">Ricohflex New Dia</option>
+            <option value="Ricohflex">Ricohflex New Dia</option>
             <option value="films">Film Stocks / 菲林介紹</option>
             <option value="tips">Camera Tips / 相機小貼士</option>
         </select>
     </div>
+
+    <!-- 加入 Tags 篩選器所需的 CSS -->
+    <style>
+        .film-tag-btn {
+            background-color: transparent;
+            border: 1px solid var(--text-light, #999);
+            color: var(--text-light, #666);
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .film-tag-btn:hover {
+            border-color: var(--accent, #333);
+            color: var(--accent, #333);
+        }
+        .film-tag-btn.active {
+            background-color: var(--accent, #333);
+            border-color: var(--accent, #333);
+            color: #fff;
+        }
+        .mini-tag {
+            display: inline-block;
+            background: #f4f4f4;
+            color: #666;
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+            vertical-align: text-bottom;
+        }
+        .film-list-item {
+            padding: 6px 0;
+            border-bottom: 1px dashed #eee;
+            animation: fadeIn 0.3s ease;
+            list-style: none;
+        }
+        .film-list-item:last-child {
+            border-bottom: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(3px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 
     <div class="feed-list">
         <!-- 相機卡片 1：Ricoh 500 -->
@@ -101,7 +147,7 @@
             </div>
         </a>            
 
-        <!-- 卡片 5：底片作品集 -->
+        <!-- 卡片 5：底片作品集 (已升級 Tags 系統) -->
         <a href="https://www.lomography.hk/homes/urbanwilder/films" target="_blank" class="feed-card" data-camera="films">
             <div class="feed-photo">
                 <img src="https://cdn.assets.lomography.com/de/61f3acf570677a3628165a80c12d991b6d13ea/1216x806x1.jpg?auth=5fc7b7d7cf230b26b5934b9c27ac3bdfa2d4cc0df87b0662d156f3e77ce49876" alt="Film Stocks Cover" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;">
@@ -110,29 +156,36 @@
                 <div class="feed-header"><h3>Film Stocks</h3></div>
                 <div class="feed-desc">
                     <div style="flex-grow: 1;">
-                        <p style="margin: 0 0 10px 0;">
-                            <span class="en">A photo collection of the film stocks I've used, serving as a reference to show the effects of different film brands:</span>
-                            <span class="lang-zh">這是我使用過的底片合集，作為展示不同底片品牌拍攝效果的參考：</span>
+                        <p style="margin: 0 0 15px 0;">
+                            <span class="en">A photo collection of the film stocks I've used. Filter by tags below:</span>
+                            <span class="lang-zh">這是我使用過的底片合集，點擊下方標籤快速篩選：</span>
                         </p>
-                        <ul style="text-align: left; margin: 0 auto; display: inline-block; line-height: 1.8;">
-                            <span class="en">🎞️【彩色負片 Color Negative Film】</span>
-                            <span class="lang-zh">🎞️【彩色負片 Color Negative Film】</span>
-                            <li>Alien Film Aeronega 100 (120) </li>
-                            <li>Lomography Color Negative ISO 100 (120)</li>
-                            <li>Kodak Portra 160 (120) (expired)</li>
-                            <li>Fujifilm Color 200</li>
-                            <li>Kodak ColorPlus 200</li>
-                            <li>Film Never Die KIRO 400</li>
-                            <li>Fujifilm Color 400</li>
-                            <li>Kodak Portra 400</li>
-                            <li>Kodak Ultramax 400</li>
-                            <li>Lomography Color Negative ISO 400</li>
-                            <li>Ninoco 400</li>
-                            <li>Retocolor Prism 400</li>
-                            <li>Candido 800</li>
-                            <span class="en">🎞️ 【黑白菲林 Black & White Film】</span>
-                            <span class="lang-zh">🎞️ 【黑白菲林 Black & White Film】</span>
-                            <li>VIBE 400 b&w</li>
+                        
+                        <!-- 標籤篩選器 按鈕 (加入防冒泡功能，防止跳轉網頁) -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;" onclick="event.preventDefault(); event.stopPropagation();">
+                            <button class="film-tag-btn active" onclick="filterFilms('all', this)">All</button>
+                            <button class="film-tag-btn" onclick="filterFilms('135', this)">135 (35mm)</button>
+                            <button class="film-tag-btn" onclick="filterFilms('120', this)">120 Format</button>
+                            <button class="film-tag-btn" onclick="filterFilms('color', this)">Color 彩色</button>
+                            <button class="film-tag-btn" onclick="filterFilms('bw', this)">B&W 黑白</button>
+                        </div>
+
+                        <!-- 菲林清單 -->
+                        <ul id="dynamic-film-list" style="text-align: left; margin: 0; padding: 0; line-height: 1.6;">
+                            <li class="film-list-item" data-tags="120 color iso100">🎞️ Alien Film Aeronega 100 <span class="mini-tag">120</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 100</span></li>
+                            <li class="film-list-item" data-tags="120 color iso100">🎞️ Lomography Color Negative 100 <span class="mini-tag">120</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 100</span></li>
+                            <li class="film-list-item" data-tags="120 color iso160">🎞️ Kodak Portra 160 (Expired) <span class="mini-tag">120</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 160</span></li>
+                            <li class="film-list-item" data-tags="135 color iso200">🎞️ Fujifilm Color 200 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 200</span></li>
+                            <li class="film-list-item" data-tags="135 color iso200">🎞️ Kodak ColorPlus 200 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 200</span></li>
+                            <li class="film-list-item" data-tags="135 color iso400">🎞️ Film Never Die KIRO 400 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 400</span></li>
+                            <li class="film-list-item" data-tags="135 color iso400">🎞️ Fujifilm Color 400 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 400</span></li>
+                            <li class="film-list-item" data-tags="135 color iso400">🎞️ Kodak Portra 400 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 400</span></li>
+                            <li class="film-list-item" data-tags="135 color iso400">🎞️ Kodak Ultramax 400 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 400</span></li>
+                            <li class="film-list-item" data-tags="135 color iso400">🎞️ Lomography Color Negative 400 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 400</span></li>
+                            <li class="film-list-item" data-tags="135 color iso400">🎞️ Ninoco 400 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 400</span></li>
+                            <li class="film-list-item" data-tags="135 color iso400">🎞️ Retocolor Prism 400 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 400</span></li>
+                            <li class="film-list-item" data-tags="135 color iso800">🎞️ Candido 800 <span class="mini-tag">135</span><span class="mini-tag">Color</span><span class="mini-tag">ISO 800</span></li>
+                            <li class="film-list-item" data-tags="135 bw iso400">🎞️ VIBE 400 b&w <span class="mini-tag">135</span><span class="mini-tag">B&W</span><span class="mini-tag">ISO 400</span></li>
                         </ul>
                     </div>
                 </div>
@@ -164,3 +217,27 @@
         </div>
     </div>
 </div>
+
+<!-- Tags 篩選器功能 JavaScript -->
+<script>
+function filterFilms(tag, btnElement) {
+    // 獲取當前卡片容器
+    const container = btnElement.closest('.feed-desc');
+    
+    // 更新按鈕樣式 (移除其他按鈕的 active，並加上點擊按鈕的 active)
+    const buttons = container.querySelectorAll('.film-tag-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    // 篩選清單項目
+    const items = container.querySelectorAll('#dynamic-film-list li');
+    items.forEach(item => {
+        const tags = item.getAttribute('data-tags');
+        if (tag === 'all' || tags.includes(tag)) {
+            item.style.display = 'list-item';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+</script>
